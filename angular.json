@@ -25,6 +25,7 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ]
           },
@@ -88,5 +89,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0202cfb3-8a7c-4987-a310-2ac470de8cd9"
   }
 }
