@@ -1,5 +1,27 @@
+:root {
+  --color-primario: #494e6b;
+  --color-secundario: #98878f;
+  --color-accion: #e17e7e;
+  --color-fondo: #192231;
+  --color-texto: #f4ebd0;
+  --color-blanco: #ffffff;
+  --color-negro: #000000;
+}
+
 .card {
   width: 100%;
   max-width: 400px;
+}
+
+.container{
+  background-color: #494e6b;
+}
+
+.card.shadow.p-4 {
+  background-color: #e17e7e;
+}
+
+.text-center.mb-4 {
+  font-family: 'League Spartan', sans-serif;
 }
 
