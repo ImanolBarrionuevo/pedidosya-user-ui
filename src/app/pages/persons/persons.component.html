@@ -1,0 +1,30 @@
+<div class="container-fluid min-vh-100" id="persons-container">
+  <div class="d-flex justify-content-between align-items-center px-4 py-3">
+    <h1 class="mb-0">Persons</h1>
+    <div>
+      <button (click)="goToCreate()" class="btn btn-primary btn-extra me-2" >Create</button>
+      <button (click)="goToEdit()" class="btn btn-primary btn-extra " >Edit</button>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center ">
+    <div class="card shadow p-4 w-100">
+      <!-- Ver como cargar los datos y dar formato a la tabla-->
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>surname</th>
+            <th>city</th>
+            <th>province</th>
+            <th>country</th>
+          </tr>
+        </thead>
+      </table>
+      <button 
+        (click)="goToNextPage()"
+        class="btn btn-primary d-block mx-auto btn-extra mt-auto">
+        Next
+      </button>
+    </div>
+</div>

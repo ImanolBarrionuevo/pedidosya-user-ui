@@ -1,0 +1,56 @@
+:root {
+  --color-primario: #494e6b;
+  --color-secundario: #98878f;
+  --color-accion: #e17e7e;
+  --color-fondo: #192231;
+  --color-texto: #f4ebd0;
+  --color-blanco: #ffffff;
+  --color-negro: #000000;
+}
+
+.container-fluid {
+  background: linear-gradient(to right, #192231, #494e6b);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.mb-0{
+  color: #ffffff;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: bold;
+  font-size: 5rem;
+  padding-top: 0.5rem;
+}
+
+  .card.shadow.p-4{
+    width: 100vw;                 
+    height: 75vh;                
+    background-color: #f4ebd0;
+    border-radius: 2.2rem;          
+  }
+
+.btn-extra {
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+}
+
+.btn.btn-primary.btn-extra {
+  width: auto;
+  display: inline-block;
+  border-radius: 2rem;
+  color: #ffffff;
+  background-color: #e17e7e;
+  margin-top: 3.5rem;
+  font-family: 'Alata', sans-serif;
+  font-size: 1.25rem;
+  height: 2.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease-in-out;
+  min-width: 7rem;
+  border: none;
+}
+
+.btn.btn-primary.btn-extra:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
