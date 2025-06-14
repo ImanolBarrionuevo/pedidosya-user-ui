@@ -13,29 +13,45 @@
   color: #494e6b;
 }
 
-/*Sacamos el bordesito azul del boton "Login"*/
+form {
+  margin: 0.6rem;
+  /* Agrega separación interna */
+}
+
+/* Elimina bordes de botón, formulario y ventana rosa */
 .btn.btn-primary.btn-extra,
 .btn.btn-primary.btn-extra:focus,
 .btn.btn-primary.btn-extra:active,
-.btn.btn-primary.btn-extra:focus-visible {
+.btn.btn-primary.btn-extra:focus-visible,
+.form-control,
+.form-control:focus,
+.form-control:active,
+.form-control:focus-visible,
+.card.shadow.p-4,
+.card.shadow.p-4:focus,
+.card.shadow.p-4:active,
+.card.shadow.p-4:focus-visible {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
 }
 
-.container-fluid{
+
+.container-fluid {
   background: linear-gradient(to right, #192231, #494e6b);
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .card {
-  width: 100%;
-  max-width: 30rem;
+  width: 90%;
+  max-width: 34rem;
 }
 
+/* transform:scale Escala todo el contenido de la tarjeta rosa */
 .card.shadow.p-4 {
-  border-radius: 2rem;
+  transform: scale(1.1);
+  border-radius: 2.2rem;
   background-color: #e17e7e;
 }
 
@@ -43,17 +59,20 @@
   font-family: 'League Spartan', sans-serif;
   font-weight: bold;
   font-size: 5rem;
+  padding-top: 0.5rem;
 }
 
-.text-center.mt-2{
-    color: #494e6b;
-    font-family: 'Alata', sans-serif;
+.text-center.mt-2 {
+  color: #494e6b;
+  font-family: 'Alata', sans-serif;
 }
 
-.form-control{
+.form-control {
   background-color: #f4ebd0;
   height: 2rem;
   font-family: 'Alata', sans-serif;
+  border-radius: 0.6rem;
+  font-size: 1.08rem;
 }
 
 .btn-extra {
@@ -61,7 +80,7 @@
   padding-right: 2.4rem;
 }
 
-.btn.btn-primary.btn-extra{
+.btn.btn-primary.btn-extra {
   width: auto;
   display: inline-block;
   border-radius: 2rem;
@@ -69,13 +88,11 @@
   background-color: #192231;
   margin-top: 3.5rem;
   font-family: 'Alata', sans-serif;
-  font-size: 1.2rem;
-  height: 2.5rem;
+  font-size: 1.25rem;
+  height: 2.8rem;
 }
 
-.text-decoration-underline{
+.text-decoration-underline {
   color: #494e6b;
   font-family: 'Alata', sans-serif;
 }
-
-
