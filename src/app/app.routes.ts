@@ -19,4 +19,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'persons', component: PersonsComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }, // Redirige a login si la ruta no existe
 ];

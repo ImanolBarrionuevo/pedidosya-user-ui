@@ -36,7 +36,6 @@ form {
   border: none !important;
 }
 
-
 .container-fluid {
   background: linear-gradient(to right, #192231, #494e6b);
   padding-left: 2rem;
@@ -65,6 +64,14 @@ form {
 .text-center.mt-2 {
   color: #494e6b;
   font-family: 'Alata', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-center.mt-2 button {
+  margin-left: -0.5rem;
+  /* Ajusta la separación */
 }
 
 .form-control {
@@ -75,6 +82,14 @@ form {
   font-size: 1.08rem;
   flex: 1;
   margin-bottom: 1.8rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.form-control:focus {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+  /* Sombra cuando se selecciona */
+  outline: none;
+  /* Elimina el borde azul por defecto */
 }
 
 .btn-extra {
@@ -92,6 +107,11 @@ form {
   font-family: 'Alata', sans-serif;
   font-size: 1.25rem;
   height: 2.8rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn.btn-primary.btn-extra:hover {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .text-decoration-underline {
