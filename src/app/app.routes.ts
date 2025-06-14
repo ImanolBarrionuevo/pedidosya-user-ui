@@ -4,6 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PersonsComponent } from './pages/persons/persons.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { CreateComponent } from './pages/create/create.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -17,7 +19,9 @@ export const routes: Routes = [
     ],
   },
   { path: 'login', component: LoginComponent },
-  { path: 'persons', component: PersonsComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'persons', component: PersonsComponent },
+  { path: 'create', component: CreateComponent },
+  { path: 'edit', component: EditComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }, // Redirige a login si la ruta no existe
 ];
