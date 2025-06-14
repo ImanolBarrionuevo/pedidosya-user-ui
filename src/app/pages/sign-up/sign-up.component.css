@@ -51,7 +51,7 @@ form {
 .card.shadow.p-4 {
     transform: scale(1.1);
     border-radius: 2.2rem;
-    background-color: #e17e7e;
+    background: linear-gradient(to right, #e17e7e, #ff6e6e);
 }
 
 .text-center.mb-4 {
