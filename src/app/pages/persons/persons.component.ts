@@ -1,34 +1,60 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CreateComponent } from '../create/create.component';
 
 @Component({
   selector: 'app-persons',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, CreateComponent],
   templateUrl: './persons.component.html',
-  styleUrl: './persons.component.css'
+  styleUrls: ['./persons.component.css']
 })
 export class PersonsComponent {
-  constructor(private router: Router) { }
+  showCreate = false;
+  showEdit = false;
 
   goToCreate() {
-    this.router.navigate(['/create']);
+    console.log("Opening Create modal"); // 🔹 Debug en la consola
+    this.showCreate = true;
+  }
+
+  closeCreate() {
+    console.log("Closing Create modal"); // 🔹 Debug en la consola
+    this.showCreate = false;
   }
 
   goToEdit() {
-    this.router.navigate(['/edit']);
+    this.showEdit = true;
   }
 
   goToNextPage() {
-    this.router.navigate(['']); // Ver como sería la ruta con paginación
+    console.log('Going to next page...');
   }
-
-  /*
-  currentPage: number = 1;
-  totalPages = [1, 2, 3];
-
-  goToPage(page: number) {
-    this.currentPage = page;
-    this.goToNextPage();  // o tu lógica de paginación
-  }
-  */ 
 }
+
+
+// export class PersonsComponent {
+//   constructor(private router: Router) { }
+
+//   goToCreate() {
+//     this.router.navigate(['/create']);
+//   }
+
+//   goToEdit() {
+//     this.router.navigate(['/edit']);
+//   }
+
+//   goToNextPage() {
+//     this.router.navigate(['']); // Ver como sería la ruta con paginación
+//   }
+
+//   /*
+//   currentPage: number = 1;
+//   totalPages = [1, 2, 3];
+
+//   goToPage(page: number) {
+//     this.currentPage = page;
+//     this.goToNextPage();  // o tu lógica de paginación
+//   }
+//   */
+// }

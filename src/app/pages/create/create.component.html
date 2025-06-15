@@ -1,1 +1,16 @@
-<p>Pantalla create</p>
+<div class="modal-container">
+    <div class="modal-content">
+        <h5>Add Person</h5>
+        <form>
+            <input type="text" class="form-control" placeholder="Name">
+            <input type="text" class="form-control" placeholder="Surname">
+            <input type="text" class="form-control" placeholder="City">
+            <input type="text" class="form-control" placeholder="Province">
+            <input type="text" class="form-control" placeholder="Country">
+        </form>
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-secondary" (click)="closeCreate()">Cancel</button>
+            <button class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
+</div>

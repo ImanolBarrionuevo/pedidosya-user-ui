@@ -14,7 +14,7 @@
   padding-right: 2rem;
 }
 
-.mb-0{
+.mb-0 {
   color: #ffffff;
   font-family: 'League Spartan', sans-serif;
   font-weight: bold;
@@ -22,12 +22,17 @@
   padding-top: 0.5rem;
 }
 
-  .card.shadow.p-4{
-    width: 100vw;                 
-    height: 75vh;                
-    background-color: #f4ebd0;
-    border-radius: 2.2rem;          
-  }
+.btn-create {
+  margin-right: 0.5rem;
+  /* Ajusta la separación */
+}
+
+.card.shadow.p-4 {
+  width: 100vw;
+  height: 75vh;
+  background-color: #f4ebd0;
+  border-radius: 2.2rem;
+}
 
 .btn-extra {
   padding-left: 2.4rem;
@@ -53,4 +58,3 @@
 .btn.btn-primary.btn-extra:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
-

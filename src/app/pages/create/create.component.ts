@@ -1,21 +1,36 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-create.component',
-  imports: [],
+  selector: 'app-create-person',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  constructor(private router: Router) { }
+  @Input() showCreate = false; // Recibe el estado del modal
+  @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
 
-  cancelCreate() {
-    this.router.navigate(['/persons']);
+  personForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.personForm = this.fb.group({
+      name: [''],
+      surname: [''],
+      city: [''],
+      province: [''],
+      country: ['']
+    });
+  }
+
+  closeCreate() {
+    this.close.emit(); // Notifica a `PersonsComponent` que se cerró el modal
   }
 
   confirmCreate() {
-    this.router.navigate(['/persons']);
+    this.close.emit(); // Cierra el modal después de crear la persona
   }
-
 }
+

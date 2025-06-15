@@ -2,8 +2,9 @@
   <div class="d-flex justify-content-between align-items-center px-4 py-3">
     <h1 class="mb-0">Persons</h1>
     <div>
-      <button (click)="goToCreate()" class="btn btn-primary btn-extra me-2" >Create</button>
-      <button (click)="goToEdit()" class="btn btn-primary btn-extra " >Edit</button>
+      <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create">Create</button>
+      <app-create-person *ngIf="showCreate" (close)="closeCreate()"></app-create-person>
+      <button (click)="goToEdit()" class="btn btn-primary btn-extra ">Edit</button>
     </div>
   </div>
 
@@ -21,10 +22,8 @@
           </tr>
         </thead>
       </table>
-      <button 
-        (click)="goToNextPage()"
-        class="btn btn-primary d-block mx-auto btn-extra mt-auto">
+      <button (click)="goToNextPage()" class="btn btn-primary d-block mx-auto btn-extra mt-auto">
         Next
       </button>
     </div>
-</div>
+  </div>
