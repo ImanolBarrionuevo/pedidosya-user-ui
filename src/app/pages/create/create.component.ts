@@ -15,6 +15,13 @@ export class CreateComponent {
 
   personForm: FormGroup;
 
+  // 🔹 Listas de opciones para los selects
+  // Tenemos que hacer que se importen de la BD
+  countries = ['Argentina', 'Brazil', 'Chile', 'Uruguay'];
+  provinces = ['Buenos Aires', 'Córdoba', 'Santa Fe'];
+  cities = ['Villa Nueva', 'Córdoba', 'Rosario'];
+
+
   constructor(private fb: FormBuilder) {
     this.personForm = this.fb.group({
       name: [''],

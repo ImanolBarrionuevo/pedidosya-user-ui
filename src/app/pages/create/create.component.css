@@ -1,3 +1,32 @@
+:root {
+    --color-primario: #494e6b;
+    --color-secundario: #98878f;
+    --color-accion: #e17e7e;
+    --color-fondo: #192231;
+    --color-texto: #f4ebd0;
+    --color-blanco: #ffffff;
+    --color-gris: #a6a6a6;
+    --color-negro: #000000;
+}
+
+form {
+    margin: 1rem;
+    /* Agrega separación interna */
+}
+
+.text-center.mb-2 {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+    padding-top: 0.5rem;
+    color: #192231;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
 .modal-container {
     position: fixed;
     /* 🔹 Mantiene el modal sobre la pantalla */
@@ -15,10 +44,90 @@
 }
 
 .modal-content {
-    width: 30rem;
-    background: white;
+    width: 90%;
+    max-width: 45rem;
+    background: #a6a6a6;
     padding: 1.5rem;
-    border-radius: 1rem;
+    border-radius: 2.2rem;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     /* 🔹 Efecto de sombra */
+    transform: scale(0.8);
+    /*Escala de la ventana Add Person*/
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    /* Espacio entre los inputs */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: #494e6b;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.form-control {
+    background-color: #f4ebd0;
+    color: #494e6b;
+    border-radius: 0.6rem;
+    height: 2.6rem;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+}
+
+.form-control:focus {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+    /* Sombra cuando se selecciona */
+    outline: none;
+    /* Elimina el borde azul por defecto */
+}
+
+.d-flex.justify-content-center {
+    gap: 1rem;
+    /* Ajusta la distancia entre los botones */
+}
+
+.btn-base {
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente */
+    justify-content: center;
+    /* Centra horizontalmente */
+    font-size: 1.25rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    border: none;
+    font-family: 'Alata', sans-serif;
+    height: 2.8rem;
+    width: 8.5rem;
+    margin-top: 2rem;
+    transition: background 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.btn-confirm {
+    background-color: #494e6b;
+    color: #f4ebd0;
+}
+
+.btn-confirm:hover {
+    background-color: #192231;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-cancel {
+    background-color: #e17e7e;
+    color: #f4ebd0;
+}
+
+.btn-cancel:hover {
+    background-color: #ff6e6e;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4) !important;
 }

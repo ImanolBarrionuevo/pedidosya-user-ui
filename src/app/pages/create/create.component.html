@@ -1,16 +1,44 @@
 <div class="modal-container">
     <div class="modal-content">
-        <h5>Add Person</h5>
-        <form>
-            <input type="text" class="form-control" placeholder="Name">
-            <input type="text" class="form-control" placeholder="Surname">
-            <input type="text" class="form-control" placeholder="City">
-            <input type="text" class="form-control" placeholder="Province">
-            <input type="text" class="form-control" placeholder="Country">
+        <h2 class="text-center mb-2">Add Person</h2>
+        <form [formGroup]="personForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input id="name" type="text" formControlName="name" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="surname">surname</label>
+                    <input id="surname" type="text" formControlName="surname" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city">city</label>
+                <select id="city" class="form-control" formControlName="city">
+                    <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="province">province</label>
+                <select id="province" class="form-control" formControlName="province">
+                    <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="country">country</label>
+                <select id="country" class="form-control" formControlName="country">
+                    <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+                <button type="submit" class="btn-base btn-confirm">Confirm</button>
+                <button type="button" class="btn-base btn-cancel" (click)="closeCreate()">Cancel</button>
+            </div>
         </form>
-        <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-secondary" (click)="closeCreate()">Cancel</button>
-            <button class="btn btn-primary">Confirm</button>
-        </div>
     </div>
 </div>
