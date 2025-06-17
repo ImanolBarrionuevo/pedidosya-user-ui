@@ -54,6 +54,26 @@ label {
     /*Escala de la ventana Add Person*/
 }
 
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url('/assets/icons/icono_cierre_ventana.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 .form-row {
     display: flex;
     gap: 1rem;
