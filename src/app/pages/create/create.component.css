@@ -7,6 +7,7 @@
     --color-blanco: #ffffff;
     --color-gris: #a6a6a6;
     --color-negro: #000000;
+    --color-degrade: #848794;
 }
 
 form {
@@ -45,10 +46,10 @@ label {
 .modal-content {
     width: 90%;
     max-width: 45rem;
-    background: linear-gradient(to right, #a6a6a6, #8b8b8b);
+    background: linear-gradient(to right, #a6a6a6, #848794);
     padding: 1.5rem;
     border-radius: 2.2rem;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3);
     /* 🔹 Efecto de sombra */
     transform: scale(0.8);
     /*Escala de la ventana Add Person*/
@@ -67,11 +68,11 @@ label {
     border: none;
     cursor: pointer;
     transform: scale(1.2);
-    transition: box-shadow 0.3s ease-in-out;
+    transition: filter 0.3s ease-in-out;
 }
 
 .close-btn:hover {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.4));
 }
 
 .form-row {
@@ -105,7 +106,7 @@ label {
 }
 
 .form-control:focus {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3) !important;
     /* Sombra cuando se selecciona */
     outline: none;
     /* Elimina el borde azul por defecto */
@@ -134,7 +135,7 @@ select.form-control option {
 }
 
 .form-control:hover {
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3);
 }
 
 .d-flex.justify-content-center {
@@ -153,9 +154,10 @@ select.form-control option {
     border-radius: 2rem;
     border: none;
     font-family: 'Alata', sans-serif;
-    height: 2.8rem;
+    height: 3rem;
     width: 8.5rem;
     margin-top: 2rem;
+    margin-bottom: 0.2rem;
     transition: background 0.3s, box-shadow 0.3s ease-in-out;
 }
 
@@ -166,7 +168,7 @@ select.form-control option {
 
 .btn-confirm:hover {
     background-color: #192231;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
 }
 
 .btn-cancel {
@@ -176,5 +178,5 @@ select.form-control option {
 
 .btn-cancel:hover {
     background-color: #ff6e6e;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
 }
