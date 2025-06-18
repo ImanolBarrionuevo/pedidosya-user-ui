@@ -13,7 +13,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
-  @Input() showCreate = false; // Recibe el estado del modal
+  private _showCreate = false;
+
+  @Input() set showCreate(value: boolean) {
+    if (this._showCreate === value) return; // ✅ Evita que el setter se ejecute múltiples veces innecesariamente
+
+    console.log("Setter ejecutado en CreateComponent, nuevo valor:", value);
+    this._showCreate = value;
+
+    if (this._showCreate) {
+      setTimeout(() => {
+        const modalContainer = document.querySelector('.modal-container') as HTMLElement;
+        if (modalContainer && !modalContainer.classList.contains('active')) {
+          modalContainer.classList.add('active');
+          console.log("Clase active agregada en CreateComponent?", modalContainer.classList.contains('active'));
+        }
+      }, 50);
+    }
+  }
+
+  get showCreate(): boolean {
+    return this._showCreate;
+  }
+
   @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
 
   personForm: FormGroup;
@@ -33,64 +55,73 @@ export class CreateComponent {
     private fb: FormBuilder,
     private apiService: ApiService,
     private router: Router
-    ){
-      this.personForm = this.fb.group({
-        name: ['', Validators.required],
-        surname: ['', Validators.required],
-        city: ['', Validators.required],
-        province: ['', Validators.required],
-        country: ['', Validators.required]
-      })
-    }
-  
+  ) {
+    this.personForm = this.fb.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      city: ['', Validators.required],
+      province: ['', Validators.required],
+      country: ['', Validators.required]
+    })
+  }
 
   closeCreate() {
-    this.close.emit(); // Notifica a `PersonsComponent` que se cerró el modal
+    const modalContent = document.querySelector('.modal-content') as HTMLElement;
+    const modalContainer = document.querySelector('.modal-container') as HTMLElement;
+
+    if (modalContainer && modalContent) {
+      modalContainer.classList.add('closing');
+      modalContent.classList.add('closing');
+
+      setTimeout(() => {
+        this.close.emit(); // 🔹 Remueve el modal después de la animación
+      }, 300); // 🔹 Espera 300ms para que la animación de salida termine
+    }
   }
 
   confirmCreate() {
     this.close.emit(); // Cierra el modal después de crear la persona
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getCountries(),
-    this.getProvinces(),
-    this.getCities()
+      this.getProvinces(),
+      this.getCities()
   }
 
-  async createPerson(){
-    if(this.personForm.invalid){
+  async createPerson() {
+    if (this.personForm.invalid) {
       return; //Si es invalido que deberiamos retornar? Mostrar error en la ui??
     }
-    try{
-      const {name, surname, email, city} = this.personForm.value; //Deberia ir birtDate en vez de surname y verificar como sacar id de city
-      await this.apiService.createPersons(name,surname,email,city);
+    try {
+      const { name, surname, email, city } = this.personForm.value; //Deberia ir birtDate en vez de surname y verificar como sacar id de city
+      await this.apiService.createPersons(name, surname, email, city);
       await this.router.navigate(['/persons']);
     } catch {
       console.error("Fallo che"); //Que error debemos poner?
     }
   }
 
-  async getCountries(){
-    try{
+  async getCountries() {
+    try {
       this.countries = await this.apiService.getCountries()
-    } catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
-  async getProvinces(){
-    try{
+  async getProvinces() {
+    try {
       this.provinces = await this.apiService.getProvinces()
-    } catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
 
-  async getCities(){
-    try{
+  async getCities() {
+    try {
       this.cities = await this.apiService.getCities()
-    } catch(error){
+    } catch (error) {
       console.log(error)
     }
   }

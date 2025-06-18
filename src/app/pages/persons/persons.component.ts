@@ -18,20 +18,35 @@ export class PersonsComponent {
 
   constructor(
     private apiService: ApiService,
-  ){ }
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getPersons();
   }
 
   goToCreate() {
-    console.log("Opening Create modal"); // 🔹 Debug en la consola
-    this.showCreate = true;
+    console.log("Opening Create modal...");
+    if (!this.showCreate) {
+      this.showCreate = true;
+      console.log("showCreate activado:", this.showCreate);
+    }
   }
 
   closeCreate() {
-    console.log("Closing Create modal"); // 🔹 Debug en la consola
-    this.showCreate = false;
+    console.log("Closing Create modal...");
+
+    const modalContent = document.querySelector('.modal-content') as HTMLElement;
+    const modalContainer = document.querySelector('.modal-container') as HTMLElement;
+
+    if (modalContent && modalContainer) {
+      modalContent.classList.add('closing');
+      modalContainer.classList.add('closing');
+
+      setTimeout(() => {
+        this.showCreate = false; // 🔹 Se desactiva después de la animación
+        console.log("showCreate desactivado:", this.showCreate);
+      }, 300); // 🔹 Ajusta el tiempo según la duración de la animación
+    }
   }
 
   goToEdit() {
@@ -42,10 +57,10 @@ export class PersonsComponent {
     console.log('Going to next page...');
   }
 
-  async getPersons(){
-    try{
+  async getPersons() {
+    try {
       this.persons = await this.apiService.getPersons()
-    } catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
