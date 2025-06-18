@@ -16,7 +16,7 @@ export class CreateComponent {
   private _showCreate = false;
 
   @Input() set showCreate(value: boolean) {
-    if (this._showCreate === value) return; // ✅ Evita que el setter se ejecute múltiples veces innecesariamente
+    if (this._showCreate === value) return;
 
     console.log("Setter ejecutado en CreateComponent, nuevo valor:", value);
     this._showCreate = value;
@@ -26,7 +26,6 @@ export class CreateComponent {
         const modalContainer = document.querySelector('.modal-container') as HTMLElement;
         if (modalContainer && !modalContainer.classList.contains('active')) {
           modalContainer.classList.add('active');
-          console.log("Clase active agregada en CreateComponent?", modalContainer.classList.contains('active'));
         }
       }, 50);
     }
@@ -43,13 +42,11 @@ export class CreateComponent {
   countries: Country[] = [];
   provinces: Province[] = [];
 
-
-  // 🔹 Listas de opciones para los selects
+  // Listas de opciones para los selects
   // Tenemos que hacer que se importen de la BD
   //countries = ['Argentina', 'Brazil', 'Chile', 'Uruguay'];
   //provinces = ['Buenos Aires', 'Córdoba', 'Santa Fe'];
   //cities = ['Villa Nueva', 'Córdoba', 'Rosario'];
-
 
   constructor(
     private fb: FormBuilder,
@@ -66,21 +63,11 @@ export class CreateComponent {
   }
 
   closeCreate() {
-    const modalContent = document.querySelector('.modal-content') as HTMLElement;
-    const modalContainer = document.querySelector('.modal-container') as HTMLElement;
-
-    if (modalContainer && modalContent) {
-      modalContainer.classList.add('closing');
-      modalContent.classList.add('closing');
-
-      setTimeout(() => {
-        this.close.emit(); // 🔹 Remueve el modal después de la animación
-      }, 300); // 🔹 Espera 300ms para que la animación de salida termine
-    }
+    this.close.emit();
   }
 
   confirmCreate() {
-    this.close.emit(); // Cierra el modal después de crear la persona
+    this.close.emit();
   }
 
   ngOnInit() {

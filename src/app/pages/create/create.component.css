@@ -12,7 +12,6 @@
 
 form {
     margin: 1rem;
-    /* Agrega separación interna */
 }
 
 .text-center.mb-2 {
@@ -29,7 +28,7 @@ label {
 
 .modal-container {
     position: fixed;
-    /* 🔹 Mantiene el modal sobre la pantalla */
+    /* El position mantiene el modal sobre la pantalla */
     top: 0;
     left: 0;
     width: 100vw;
@@ -37,9 +36,8 @@ label {
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0);
-    /* 🔹 Oscurece el fondo */
     z-index: 1000;
-    /* 🔹 Asegura que esté por encima de otros elementos */
+    /* El z-index asegura que esté por encima de otros elementos */
     display: flex;
 }
 
@@ -79,7 +77,6 @@ label {
     background: linear-gradient(to right, #a6a6a6, #8e9099);
     padding: 1.5rem;
     border-radius: 2.2rem;
-    /* 🔹 Efecto de sombra */
     transform: scale(0.6);
     /*Escala de la ventana Add Person*/
     box-shadow: 0 0.3125rem 1rem rgba(0, 0, 0, 0.15) !important;
@@ -143,7 +140,7 @@ label {
 .form-row {
     display: flex;
     gap: 1rem;
-    /* Espacio entre los inputs */
+    /* Espacio entre los formularios */
 }
 
 .form-group {
@@ -172,9 +169,7 @@ label {
 
 .form-control:focus {
     box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3) !important;
-    /* Sombra cuando se selecciona */
     outline: none;
-    /* Elimina el borde azul por defecto */
 }
 
 select.form-control {
@@ -186,17 +181,14 @@ select.form-control {
     background-size: 2rem 2rem;
     transition: box-shadow 0.3s ease-in-out;
     max-height: 200px;
-    /* 🔹 Limita la altura del desplegable */
     overflow-y: auto;
-    /* 🔹 Agrega scroll si hay muchas opciones */
+    /* El overflow-y agrega scroll si hay muchas opciones */
     text-overflow: unset;
 }
 
 select.form-control option {
     font-size: 1rem;
-    /* 🔹 Reduce el tamaño del texto en el desplegable */
     padding: 0.5rem;
-    /* 🔹 Ajusta el espacio interno */
 }
 
 .form-control:hover {
@@ -205,15 +197,13 @@ select.form-control option {
 
 .d-flex.justify-content-center {
     gap: 1rem;
-    /* Ajusta la distancia entre los botones */
+    /* El gap ajusta la distancia entre los botones */
 }
 
 .btn-base {
     display: flex;
     align-items: center;
-    /* Centra verticalmente */
     justify-content: center;
-    /* Centra horizontalmente */
     font-size: 1.25rem;
     padding: 0.8rem 1.5rem;
     border-radius: 2rem;

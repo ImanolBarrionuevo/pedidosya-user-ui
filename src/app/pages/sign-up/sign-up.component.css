@@ -47,9 +47,9 @@ form {
     max-width: 34rem;
 }
 
-/* transform:scale Escala todo el contenido de la tarjeta rosa */
 .card.shadow.p-4 {
     transform: scale(1.1);
+    /* transform:scale Escala todo el contenido de la tarjeta rosa */
     border-radius: 2.2rem;
     background: linear-gradient(to right, #e17e7e, #fd6666);
     box-shadow: inset 0 0.3125rem 1rem rgba(0, 0, 0, 0.2) !important;
@@ -72,7 +72,7 @@ form {
 
 .text-center.mt-1 button {
     margin-left: -0.5rem;
-    /* Ajusta la separación */
+    /* Ajusta la separación entre el texto y el boton*/
 }
 
 .form-row {

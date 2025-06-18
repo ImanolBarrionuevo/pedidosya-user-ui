@@ -25,16 +25,12 @@ export class PersonsComponent {
   }
 
   goToCreate() {
-    console.log("Opening Create modal...");
     if (!this.showCreate) {
       this.showCreate = true;
-      console.log("showCreate activado:", this.showCreate);
     }
   }
 
   closeCreate() {
-    console.log("Closing Create modal...");
-
     const modalContent = document.querySelector('.modal-content') as HTMLElement;
     const modalContainer = document.querySelector('.modal-container') as HTMLElement;
 
@@ -43,9 +39,8 @@ export class PersonsComponent {
       modalContainer.classList.add('closing');
 
       setTimeout(() => {
-        this.showCreate = false; // 🔹 Se desactiva después de la animación
-        console.log("showCreate desactivado:", this.showCreate);
-      }, 300); // 🔹 Ajusta el tiempo según la duración de la animación
+        this.showCreate = false;
+      }, 300);
     }
   }
 
@@ -54,7 +49,7 @@ export class PersonsComponent {
   }
 
   goToNextPage() {
-    console.log('Going to next page...');
+    console.log('Going to next page...'); //hacer
   }
 
   async getPersons() {
