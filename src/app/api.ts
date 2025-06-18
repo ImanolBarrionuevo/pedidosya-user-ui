@@ -5,9 +5,9 @@ import axios from 'axios';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class Api {
 
-  private baseUrlAuth = 'http://localhost:3001/auth'
+  private baseUrlAuth = 'http://localhost:3001'
   private baseUrlPersons = 'http://localhost:3000'
 
   constructor() { }
