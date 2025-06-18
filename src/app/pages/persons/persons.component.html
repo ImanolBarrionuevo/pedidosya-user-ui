@@ -21,6 +21,15 @@
             <th>country</th>
           </tr>
         </thead>
+        <tbody>
+          <tr *ngFor="let person of persons">
+            <td>{{ person.name }}</td>
+            <td>{{ person.birthDate }}</td>
+            <td>{{ person.city.name }}</td>
+            <td>{{ person.city.province.name }}</td>
+            <td>{{ person.city.province.country.name}}</td>
+          </tr>
+        </tbody>
       </table>
       <button (click)="goToNextPage()" class="btn btn-primary d-block mx-auto btn-extra mt-auto">
         Next

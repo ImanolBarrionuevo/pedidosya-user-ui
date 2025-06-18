@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateComponent } from '../create/create.component';
+import { ApiService } from '../../services/api.service';
+import { Person } from '../../interfaces/person-interface';
 
 @Component({
   selector: 'app-persons',
@@ -12,6 +14,15 @@ import { CreateComponent } from '../create/create.component';
 export class PersonsComponent {
   showCreate = false;
   showEdit = false;
+  persons: Person[] = []
+
+  constructor(
+    private apiService: ApiService,
+  ){ }
+
+  ngOnInit(){
+    this.getPersons();
+  }
 
   goToCreate() {
     console.log("Opening Create modal"); // 🔹 Debug en la consola
@@ -29,6 +40,14 @@ export class PersonsComponent {
 
   goToNextPage() {
     console.log('Going to next page...');
+  }
+
+  async getPersons(){
+    try{
+      this.persons = await this.apiService.getPersons()
+    } catch(error){
+      console.log(error)
+    }
   }
 }
 
