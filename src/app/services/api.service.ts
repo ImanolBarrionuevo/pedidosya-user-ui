@@ -37,7 +37,7 @@ export class ApiService {
       return response.data;
     } catch (error) {
       // opcional: manejar o loguear el error aquí
-      throw error;
+      throw new Error('No se puede actualizar la persona');
     }
   }
 

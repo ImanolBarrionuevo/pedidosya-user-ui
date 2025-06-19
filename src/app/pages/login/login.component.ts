@@ -33,15 +33,17 @@ export class LoginComponent {
 
   async getDataLogin(){
     if(this.loginForm.invalid){
-      return; //Si es invalido que deberiamos retornar?
+      alert()
+      return; //Si es invalido que deberiamos retornar? //Alert
     }
     try {
       const {email, password} = this.loginForm.value
       //Preguntar que hacer con el token obtenido de login
       await this.apiService.login(email, password)
       await this.router.navigate(['/persons'])
-    } catch {
-      console.error("Fallo che"); //Que error debemos poner?
+    }  catch(e) {
+      const error=e as Error
+      alert(error.message)
     }
   }
 }
