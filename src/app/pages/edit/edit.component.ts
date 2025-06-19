@@ -79,9 +79,9 @@ export class EditComponent implements OnInit, OnChanges {
       name: this.person.name,
       birthDate: this.person.birthDate,
       email: this.person.email,
-      country: this.person.city.province.country.id,
-      province: this.person.city.province.id,
-      city: this.person.city.id
+      country: this.person.city.province.country,
+      province: this.person.city.province,
+      city: this.person.city
     });
   }
 
