@@ -1,9 +1,26 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { City, Country, Person, Province } from '../../interfaces/person-interface';
+import {
+  Person,
+  City,
+  Province,
+  Country
+} from '../../interfaces/person-interface';
 import { ApiService } from '../../services/api.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-person',
@@ -12,105 +29,96 @@ import { Router } from '@angular/router';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent {
-  private _showEdit = false;
+export class EditComponent implements OnInit, OnChanges {
+  @Input() showEdit = false;
   @Input() person!: Person;
 
-  @Input() set showEdit(value: boolean) {
-    if (this._showEdit === value) return;
-    this._showEdit = value;
-    if (this._showEdit) {
-      setTimeout(() => {
-        const modalContainer = document.querySelector('.modal-container') as HTMLElement;
-        if (modalContainer && !modalContainer.classList.contains('active')) {
-          modalContainer.classList.add('active');
-        }
-      }, 50);
-    }
-  }
+  @Output() close = new EventEmitter<void>();
+  @Output() saved = new EventEmitter<Person>();
 
-  get showEdit(): boolean {
-    return this._showEdit;
-  }
-
-  @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
+  countries: Country[]  = [];
+  provinces: Province[] = [];
+  cities: City[]        = [];
 
   personForm: FormGroup;
-  cities: City[] = [];
-  countries: Country[] = [];
-  provinces: Province[] = [];
-
-  // Listas de opciones para los selects
-  // Tenemos que hacer que se importen de la BD
-  //countries = ['Argentina', 'Brazil', 'Chile', 'Uruguay'];
-  //provinces = ['Buenos Aires', 'Córdoba', 'Santa Fe'];
-  //cities = ['Villa Nueva', 'Córdoba', 'Rosario'];
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService,
-    private router: Router
+    private api: ApiService
   ) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],
-      birthdate: ['', Validators.required],
-      email: ['', Validators.required],
-      city: ['', Validators.required],
-      province: ['', Validators.required],
-      country: ['', Validators.required]
-    })
+      birthDate: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      country: [null, Validators.required],
+      province: [null, Validators.required],
+      city: [null, Validators.required]
+    });
+  }
+
+  ngOnInit() {
+    // Cargo selects al iniciar
+    this.loadCountries();
+    this.loadProvinces();
+    this.loadCities();
+
+    // Si ya trae persona, parchea form
+    if (this.person) {
+      this.patchForm();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['person'] && this.person) {
+      this.patchForm();
+    }
+  }
+
+  private patchForm() {
+    this.personForm.patchValue({
+      name: this.person.name,
+      birthDate: this.person.birthDate,
+      email: this.person.email,
+      country: this.person.city.province.country.id,
+      province: this.person.city.province.id,
+      city: this.person.city.id
+    });
+  }
+
+  // Con algo de esto vamos a poder traer datos de la bd
+  private async loadCountries() {
+    this.countries = await this.api.getCountries();
+  }
+  private async loadProvinces() {
+    this.provinces = await this.api.getProvinces();
+  }
+  private async loadCities() {
+    this.cities = await this.api.getCities();
   }
 
   closeEdit() {
     this.close.emit();
   }
 
-  confirmEdit() {
-    this.close.emit();
-  }
-
-  ngOnInit() {
-    this.getCountries(),
-      this.getProvinces(),
-      this.getCities()
-  }
-
-  async editPerson() {
+  async confirmEdit() {
     if (this.personForm.invalid) {
-      return; //Si es invalido que deberiamos retornar? Mostrar error en la ui??
+      this.personForm.markAllAsTouched();
+      return;
     }
-    try {
-      const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city
-      await this.apiService.createPersons(name, birthdate, email, city);
-      await this.router.navigate(['/persons']);
-    } catch {
-      console.error("Fallo che"); //Que error debemos poner?
-    }
-  }
 
-  async getCountries() {
+    const { name, birthDate, email, city } = this.personForm.value;
     try {
-      this.countries = await this.apiService.getCountries()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async getProvinces() {
-    try {
-      this.provinces = await this.apiService.getProvinces()
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  async getCities() {
-    try {
-      this.cities = await this.apiService.getCities()
-    } catch (error) {
-      console.log(error)
+      // Llama a updatePerson y recibe el Person actualizado
+      const updated = await this.api.updatePerson(this.person.id, {
+        name,
+        birthDate,
+        email,
+        cityId: city
+      });
+      this.saved.emit(updated);
+      this.close.emit();
+    } catch (err) {
+      console.error('Algo salió mal', err);
     }
   }
 }
-
-

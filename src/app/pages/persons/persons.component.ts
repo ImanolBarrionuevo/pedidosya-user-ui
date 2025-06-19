@@ -16,6 +16,7 @@ import { Person } from '../../interfaces/person-interface';
 export class PersonsComponent {
   showCreate = false;
   showEdit = false;
+  editMode      = false;
   selectedPerson: Person | null = null;
   persons: Person[] = [
     {
@@ -119,44 +120,37 @@ export class PersonsComponent {
       }, 300);
     }
   }
-    onSelect(person: Person) {
-      this.selectedPerson = person;
-    }
 
-    goToEdit() {
-      if (!this.selectedPerson) {
-        alert('Primero seleccioná una persona de la tabla');
-        return;
-      }
-      this.showEdit = true;
-    }
-    
-    /*
-    Dejo comentado el anterior goToEdit por las dudas.
-    goToEdit() {
-      if (!this.showEdit) {
-        this.showEdit = true;
-      }
-    }
-    */
-    
+  enableEditMode() {
+    this.editMode = true;
+    this.selectedPerson = null;
+  }
+
+  onRowEdit(person: Person) {
+    this.selectedPerson = person;
+    this.showEdit = true;
+  }
+
+  /** Cuando seleccionás la fila, abrimos directamente el modal */
+  selectAndEdit(person: Person) {
+    this.selectedPerson = person;
+    this.showEdit = true;
+    this.editMode = false;
+  }
   
-    closeEdit() {
-      const modalContent = document.querySelector('.modal-content') as HTMLElement;
-      const modalContainer = document.querySelector('.modal-container') as HTMLElement;
-  
-      if (modalContent && modalContainer) {
-        modalContent.classList.add('closing');
-        modalContainer.classList.add('closing');
-  
-        setTimeout(() => {
-          this.showEdit = false;
-        }, 300);
-      }
-    }
+  closeEdit() {
+    this.showEdit = false;
+    this.selectedPerson = null;   // Esto debería desmarcar la casilla pero no lo está haciendo
+  }
+
+  confirmEdit() {
+    // Implementar lógica de la confirmación
+    this.showEdit = false;
+    this.selectedPerson = null;
+  }
 
   goToNextPage() {
-    console.log('Going to next page...'); //hacer
+    console.log('Going to next page...'); // Implementar
   }
 
   async getPersons() {
@@ -165,5 +159,14 @@ export class PersonsComponent {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  onPersonSaved(updated: Person) {
+    // 4) Sustituimos la persona en el array para que la tabla refresque
+    const idx = this.persons.findIndex(p => p.id === updated.id);
+    if (idx > -1) this.persons[idx] = updated;
+
+    this.showEdit = false;
+    this.selectedPerson = null; 
   }
 }

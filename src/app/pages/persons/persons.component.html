@@ -15,14 +15,15 @@
       ></app-create-person>
 
       <button
-        (click)="goToEdit()"
+        (click)="enableEditMode()"
         class="btn btn-primary btn-extra btn-edit"
       >
         Edit
       </button>
       <app-edit-person
-        *ngIf="showEdit"
+        *ngIf="showEdit && selectedPerson"
         [showEdit]="showEdit"
+        [person] = "selectedPerson"
         (close)="closeEdit()"
       ></app-edit-person>
     </div>
@@ -35,6 +36,7 @@
         <table class="table table-hover align-middle mb-0">
           <thead class="custom-table-header">
             <tr>
+              <th></th>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Birthdate</th>
@@ -45,8 +47,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let person of persons" (click)="onSelect(person)"
-    [class.table-active]="person === selectedPerson" >
+            <tr *ngFor="let person of persons" 
+            [class.table-active]="person === selectedPerson"
+            [class.cursor-pointer]="editMode"
+            (click)="editMode && selectAndEdit(person)" >
+            <td class="text-center">
+              <input
+                type="checkbox"
+                (change)="onRowEdit(person)"
+                title="Editar esta persona"
+              />
+            </td>
               <td>{{ person.id }}</td>
               <td>{{ person.name }}</td>
               <td>{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
