@@ -1,0 +1,238 @@
+:root {
+    --color-primario: #494e6b;
+    --color-secundario: #98878f;
+    --color-accion: #e17e7e;
+    --color-fondo: #192231;
+    --color-texto: #f4ebd0;
+    --color-blanco: #ffffff;
+    --color-gris: #a6a6a6;
+    --color-negro: #000000;
+    --color-degrade: #848794;
+}
+
+form {
+    margin: 1rem;
+}
+
+.text-center.mb-2 {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+    padding-top: 0.5rem;
+    color: #192231;
+}
+
+label {
+    margin-bottom: 0.3rem;
+}
+
+.modal-container {
+    position: fixed;
+    /* El position mantiene el modal sobre la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    /* El z-index asegura que esté por encima de otros elementos */
+    display: flex;
+}
+
+.modal-container.active {
+    animation: fadeBackground 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeBackground {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.modal-container.closing {
+    animation: fadeOutBackground 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOutBackground {
+    from {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+.modal-content {
+    z-index: 1001;
+    position: relative;
+    width: 90%;
+    max-width: 45rem;
+    /*Largo de la ventana Add Person*/
+    background: linear-gradient(to right, #a6a6a6, #8e9099);
+    padding: 1.5rem;
+    border-radius: 2.2rem;
+    transform: scale(0.6);
+    /*Escala de la ventana Add Person*/
+    box-shadow: 0 0.3125rem 1rem rgba(0, 0, 0, 0.15) !important;
+    opacity: 0;
+    display: block;
+    will-change: opacity, transform;
+}
+
+.modal-content.active {
+    animation: modalFade 0.3s ease-in-out forwards;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(0.8);
+    }
+}
+
+.modal-content.closing {
+    animation: fadeOutModal 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOutModal {
+    from {
+        opacity: 1;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url('/assets/icons/icono_cierre_ventana.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: filter 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.4));
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    /* Espacio entre los formularios */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: #192231;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.form-control {
+    background-color: #f4ebd0;
+    color: #192231;
+    border-radius: 0.6rem;
+    height: 2.8rem;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    border: none;
+    outline: none;
+}
+
+.form-control:focus {
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3) !important;
+    outline: none;
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url('/assets/icons/icono_deplegable.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2rem;
+    background-size: 2rem 2rem;
+    transition: box-shadow 0.3s ease-in-out;
+    max-height: 200px;
+    overflow-y: auto;
+    /* El overflow-y agrega scroll si hay muchas opciones */
+    text-overflow: unset;
+}
+
+select.form-control option {
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.form-control:hover {
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3);
+}
+
+.d-flex.justify-content-center {
+    gap: 1rem;
+    /* El gap ajusta la distancia entre los botones */
+}
+
+.btn-base {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    border: none;
+    font-family: 'Alata', sans-serif;
+    height: 3rem;
+    width: 8.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0.2rem;
+    transition: background 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.btn-confirm {
+    background-color: #494e6b;
+    color: #f4ebd0;
+}
+
+.btn-confirm:hover {
+    background-color: #192231;
+    box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
+}
+
+.btn-cancel {
+    background-color: #e17e7e;
+    color: #f4ebd0;
+}
+
+.btn-cancel:hover {
+    background-color: #ff6e6e;
+    box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
+}

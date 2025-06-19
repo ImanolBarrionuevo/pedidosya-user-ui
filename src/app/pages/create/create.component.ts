@@ -12,15 +12,13 @@ import { Router } from '@angular/router';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
+
 export class CreateComponent {
   private _showCreate = false;
 
   @Input() set showCreate(value: boolean) {
     if (this._showCreate === value) return;
-
-    console.log("Setter ejecutado en CreateComponent, nuevo valor:", value);
     this._showCreate = value;
-
     if (this._showCreate) {
       setTimeout(() => {
         const modalContainer = document.querySelector('.modal-container') as HTMLElement;
@@ -82,8 +80,8 @@ export class CreateComponent {
       return; //Si es invalido que deberiamos retornar? Mostrar error en la ui??
     }
     try {
-      const { name, surname, email, city } = this.personForm.value; //Deberia ir birtDate en vez de surname y verificar como sacar id de city
-      await this.apiService.createPersons(name, surname, email, city);
+      const { name, birtDate, email, city } = this.personForm.value; //verificar como sacar id de city
+      await this.apiService.createPersons(name, birtDate, email, city);
       await this.router.navigate(['/persons']);
     } catch {
       console.error("Fallo che"); //Que error debemos poner?

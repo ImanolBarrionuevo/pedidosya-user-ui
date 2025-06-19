@@ -5,6 +5,7 @@
       <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create">Create</button>
       <app-create-person *ngIf="showCreate" [showCreate]="showCreate" (close)="closeCreate()"></app-create-person>
       <button (click)="goToEdit()" class="btn btn-primary btn-extra btn-edit">Edit</button>
+      <app-edit-person *ngIf="showEdit" [showEdit]="showEdit" (close)="closeEdit()"></app-edit-person>
     </div>
   </div>
 
