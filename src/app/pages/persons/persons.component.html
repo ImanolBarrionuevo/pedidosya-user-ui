@@ -14,8 +14,10 @@
       <table>
         <thead>
           <tr>
+            <th>id</th>
             <th>name</th>
-            <th>surname</th>
+            <th>birthdate</th>
+            <th>email</th>
             <th>city</th>
             <th>province</th>
             <th>country</th>
@@ -23,8 +25,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let person of persons">
+            <td>{{ person.id }}</td>
             <td>{{ person.name }}</td>
             <td>{{ person.birthDate }}</td>
+            <td>{{ person.email }}</td>
             <td>{{ person.city.name }}</td>
             <td>{{ person.city.province.name }}</td>
             <td>{{ person.city.province.country.name}}</td>

@@ -55,7 +55,8 @@ export class CreateComponent {
   ) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],
-      surname: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      email: ['', Validators.required],
       city: ['', Validators.required],
       province: ['', Validators.required],
       country: ['', Validators.required]
