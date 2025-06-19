@@ -52,11 +52,12 @@
             [class.cursor-pointer]="editMode"
             (click)="editMode && selectAndEdit(person)" >
             <td class="text-center">
-              <input
-                type="checkbox"
-                (change)="onRowEdit(person)"
+              <button
+                class="edit-icon btn-icon"
+                [disabled]="!editMode"
+                (click)="onRowEdit(person)"
                 title="Editar esta persona"
-              />
+              ></button>
             </td>
               <td>{{ person.id }}</td>
               <td>{{ person.name }}</td>
