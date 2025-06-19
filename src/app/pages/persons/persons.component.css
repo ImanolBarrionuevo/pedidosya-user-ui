@@ -73,7 +73,7 @@
 
 .custom-table-header th {
   background-color: #f4ebd0 !important;
-  color: #000000 !important;
+  color: #192231 !important;
   font-family: 'League Spartan', sans-serif;
   font-size: 1.1rem;
   vertical-align: middle;
@@ -87,7 +87,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   font-family: 'Alata', sans-serif;
   font-size: 1rem;
-  color: #000000;
+  color: #494e6b;
 }
 
 .btn-extra {
@@ -106,7 +106,6 @@
   box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Botón minimalista que muestra tu SVG */
 .btn-icon {
   width: 1.6rem;
   height: 1.6rem;
@@ -116,7 +115,6 @@
   cursor: pointer;
 }
 
-/* El icono en sí */
 .edit-icon {
   background-image: url('/assets/icons/icono_edit_persons.svg');
   background-size: 1.6rem;
