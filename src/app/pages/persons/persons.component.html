@@ -2,42 +2,69 @@
   <div class="d-flex justify-content-between align-items-center px-4 py-3">
     <h1 class="mb-0">Persons</h1>
     <div>
-      <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create">Create</button>
-      <app-create-person *ngIf="showCreate" [showCreate]="showCreate" (close)="closeCreate()"></app-create-person>
-      <button (click)="goToEdit()" class="btn btn-primary btn-extra btn-edit">Edit</button>
-      <app-edit-person *ngIf="showEdit" [showEdit]="showEdit" (close)="closeEdit()"></app-edit-person>
+      <button
+        (click)="goToCreate()"
+        class="btn btn-primary btn-extra btn-create"
+      >
+        Create
+      </button>
+      <app-create-person
+        *ngIf="showCreate"
+        [showCreate]="showCreate"
+        (close)="closeCreate()"
+      ></app-create-person>
+
+      <button
+        (click)="goToEdit()"
+        class="btn btn-primary btn-extra btn-edit"
+      >
+        Edit
+      </button>
+      <app-edit-person
+        *ngIf="showEdit"
+        [showEdit]="showEdit"
+        (close)="closeEdit()"
+      ></app-edit-person>
     </div>
   </div>
 
-  <div class="d-flex justify-content-center ">
-    <div class="card shadow p-4 w-100">
-      <!-- Ver como cargar los datos y dar formato a la tabla-->
-      <table>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>birthdate</th>
-            <th>email</th>
-            <th>city</th>
-            <th>province</th>
-            <th>country</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let person of persons">
-            <td>{{ person.id }}</td>
-            <td>{{ person.name }}</td>
-            <td>{{ person.birthDate }}</td>
-            <td>{{ person.email }}</td>
-            <td>{{ person.city.name }}</td>
-            <td>{{ person.city.province.name }}</td>
-            <td>{{ person.city.province.country.name}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button (click)="goToNextPage()" class="btn btn-primary btn-next d-block mx-auto mt-auto">
+  <div class="d-flex justify-content-center">
+    <div class="card shadow p-4 w-100 persons-card">
+      <!-- Tabla responsiva -->
+      <div class="persons-table-wrapper">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="custom-table-header">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Birthdate</th>
+              <th scope="col">Email</th>
+              <th scope="col">City</th>
+              <th scope="col">Province</th>
+              <th scope="col">Country</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of persons" (click)="onSelect(person)"
+    [class.table-active]="person === selectedPerson" >
+              <td>{{ person.id }}</td>
+              <td>{{ person.name }}</td>
+              <td>{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ person.email }}</td>
+              <td>{{ person.city.name }}</td>
+              <td>{{ person.city.province.name }}</td>
+              <td>{{ person.city.province.country.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button
+        (click)="goToNextPage()"
+        class="btn btn-primary btn-next d-block mx-auto mt-4"
+      >
         Next
       </button>
     </div>
   </div>
+</div>

@@ -59,6 +59,31 @@
   border: none;
 }
 
+.persons-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.custom-table-header th {
+  background-color: #f4ebd0 !important;
+  color: #000000 !important;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.table td,
+.table th {
+  background-color: #f4ebd0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: 'Alata', sans-serif;
+  font-size: 1rem;
+  color: #000000;
+}
+
 .btn-extra {
   min-width: 8rem;
   padding-left: 3.5rem;

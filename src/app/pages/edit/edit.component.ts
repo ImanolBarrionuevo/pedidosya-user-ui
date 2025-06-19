@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { City, Country, Province } from '../../interfaces/person-interface';
+import { City, Country, Person, Province } from '../../interfaces/person-interface';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class EditComponent {
   private _showEdit = false;
+  @Input() person!: Person;
 
   @Input() set showEdit(value: boolean) {
     if (this._showEdit === value) return;

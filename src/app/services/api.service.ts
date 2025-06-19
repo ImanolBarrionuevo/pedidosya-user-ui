@@ -6,6 +6,9 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class ApiService {
+  updatePerson(id: number, arg1: { name: any; birthDate: any; email: any; cityId: any; }) {
+    throw new Error('Method not implemented.');
+  }
 
   private baseUrlAuth = 'http://localhost:3001/auth'
   private baseUrlPersons = 'http://localhost:3000'

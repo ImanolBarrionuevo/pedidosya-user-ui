@@ -16,14 +16,88 @@ import { Person } from '../../interfaces/person-interface';
 export class PersonsComponent {
   showCreate = false;
   showEdit = false;
-  persons: Person[] = []
+  selectedPerson: Person | null = null;
+  persons: Person[] = [
+    {
+      id: 1,
+      name: 'Gabriel Pérez',
+      birthDate: new Date('1990-05-10'),
+      email: 'gabriel.perez@mail.com',
+      city: {
+        id: 1,
+        name: 'Córdoba',
+        province: {
+          id: 1,
+          name: 'Córdoba',
+          country: {
+            id: 1,
+            name: 'Argentina'
+          }
+        }
+      }
+    },
+    {
+      id: 2,
+      name: 'María López',
+      birthDate: new Date('1985-12-01'),
+      email: 'maria.lopez@mail.com',
+      city: {
+        id: 2,
+        name: 'Rosario',
+        province: {
+          id: 2,
+          name: 'Santa Fe',
+          country: {
+            id: 1,
+            name: 'Argentina'
+          }
+        }
+      }
+    },
+    {
+      id: 3,
+      name: 'Lucas Pratto',
+      birthDate: new Date('2018-09-12'),
+      email: 'yvaeltercero@gmail.com',
+      city: {
+        id: 3,
+        name: 'Villa Maria',
+        province: {
+          id: 1,
+          name: 'Cordoba',
+          country: {
+            id: 1,
+            name: 'Argentina'
+          }
+        }
+      }
+    },
+    {
+      id: 4,
+      name: 'Ngolo Kante',
+      birthDate: new Date('1988-06-25'),
+      email: 'ngolongoloKANTE@gmail.com',
+      city: {
+        id: 4,
+        name: 'null',
+        province: {
+          id: 6,
+          name: 'Not Null',
+          country: {
+            id: 4,
+            name: 'Francia'
+          }
+        }
+      }
+    }
+  ];
 
   constructor(
     private apiService: ApiService,
   ) { }
 
   ngOnInit() {
-    this.getPersons();
+    //this.getPersons();
   }
 
   goToCreate() {
@@ -45,13 +119,27 @@ export class PersonsComponent {
       }, 300);
     }
   }
+    onSelect(person: Person) {
+      this.selectedPerson = person;
+    }
 
-  /* ESTO ES LO QUE COMENTE QUE ABRE LA VENTANA EDIT PERSON
+    goToEdit() {
+      if (!this.selectedPerson) {
+        alert('Primero seleccioná una persona de la tabla');
+        return;
+      }
+      this.showEdit = true;
+    }
+    
+    /*
+    Dejo comentado el anterior goToEdit por las dudas.
     goToEdit() {
       if (!this.showEdit) {
         this.showEdit = true;
       }
     }
+    */
+    
   
     closeEdit() {
       const modalContent = document.querySelector('.modal-content') as HTMLElement;
@@ -66,7 +154,6 @@ export class PersonsComponent {
         }, 300);
       }
     }
-    */
 
   goToNextPage() {
     console.log('Going to next page...'); //hacer
@@ -80,29 +167,3 @@ export class PersonsComponent {
     }
   }
 }
-
-// export class PersonsComponent {
-//   constructor(private router: Router) { }
-
-//   goToCreate() {
-//     this.router.navigate(['/create']);
-//   }
-
-//   goToEdit() {
-//     this.router.navigate(['/edit']);
-//   }
-
-//   goToNextPage() {
-//     this.router.navigate(['']); // Ver como sería la ruta con paginación
-//   }
-
-//   /*
-//   currentPage: number = 1;
-//   totalPages = [1, 2, 3];
-
-//   goToPage(page: number) {
-//     this.currentPage = page;
-//     this.goToNextPage();  // o tu lógica de paginación
-//   }
-//   */
-// }
