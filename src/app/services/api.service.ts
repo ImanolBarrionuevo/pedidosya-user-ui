@@ -17,9 +17,10 @@ export class ApiService {
       name: string;
       email: string;
       birthDate: Date;
-      cityId: number;
+      city: number;
     }): Promise<Person> {
     try {
+      console.log(id, payload)
       const response = await axiosServicePersons.put<Person>(`/person/${id}`, payload);
       return response.data;
     } catch (error) {

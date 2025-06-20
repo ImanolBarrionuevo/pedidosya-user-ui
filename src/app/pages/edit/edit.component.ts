@@ -109,11 +109,12 @@ export class EditComponent implements OnInit, OnChanges {
     const { name, birthDate, email, city } = this.personForm.value;
     try {
       // Llama a updatePerson y recibe el Person actualizado
+      console.log(typeof city.id) //number
       const updated = await this.api.updatePerson(this.person.id, {
         name,
         birthDate,
         email,
-        cityId: city
+        city: city.id
       });
       this.saved.emit(updated);
       this.close.emit();
