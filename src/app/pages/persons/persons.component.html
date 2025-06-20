@@ -47,26 +47,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let person of persons" 
-            [class.table-active]="person === selectedPerson"
-            [class.cursor-pointer]="editMode"
-            (click)="editMode && selectAndEdit(person)" >
-              <td>{{ person.id }}</td>
-              <td>{{ person.name }}</td>
-              <td>{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
-              <td>{{ person.email }}</td>
-              <td>{{ person.city.name }}</td>
-              <td>{{ person.city.province.name }}</td>
-              <td>{{ person.city.province.country.name }}</td>
-              <td class="text-center">
-                <button
-                  class="edit-icon btn-icon"
-                  [disabled]="!editMode"
-                  (click)="onRowEdit(person)"
-                  title="Editar esta persona"
-                ></button>
-              </td>
-            </tr>
+            @for (person of persons; track person.id) {
+              <tr
+              [class.table-active]="person === selectedPerson"
+              [class.cursor-pointer]="editMode"
+              (click)="editMode && selectAndEdit(person)" >
+                <td>{{ person.id }}</td>
+                <td>{{ person.name }}</td>
+                <td>{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.city.name }}</td>
+                <td>{{ person.city.province.name }}</td>
+                <td>{{ person.city.province.country.name }}</td>
+                <td class="text-center">
+                  <button
+                    class="edit-icon btn-icon"
+                    [disabled]="!editMode"
+                    (click)="onRowEdit(person)"
+                    title="Editar esta persona"
+                  ></button>
+                </td>
+              </tr>
+            }
           </tbody>
         </table>
       </div>

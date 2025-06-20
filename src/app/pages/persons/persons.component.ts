@@ -4,11 +4,12 @@ import { CreateComponent } from '../create/create.component';
 import { EditComponent } from '../edit/edit.component';
 import { ApiService } from '../../services/api.service';
 import { Person } from '../../interfaces/person-interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-persons',
   standalone: true,
-  imports: [CommonModule, CreateComponent, EditComponent],
+  imports: [CommonModule, FormsModule, CreateComponent, EditComponent],
   templateUrl: './persons.component.html',
   styleUrls: ['./persons.component.css']
 })
