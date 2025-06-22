@@ -10,14 +10,12 @@ import { canActivateFn } from './services/auth.guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: TemplateComponent,
-    children: [
+    path: 'home', component: TemplateComponent, children: [
       {
         path: '',
         component: HomeComponent,
       },
-    ],
+    ], canActivate: [canActivateFn]
   },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
