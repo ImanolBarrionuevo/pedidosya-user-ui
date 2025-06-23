@@ -19,7 +19,9 @@
   font-family: 'League Spartan', sans-serif;
   font-weight: bold;
   font-size: 5rem;
-  padding-top: 0.5rem;
+  margin: 0;
+  padding: 0;
+  line-height: 3rem;
 }
 
 .btn-create {
@@ -77,17 +79,17 @@
   font-family: 'League Spartan', sans-serif;
   font-size: 1.1rem;
   vertical-align: middle;
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: #000000;
 }
 
 .table td,
 .table th {
   background-color: #f4ebd0;
   padding: 0.75rem 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
   font-family: 'Alata', sans-serif;
   font-size: 1rem;
   color: #494e6b;
+  border-color: #000000;
 }
 
 .btn-extra {
@@ -126,4 +128,14 @@
   filter: grayscale(100%);
   opacity: 0.2;
   cursor: not-allowed;
+}
+
+.pagination .page-link.active {
+  background-color: #f4ebd0;  
+  border-color: #192231;
+  color: #494e6b;
+}
+.page-link{
+  background-color: #f4ebd0;  
+  color: #98878f;
 }
