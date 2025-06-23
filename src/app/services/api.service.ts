@@ -34,7 +34,7 @@ export class ApiService {
         const data = {email, password}
         const response = await axiosServiceAuth.post('/login', data)
         localStorage.setItem('accessToken', response.data.accessToken)
-        return response.data //Retornamos la data o simplemente dejamos un return?
+        return; //Dejamos el return vacio ya que guardamos el accessToken en localStorage
     } catch(error){
       throw new Error('Datos incorrectos o usuario no registrado');
     }
