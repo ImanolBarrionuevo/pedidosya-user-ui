@@ -6,9 +6,9 @@ export const canActivateFn: CanActivateFn = (_route, _state) => {
   const router = inject(Router); 
   const isToken = localStorage.getItem('accessToken'); 
  
-  //if (isToken) { 
+  if (isToken) { 
     return true; 
- // }  
+  }  
  
     // Redirige al login 
     router.navigate(['/login']); 

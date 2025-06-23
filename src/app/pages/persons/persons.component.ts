@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateComponent } from '../create/create.component';
 import { EditComponent } from '../edit/edit.component';
@@ -14,44 +14,65 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./persons.component.css']
 })
 
-export class PersonsComponent {
+export class PersonsComponent implements OnInit {
+  persons: Person[] = [];
+  selectedPerson: Person | null = null;
   showCreate = false;
   showEdit = false;
-  editMode      = false;
-  selectedPerson: Person | null = null;
-  persons: Person[] = [];
+  editMode = false;
 
-  constructor(
-    private apiService: ApiService,
-  ) { }
+  currentPage = 1; // Página inicial
+  pageSize = 10; // Esto nos limita la cantidad de filas por página
+  totalPages = 5; // Esto setea la cantidad de página que queremos
+
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    this.getPersons();
+    this.loadPage();
   }
 
-  goToCreate() {
-    if (!this.showCreate) {
-      this.showCreate = true;
+  goToNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.loadPage();
     }
   }
+
+  goToPrevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadPage();
+    }
+  }
+
+// Esto lo hizo Copilot, hay que analizarlo.
+  private async loadPage() {
+    try {
+      const all = await this.apiService.getPersons();
+      this.totalPages = Math.ceil(all.length / this.pageSize);
+      const start = (this.currentPage - 1) * this.pageSize;
+      this.persons = all.slice(start, start + this.pageSize);
+
+    } catch (error) {
+      console.error('Error al fetch de persons:', error);
+    }
+  }
+
+  goToCreate() { this.showCreate = true; }
 
   closeCreate() {
     const modalContent = document.querySelector('.modal-content') as HTMLElement;
     const modalContainer = document.querySelector('.modal-container') as HTMLElement;
-
     if (modalContent && modalContainer) {
       modalContent.classList.add('closing');
       modalContainer.classList.add('closing');
-
-      setTimeout(() => {
-        this.showCreate = false;
-      }, 300);
+      setTimeout(() => (this.showCreate = false), 300);
     }
   }
 
-  enableEditMode() {
-    this.editMode = true;
-    this.selectedPerson = null;
+  toggleEditMode() {
+    // Esto nos cambia el valor de editMode
+    this.editMode = !this.editMode;
   }
 
   onRowEdit(person: Person) {
@@ -59,42 +80,27 @@ export class PersonsComponent {
     this.showEdit = true;
   }
 
-  /** Cuando seleccionás la fila, abrimos directamente el modal */
   selectAndEdit(person: Person) {
     this.selectedPerson = person;
     this.showEdit = true;
     this.editMode = false;
   }
-  
-  closeEdit() {
-    this.showEdit = false;
-    this.selectedPerson = null;   // Esto debería desmarcar la casilla pero no lo está haciendo
-  }
 
-  confirmEdit() {
-    // Implementar lógica de la confirmación
+  closeEdit() {
     this.showEdit = false;
     this.selectedPerson = null;
   }
 
-  goToNextPage() {
-    console.log('Going to next page...'); // Implementar
-  }
-
-  async getPersons() {
-    try {
-      this.persons = await this.apiService.getPersons()
-    } catch (error) {
-      console.log(error)
-    }
+  confirmEdit() {
+    // Acá debería ir la implementación de la confirmación, no?
+    this.showEdit = false;
+    this.selectedPerson = null;
   }
 
   onPersonSaved(updated: Person) {
-    // 4) Sustituimos la persona en el array para que la tabla refresque
     const idx = this.persons.findIndex(p => p.id === updated.id);
     if (idx > -1) this.persons[idx] = updated;
-
     this.showEdit = false;
-    this.selectedPerson = null; 
+    this.selectedPerson = null;
   }
 }

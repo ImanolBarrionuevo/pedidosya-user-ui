@@ -92,6 +92,10 @@
   border-color: #000000;
 }
 
+.table td{
+  font-weight: normal !important;
+}
+
 .btn-extra {
   min-width: 8rem;
   padding-left: 3.5rem;
@@ -130,12 +134,19 @@
   cursor: not-allowed;
 }
 
-.pagination .page-link.active {
-  background-color: #f4ebd0;  
-  border-color: #192231;
-  color: #494e6b;
+.pagination .page-link {
+  background: transparent !important;
+  border: none !important;
+  color: #f4ebd0;
 }
-.page-link{
-  background-color: #f4ebd0;  
-  color: #98878f;
+
+.pagination .page-item.active .page-link{
+  background: transparent !important;
+  border: none !important;
+  color: #ff6e6e;
+}
+
+.pagination .page-link:focus {
+  outline: none;
+  box-shadow: none;
 }
