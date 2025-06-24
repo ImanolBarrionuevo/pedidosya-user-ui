@@ -1,41 +1,33 @@
 <div class="container-fluid min-vh-100" id="persons-container">
+
   <div class="d-flex justify-content-between align-items-end px-4 py-3">
     <h1 class="mb-0">Persons</h1>
     <div>
-      <button
-        (click)="goToCreate()"
-        class="btn btn-primary btn-extra btn-create"
-      >
+      <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create">
         Create
       </button>
-      <app-create-person
-        *ngIf="showCreate"
-        [showCreate]="showCreate"
-        (close)="closeCreate()"
-      ></app-create-person>
+      @if (showCreate) {
+      <app-create-person [showCreate]="showCreate" (close)="closeCreate()">
+      </app-create-person>
+      }
 
-      <button
-        (click)="toggleEditMode()"
-        class="btn btn-primary btn-extra btn-edit"
-        [class.btn-secondary]="editMode"        
-      > {{ editMode ? 'Edit' : 'Edit' }} </button>
-      <app-edit-person
-        *ngIf="showEdit && selectedPerson"
-        [showEdit]="showEdit"
-        [person] = "selectedPerson"
-        (close)="closeEdit()"
-      ></app-edit-person>
+      <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.btn-secondary]="editMode"> {{
+        editMode ? 'Editing' : 'Edit' }} </button>
+      @if (showEdit && selectedPerson) {
+      <app-edit-person [showEdit]="showEdit" [person]="selectedPerson" (close)="closeEdit()">
+      </app-edit-person>
+      }
     </div>
   </div>
 
   <div class="d-flex justify-content-center">
     <div class="card shadow p-4 w-100 persons-card">
-      <!-- Tabla responsiva -->
+      <!-- Tabla responsive -->
       <div class="persons-table-wrapper">
         <table class="table table-hover align-middle mb-0">
           <thead class="custom-table-header">
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col">Id</th>
               <th scope="col">Name</th>
               <th scope="col">Birthdate</th>
               <th scope="col">Email</th>
@@ -47,67 +39,44 @@
           </thead>
           <tbody>
             @for (person of persons; track person.id) {
-              <tr
-              [class.table-active]="person === selectedPerson"
-              [class.cursor-pointer]="editMode"
-              (click)="editMode && selectAndEdit(person)" >
-                <td>{{ person.id }}</td>
-                <td>{{ person.name }}</td>
-                <td>{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
-                <td>{{ person.email }}</td>
-                <td>{{ person.city.name }}</td>
-                <td>{{ person.city.province.name }}</td>
-                <td>{{ person.city.province.country.name }}</td>
-                <td class="text-center">
-                  <button
-                    class="edit-icon btn-icon"
-                    [disabled]="!editMode"
-                    (click)="onRowEdit(person)"
-                    title="Editar esta persona"
-                  ></button>
-                </td>
-              </tr>
+            <tr [class.table-active]="person === selectedPerson" [class.cursor-pointer]="editMode"
+              (click)="editMode && selectAndEdit(person)">
+              <td>{{ person.id }}</td>
+              <td>{{ person.name }}</td>
+              <td>{{ person.birthDate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ person.email }}</td>
+              <td>{{ person.city.name }}</td>
+              <td>{{ person.city.province.name }}</td>
+              <td>{{ person.city.province.country.name }}</td>
+              <td class="text-center">
+                <button class="edit-icon btn-icon" [disabled]="!editMode" (click)="onRowEdit(person)"
+                  title="Editar esta persona"></button>
+              </td>
+            </tr>
             }
           </tbody>
         </table>
       </div>
     </div>
   </div>
-    <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center mt-3">
-        <li 
-          class="page-item" 
-          [class.disabled]="currentPage === 1"
-        ><a class="page-link" 
-            href="javascript:void(0)" 
-            aria-label="Página anterior"
-            [attr.aria-disabled]="currentPage === 1"
-            (click)="goToPrevPage()" >
-            <span aria-hidden="true"> &laquo; </span>
-          </a>
-        </li>
-        <li 
-          class="page-item" 
-          *ngFor="let page of [].constructor(totalPages); let idx = index"
-          [class.active]="currentPage === idx+1"
-        >
-          <a 
-            class="page-link" 
-            href="javascript:void(0)"
-            (click)="currentPage = idx+1"
-          > {{ idx + 1 }} </a>
-        </li>
-        <li 
-          class="page-item" 
-          [class.disabled]="currentPage === totalPages"
-        ><a class="page-link" 
-            href="javascript:void(0)" 
-            aria-label="Página siguiente"
-            [attr.aria-disabled]="currentPage === totalPages"
-            (click)="goToNextPage()" >
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center mt-3">
+      <li class="page-item" [class.disabled]="currentPage === 1"><a class="page-link" href="javascript:void(0)"
+          aria-label="Página anterior" [attr.aria-disabled]="currentPage === 1" (click)="goToPrevPage()">
+          <span aria-hidden="true"> &laquo; </span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPages); let idx = index"
+        [class.active]="currentPage === idx+1">
+        <a class="page-link" href="javascript:void(0)" (click)="currentPage = idx+1"> {{ idx + 1 }} </a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages"><a class="page-link" href="javascript:void(0)"
+          aria-label="Página siguiente" [attr.aria-disabled]="currentPage === totalPages" (click)="goToNextPage()">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
 </div>
