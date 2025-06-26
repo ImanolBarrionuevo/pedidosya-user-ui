@@ -1,9 +1,9 @@
-<div class="container-fluid min-vh-100" id="persons-container">
+<div class="container-fluid" id="persons-container">
 
   <div class="d-flex justify-content-between align-items-end px-4 py-3">
     <h1 class="mb-0">Persons</h1>
     <div>
-      <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create">
+      <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create" [disabled]="editMode">
         Create
       </button>
       @if (showCreate) {
@@ -11,8 +11,8 @@
       </app-create-person>
       }
 
-      <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.btn-secondary]="editMode"> {{
-        editMode ? 'Editing' : 'Edit' }} </button>
+      <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.active-edit]="editMode"> {{
+        editMode ? 'Edit' : 'Edit' }} </button>
       @if (showEdit && selectedPerson) {
       <app-edit-person [showEdit]="showEdit" [person]="selectedPerson" (close)="closeEdit()">
       </app-edit-person>
