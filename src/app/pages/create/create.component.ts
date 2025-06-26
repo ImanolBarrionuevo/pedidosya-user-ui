@@ -68,9 +68,7 @@ export class CreateComponent {
   }
 
   ngOnInit() {
-    this.getCountries(),
-      this.getProvinces(),
-      this.getCities()
+    this.getCountries()
   }
 
   async createPerson() {
