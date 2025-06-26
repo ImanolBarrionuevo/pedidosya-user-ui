@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { CommonModule } from '@angular/common';
 import { City, Country, Province } from '../../interfaces/person-interface';
 import { ApiService } from '../../services/api.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-person',
@@ -49,7 +48,6 @@ export class CreateComponent {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private router: Router
   ) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],

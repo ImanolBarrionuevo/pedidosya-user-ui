@@ -11,16 +11,13 @@ export class ApiService {
   
   constructor() { }
 
-  async updatePerson(
-    id: number,
-    payload: {
+  async updatePerson( id: number, payload: {
       name: string;
       email: string;
       birthDate: Date;
       city: number;
     }): Promise<Person> {
     try {
-      console.log(id, payload)
       const response = await axiosServicePersons.put<Person>(`/person/${id}`, payload);
       return response.data;
     } catch (error) {

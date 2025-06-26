@@ -1,25 +1,7 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  OnInit,
-  OnChanges,
-  SimpleChanges
-} from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {
-  Person,
-  City,
-  Province,
-  Country
-} from '../../interfaces/person-interface';
+import { Person, City, Province, Country } from '../../interfaces/person-interface';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -44,7 +26,7 @@ export class EditComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private api: ApiService
+    private apiService: ApiService
   ) {
     this.personForm = this.fb.group({
       name: ['', Validators.required],
@@ -87,13 +69,13 @@ export class EditComponent implements OnInit, OnChanges {
 
   // Con algo de esto vamos a poder traer datos de la bd
   private async loadCountries() {
-    this.countries = await this.api.getCountries();
+    this.countries = await this.apiService.getCountries();
   }
   private async loadProvinces() {
-    this.provinces = await this.api.getProvinces();
+    this.provinces = await this.apiService.getProvinces();
   }
   private async loadCities() {
-    this.cities = await this.api.getCities();
+    this.cities = await this.apiService.getCities();
   }
 
   closeEdit() {
@@ -109,7 +91,7 @@ export class EditComponent implements OnInit, OnChanges {
     const { name, birthDate, email, city } = this.personForm.value;
     try {
       // Llama a updatePerson y recibe el Person actualizado
-      const updated = await this.api.updatePerson(this.person.id, {
+      const updated = await this.apiService.updatePerson(this.person.id, {
         name,
         birthDate,
         email,
