@@ -96,7 +96,7 @@ export class CreateComponent {
   async getProvinces() {
     try {
       const selectedCountry = this.personForm.get('country')?.value;
-      this.provinces = await this.apiService.getProvincesFilter(selectedCountry.id)
+      this.provinces = await this.apiService.getProvincesByCountry(selectedCountry.id)
     } catch (error) {
       console.log(error)
     }
@@ -105,7 +105,7 @@ export class CreateComponent {
   async getCities() {
     try {
       const selectedProvince = this.personForm.get('province')?.value;
-      this.cities = await this.apiService.getCitiesFilter(selectedProvince.id)
+      this.cities = await this.apiService.getCitiesByProvince(selectedProvince.id)
     } catch (error) {
       console.log(error)
     }

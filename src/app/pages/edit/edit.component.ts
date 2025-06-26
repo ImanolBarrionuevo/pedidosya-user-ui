@@ -68,14 +68,28 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   // Con algo de esto vamos a poder traer datos de la bd
-  private async loadCountries() {
-    this.countries = await this.apiService.getCountries();
+  async loadCountries() {
+    try {
+      this.countries = await this.apiService.getCountries()
+    } catch (error) {
+      console.log(error)
+    }
   }
-  private async loadProvinces() {
-    this.provinces = await this.apiService.getProvinces();
+  async loadProvinces() {
+    try {
+      const selectedCountry = this.personForm.get('country')?.value;
+      this.provinces = await this.apiService.getProvincesByCountry(selectedCountry.id)
+    } catch (error) {
+      console.log(error)
+    }
   }
-  private async loadCities() {
-    this.cities = await this.apiService.getCities();
+  async loadCities() {
+    try {
+      const selectedProvince = this.personForm.get('province')?.value;
+      this.cities = await this.apiService.getCitiesByProvince(selectedProvince.id)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   closeEdit() {

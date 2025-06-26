@@ -79,16 +79,7 @@ export class ApiService {
     }
   }
 
-  async getProvinces(){
-    try{
-      const response = await axiosServicePersons.get('/province');
-      return response.data
-    } catch(error){
-      throw error;
-    }
-  }
-
-  async getProvincesFilter(idCountry: number){
+  async getProvincesByCountry(idCountry: number){
     try{
       const response = await axiosServicePersons.get('/province');
       const allProvinces: Province[] = response.data
@@ -99,16 +90,7 @@ export class ApiService {
     }
   }
 
-  async getCities(){
-    try{
-      const response = await axiosServicePersons.get('/city');
-      return response.data
-    } catch(error){
-      throw error;
-    }
-  }
-
-  async getCitiesFilter(idProvince: number){
+  async getCitiesByProvince(idProvince: number){
     try{
       const response = await axiosServicePersons.get('/city');
       const allCities: City[] = response.data
