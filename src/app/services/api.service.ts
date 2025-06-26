@@ -61,9 +61,11 @@ export class ApiService {
   }
 
   //create-component.ts
-  async createPersons(name:string, email:string, birthDate:Date, cityId:number){
+  async createPersons(name:string, birthDateStr:string, email:string, city:number){ //Recibimos birthDate como string y despues lo transformamos a Date
     try{
-      const data = {name, email, birthDate, cityId}
+      const [year, month, day] = birthDateStr.split('-').map(Number);
+      const birthDate = new Date(year, month-1, day);
+      const data = {name, email, birthDate, city}
       const response = await axiosServicePersons.post('/person', data)
       return response.data
     } catch(error) {

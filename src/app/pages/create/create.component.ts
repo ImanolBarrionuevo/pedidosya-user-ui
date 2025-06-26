@@ -80,11 +80,10 @@ export class CreateComponent {
       return; //Si es invalido que deberiamos retornar? Mostrar error en la ui??
     }
     try {
-      const { name, birtDate, email, city } = this.personForm.value; //verificar como sacar id de city
-      await this.apiService.createPersons(name, birtDate, email, city);
-      await this.router.navigate(['/persons']);
-    } catch {
-      console.error("Fallo che"); //Que error debemos poner?
+      const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city
+      await this.apiService.createPersons(name, birthdate, email, city.id);
+    } catch (error) {
+      console.error(error); //Que error debemos poner?
     }
   }
 
