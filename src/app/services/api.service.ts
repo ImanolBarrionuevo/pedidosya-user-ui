@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Person } from '../interfaces/person-interface';
+import { City, Person, Province } from '../interfaces/person-interface';
 import { axiosServicePersons } from './axiosClientPersons';
 import { axiosServiceAuth } from './axiosClientAuth';
 
@@ -88,10 +88,32 @@ export class ApiService {
     }
   }
 
+  async getProvincesFilter(idCountry: number){
+    try{
+      const response = await axiosServicePersons.get('/province');
+      const allProvinces: Province[] = response.data
+      const responseFilter = allProvinces.filter(province => province.country.id === idCountry)
+      return responseFilter
+    } catch(error){
+      throw error;
+    }
+  }
+
   async getCities(){
     try{
       const response = await axiosServicePersons.get('/city');
       return response.data
+    } catch(error){
+      throw error;
+    }
+  }
+
+  async getCitiesFilter(idProvince: number){
+    try{
+      const response = await axiosServicePersons.get('/city');
+      const allCities: City[] = response.data
+      const responseFilter = allCities.filter((city) => city.province.id === idProvince)
+      return responseFilter
     } catch(error){
       throw error;
     }
