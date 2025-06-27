@@ -25,7 +25,7 @@ export class PersonsComponent implements OnInit {
   pageSize = 10; // Esto nos limita la cantidad de filas por página
   totalPages = 5; // Esto setea la cantidad de página que queremos
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
     this.loadPage();
@@ -45,7 +45,7 @@ export class PersonsComponent implements OnInit {
     }
   }
 
-// Esto lo hizo Copilot, hay que analizarlo.
+  // Esto lo hizo Copilot, hay que analizarlo.
   private async loadPage() {
     try {
       const all = await this.apiService.getPersons();
@@ -87,8 +87,17 @@ export class PersonsComponent implements OnInit {
   }
 
   closeEdit() {
-    this.showEdit = false;
-    this.selectedPerson = null;
+    const modalContent = document.querySelector('.modal-content') as HTMLElement;
+    const modalContainer = document.querySelector('.modal-container') as HTMLElement;
+    if (modalContent && modalContainer) {
+      modalContent.classList.add('closing');
+      modalContainer.classList.add('closing');
+
+      setTimeout(() => {
+        this.showEdit = false;
+        this.selectedPerson = null;
+      }, 300);
+    }
   }
 
   confirmEdit() {
