@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class PersonsComponent implements OnInit {
+  private allPersons: Person[] = [];
   persons: Person[] = [];
   selectedPerson: Person | null = null;
   showCreate = false;
@@ -23,44 +24,47 @@ export class PersonsComponent implements OnInit {
 
   currentPage = 1; // Página inicial
   pageSize = 10; // Esto nos limita la cantidad de filas por página
-  totalPages = 5; // Esto setea la cantidad de página que queremos
+  totalPages = 0; // Esto setea la cantidad de página que queremos
 
   constructor(private apiService: ApiService) { }
 
-  ngOnInit() {
-    this.loadPage();
+  async ngOnInit() {
+    this.allPersons = await this.apiService.getPersons();    
+    this.totalPages = Math.ceil(this.allPersons.length / this.pageSize);
+    this.refreshView();
+  }
+
+  async sortById(){
+    try{
+      this.allPersons.sort((a,b) => a.id - b.id)
+      this.refreshView()
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private refreshView() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    this.persons  = this.allPersons.slice(start, start + this.pageSize);
   }
 
   goToNextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.loadPage();
+      this.refreshView();
     }
   }
 
   goToSelectPage() {
     if(this.currentPage){
-      this.loadPage();
+      this.refreshView();
     }
   }
 
   goToPrevPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
-      this.loadPage();
-    }
-  }
-
-  // Esto lo hizo Copilot, hay que analizarlo.
-  private async loadPage() {
-    try {
-      const all = await this.apiService.getPersons();
-      this.totalPages = Math.ceil(all.length / this.pageSize);
-      const start = (this.currentPage - 1) * this.pageSize;
-      this.persons = all.slice(start, start + this.pageSize);
-
-    } catch (error) {
-      console.error('Error al fetch de persons:', error);
+      this.refreshView();
     }
   }
 
