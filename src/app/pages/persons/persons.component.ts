@@ -38,6 +38,12 @@ export class PersonsComponent implements OnInit {
     }
   }
 
+  goToSelectPage() {
+    if(this.currentPage){
+      this.loadPage();
+    }
+  }
+
   goToPrevPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
