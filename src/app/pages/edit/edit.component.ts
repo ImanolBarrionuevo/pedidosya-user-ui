@@ -67,6 +67,7 @@ export class EditComponent implements OnInit, OnChanges {
     });
   }
 
+
   // Con algo de esto vamos a poder traer datos de la bd
   async loadCountries() {
     try {
@@ -75,6 +76,7 @@ export class EditComponent implements OnInit, OnChanges {
       console.log(error)
     }
   }
+
   async loadProvinces() {
     try {
       const selectedCountry = this.personForm.get('country')?.value;
@@ -83,6 +85,7 @@ export class EditComponent implements OnInit, OnChanges {
       console.log(error)
     }
   }
+  
   async loadCities() {
     try {
       const selectedProvince = this.personForm.get('province')?.value;
