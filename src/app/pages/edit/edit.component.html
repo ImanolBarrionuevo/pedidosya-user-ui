@@ -22,27 +22,27 @@
 
             <div class="form-group">
                 <label for="country">country</label>
-                <select id="country" class="form-control" formControlName="country" (change)="loadProvinces()">
+                <select id="country" class="form-control" formControlName="country" (click)="loadCountries()" (change)="loadProvinces()" [compareWith]="compareCountry">
                     @for (country of countries; track country.id) {
-                    <option [value]="country">{{ country.name }}</option>
+                    <option [ngValue]="country">{{ country.name }}</option>
                     }
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="province">province</label>
-                <select id="province" class="form-control" formControlName="province" (change)="loadCities()">
+                <select id="province" class="form-control" formControlName="province" (change)="loadCities()" [compareWith]="compareCountry">
                     @for (province of provinces; track province.id) {
-                    <option [value]="province">{{ province.name }}</option>
+                    <option [ngValue]="province">{{ province.name }}</option>
                     }
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="city">city</label>
-                <select id="city" class="form-control" formControlName="city">
+                <select id="city" class="form-control" formControlName="city" [compareWith]="compareCountry">
                     @for (city of cities; track city.id) {
-                    <option [value]="city">{{ city.name }}</option>
+                    <option [ngValue]="city">{{ city.name }}</option>
                     }
                 </select>
             </div>

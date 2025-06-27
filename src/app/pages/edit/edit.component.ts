@@ -39,14 +39,12 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // Cargo selects al iniciar
-    this.loadCountries();
-    this.loadProvinces();
-    this.loadCities();
-
     // Si ya trae persona, parchea form
     if (this.person) {
       this.patchForm();
+      this.countries = [this.person.city.province.country] //Cargamos countries unicamente con el country de la persona
+      this.loadProvinces();
+      this.loadCities();
     }
   }
 
@@ -67,8 +65,6 @@ export class EditComponent implements OnInit, OnChanges {
     });
   }
 
-
-  // Con algo de esto vamos a poder traer datos de la bd
   async loadCountries() {
     try {
       this.countries = await this.apiService.getCountries()
@@ -98,6 +94,10 @@ export class EditComponent implements OnInit, OnChanges {
   closeEdit() {
     this.close.emit();
   }
+
+  compareCountry(option?: Country, selected?: Country): boolean {
+    return option?.id === selected?.id;
+}
 
   async confirmEdit() {
     if (this.personForm.invalid) {

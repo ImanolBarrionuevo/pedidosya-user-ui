@@ -11,8 +11,7 @@
       </app-create-person>
       }
 
-      <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.active-edit]="editMode"> {{
-        editMode ? 'Edit' : 'Edit' }} </button>
+      <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.active-edit]="editMode"> Edit </button>
       @if (showEdit && selectedPerson) {
       <app-edit-person [showEdit]="showEdit" [person]="selectedPerson" (close)="closeEdit()">
       </app-edit-person>
@@ -34,7 +33,7 @@
               <th scope="col">City</th>
               <th scope="col">Province</th>
               <th scope="col">Country</th>
-              <th></th>
+              <th></th> <!--Vacio para hacer espacio para botón de edit-->
             </tr>
           </thead>
           <tbody>

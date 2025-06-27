@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { City, Person, Province } from '../interfaces/person-interface';
+import { City, Country, Person, Province } from '../interfaces/person-interface';
 import { axiosServicePersons } from './axiosClientPersons';
 import { axiosServiceAuth } from './axiosClientAuth';
 
