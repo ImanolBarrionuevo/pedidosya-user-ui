@@ -1,6 +1,22 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/login">Navbar</a>
+    <!-- Home -->
+    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active-link">Home</a>
+
+    <!-- Botones del lado izquierdo -->
+    <div class="d-flex">
+      <a class="nav-link" [routerLink]="['/persons']" routerLinkActive="active-link">Persons</a>
+      <a class="nav-link" href="/home">Restaurant</a>
+      <a class="nav-link" href="/home">Delivery</a>
+      <a class="nav-link" href="/home">Orders</a>
+    </div>
+
+    <!-- Login alineado a la derecha -->
+    <div class="ms-auto">
+      <a class="nav-link login" href="/login" aria-label="Login">
+        <img src="/assets/icons/icono_boton_user.svg" alt="Login" />
+      </a>
+    </div>
   </div>
 </nav>
 @if(isLoading()){
