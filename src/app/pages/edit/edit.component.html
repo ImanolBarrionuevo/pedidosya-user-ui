@@ -37,7 +37,7 @@
 
             <div class="form-group">
                 <label for="country">country</label>
-                <select id="country" class="form-control" formControlName="country" (click)="loadCountries()" (change)="loadProvinces(); emptyCities()" [compareWith]="compareCountry">
+                <select id="country" class="form-control" formControlName="country" (click)="loadCountries()" (change)="onCountryChange()" [compareWith]="compareById">
                     @for (country of countries; track country.id) {
                     <option [ngValue]="country">{{ country.name }}</option>
                     }
@@ -46,25 +46,30 @@
 
             <div class="form-group">
                 <label for="province">province</label>
-                <select id="province" class="form-control" formControlName="province" (change)="loadCities()" [compareWith]="compareCountry">
+                <select id="province" class="form-control" formControlName="province" (change)="onProvinceChange()" [compareWith]="compareById">
                     @for (province of provinces; track province.id) {
                     <option [ngValue]="province">{{ province.name }}</option>
                     }
                 </select>
                 @if (personForm.get('province')?.invalid && personForm.get('province')?.touched) {
                     <small class="error-msg">
-                        Email invalid
+                        Select province
                     </small>
                 }
             </div>
 
             <div class="form-group">
                 <label for="city">city</label>
-                <select id="city" class="form-control" formControlName="city" [compareWith]="compareCountry">
+                <select id="city" class="form-control" formControlName="city" [compareWith]="compareById">
                     @for (city of cities; track city.id) {
                     <option [ngValue]="city">{{ city.name }}</option>
                     }
                 </select>
+                @if (personForm.get('city')?.invalid && personForm.get('city')?.touched) {
+                    <small class="error-msg">
+                        Select city
+                    </small>
+                }
             </div>
 
             <div class="d-flex justify-content-center mt-3">

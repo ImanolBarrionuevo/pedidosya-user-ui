@@ -64,6 +64,32 @@ export class EditComponent implements OnInit, OnChanges {
     });
   }
 
+  //Función ejecutada al seleccionar un pais distinto
+  onCountryChange() {
+    //Cargamos las provincias
+    this.loadProvinces();
+
+    //Marcamos province como null y como tocada para que salte el validador
+    this.personForm.get('province')!.reset(null);
+    this.personForm.get('province')!.markAsTouched();
+
+    //Vaciamos el listado de ciudades
+    this.cities = [];
+    //Marcamos city como null y como tocada para que salte el validador
+    this.personForm.get('city')!.reset(null);
+    this.personForm.get('city')!.markAsTouched();
+  }
+
+  //Función ejecutada al seleccionar una provincia distinta
+  onProvinceChange(){
+    //Cargamos las ciudades
+    this.loadCities()
+
+    //Marcamos city como null y como tocada para que salte el validador
+    this.personForm.get('city')!.reset(null);
+    this.personForm.get('city')!.markAsTouched();
+  }
+
   async loadCountries() {
     try {
       this.countries = await this.apiService.getCountries()
@@ -90,16 +116,11 @@ export class EditComponent implements OnInit, OnChanges {
     }
   }
 
-  //Vaciamos el listado de cities al seleccionar un pais en edit
-  async emptyCities(){ 
-    this.cities = [];
-  }
-
   closeEdit() {
     this.close.emit();
   }
 
-  compareCountry(option?: Country, selected?: Country): boolean {
+  compareById(option?: Country, selected?: Country): boolean { //Country ya que usamos el name CHEQUEAR
     if(option && selected){
       return option.id === selected.id;
     }

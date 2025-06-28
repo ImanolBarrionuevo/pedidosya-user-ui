@@ -95,6 +95,8 @@ export class CreateComponent {
     try {
       const selectedCountry = this.personForm.get('country')?.value;
       this.provinces = await this.apiService.getProvincesByCountry(selectedCountry.id)
+      this.personForm.get('province')!.reset(null);
+      this.personForm.get('province')!.markAsTouched();
     } catch (error) {
       console.log(error)
     }
@@ -104,9 +106,16 @@ export class CreateComponent {
     try {
       const selectedProvince = this.personForm.get('province')?.value;
       this.cities = await this.apiService.getCitiesByProvince(selectedProvince.id)
+      this.personForm.get('city')!.reset(null);
+      this.personForm.get('city')!.markAsTouched();
     } catch (error) {
       console.log(error)
     }
+  }
+
+  //Vaciamos el listado de cities al seleccionar un pais en edit
+  async emptyCities(){ 
+    this.cities = [];
   }
 }
 
