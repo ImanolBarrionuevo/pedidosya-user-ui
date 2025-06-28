@@ -2,3 +2,34 @@
   max-height: 10em;
   object-fit: cover;
 }
+
+:root {
+  --color-primario: #494e6b;
+  --color-secundario: #98878f;
+  --color-accion: #e17e7e;
+  --color-fondo: #192231;
+  --color-texto: #f4ebd0;
+  --color-blanco: #ffffff;
+  --color-negro: #000000;
+}
+
+.home-container {
+  background: linear-gradient(to right, #192231, #494e6b);
+  min-height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-bottom: 0;
+}
+
+.home-container h1 {
+  color: #f4ebd0;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+.home-container p {
+  color: #e17e7e !important;
+  font-family: 'Alata', sans-serif;
+  font-size: 1rem;
+}

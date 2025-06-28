@@ -1,41 +1,79 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <!-- Home -->
-    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active-link">Home</a>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <!-- Home -->
+      <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active-link">Home</a>
 
-    <!-- Botones del lado izquierdo -->
-    <div class="d-flex">
-      <a class="nav-link" [routerLink]="['/persons']" routerLinkActive="active-link">Persons</a>
-      <a class="nav-link" href="/home">Restaurant</a>
-      <a class="nav-link" href="/home">Delivery</a>
-      <a class="nav-link" href="/home">Orders</a>
-    </div>
+      <!-- Botones del lado izquierdo -->
+      <div class="d-flex">
+        <a class="nav-link" [routerLink]="['/persons']" routerLinkActive="active-link">Persons</a>
+        <a class="nav-link" href="/home">Restaurant</a>
+        <a class="nav-link" href="/home">Delivery</a>
+        <a class="nav-link" href="/home">Orders</a>
+      </div>
 
-    <!-- Login alineado a la derecha -->
-    <div class="ms-auto">
-      <a class="nav-link login" href="/login" aria-label="Login">
-        <img src="/assets/icons/icono_boton_user.svg" alt="Login" />
-      </a>
+      <!-- Login alineado a la derecha -->
+      <div class="ms-auto">
+        <a class="nav-link login" href="/login" aria-label="Login">
+          <img src="/assets/icons/icono_boton_user.svg" alt="Login" />
+        </a>
+      </div>
     </div>
-  </div>
-</nav>
-@if(isLoading()){
-<!-- Modal de carga -->
-<div class="modal fade show d-block" tabindex="-1" role="dialog"
-  style="background-color: rgba(0, 0, 0, 0.5); z-index: 1050;">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content text-center p-4 border-0 shadow-lg" style="border-radius: 1rem;">
-      <div class="d-flex flex-column align-items-center">
-        <!-- Spinner mejorado -->
-        <div class="spinner-border text-primary mb-3" role="status" style="width: 4rem; height: 4rem;">
-          <span class="visually-hidden">Cargando...</span>
+  </nav>
+
+  <!-- Modal de carga -->
+  @if(isLoading()){
+  <div class="modal fade show d-block" tabindex="-1" role="dialog"
+    style="background-color: rgba(0, 0, 0, 0.5); z-index: 1050;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content text-center p-4 border-0 shadow-lg" style="border-radius: 1rem;">
+        <div class="d-flex flex-column align-items-center">
+          <!-- Spinner mejorado -->
+          <div class="spinner-border text-primary mb-3" role="status" style="width: 4rem; height: 4rem;">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <!-- Texto -->
+          <h5 class="modal-title mb-0">Cargando la página...</h5>
+          <small class="text-muted mt-2">Por favor, espere un momento</small>
         </div>
-        <!-- Texto -->
-        <h5 class="modal-title mb-0">Cargando la página...</h5>
-        <small class="text-muted mt-2">Por favor, espere un momento</small>
       </div>
     </div>
   </div>
-</div>
-}
-<router-outlet />
+  }
+
+  <main class="flex-grow-1"> <!-- Clase de Bootstrap para flex-grow -->
+    <router-outlet />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container py-4 text-center">
+
+      <div class="footer-flex">
+        <div class="footer-column">
+          <a href="/home" class="footer-link">Privacy</a><br>
+          <a href="/home" class="footer-link">Terms & Conditions</a>
+        </div>
+        <div class="footer-column">
+          <a href="/home" class="footer-link">About PedidosYa</a><br>
+          <a href="/home" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-column">
+          <a href="/home" class="footer-link">Register Your Business</a><br>
+          <a href="/home" class="footer-link">Partner Center</a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-legal text-center">
+        <p class="mt-3 small">DELIVERY HERO E-COMMERCE S.A. CUIT: 30-71198576-6 | Av. del Libertador 7208, piso 20,
+          Ciudad Autónoma de Buenos Aires</p>
+        <p class="mt-3 small copy">PedidosYa © 2010-2025</p>
+      </div>
+
+    </div>
+  </footer>
+
+</body>

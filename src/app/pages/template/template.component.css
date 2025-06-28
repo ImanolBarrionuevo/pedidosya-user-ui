@@ -1,3 +1,4 @@
+/*----------------------colores----------------------*/
 :root {
     --color-primario: #494e6b;
     --color-secundario: #98878f;
@@ -10,6 +11,7 @@
     --color-degrade: #848794;
 }
 
+/*----------------------navbar----------------------*/
 .container-fluid {
     padding-left: 0.55rem;
     padding-right: 1.75rem;
@@ -50,4 +52,49 @@
 
 .login:hover img {
     filter: brightness(0.5);
+}
+
+/*----------------------footer----------------------*/
+.footer {
+    background: linear-gradient(to right, #e17e7e, #ff6e6e);
+    font-family: 'Alata', sans-serif;
+    margin-top: auto;
+}
+
+.footer-link {
+    color: #494e6b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.footer-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10rem;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #192231 !important;
+}
+
+.copy {
+    font-weight: bold;
+}
+
+.footer-divider {
+    border: none;
+    height: 0.1rem;
+    background-color: #494e6b;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-legal {
+    color: #494e6b;
+    font-size: 0.82rem;
+    margin-bottom: -0.7rem;
 }

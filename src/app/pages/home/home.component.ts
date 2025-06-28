@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private readonly apiService: ApiService,
     private readonly globalStatusService: GlobalStatusService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.initialization();
   }
