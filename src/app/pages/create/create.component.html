@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     <label for="birthdate">birthdate</label>
-                    <input id="birthdate" type="date" formControlName="birthdate" class="form-control">
+                    <input id="birthdate" type="date" formControlName="birthdate" class="form-control" (change)="validateDate()">
                     @if (personForm.get('birthdate')?.invalid && personForm.get('birthdate')?.touched) {
                         <small class="error-msg">
                             Birthdate invalid
@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="country">country</label>
-                <select id="country" class="form-control" formControlName="country" (change)="getProvinces(); emptyCities()">
+                <select id="country" class="form-control" formControlName="country" (change)="getProvinces()">
                     @for (country of countries; track country.id) {
                     <option [ngValue]="country">{{ country.name }}</option>
                     }

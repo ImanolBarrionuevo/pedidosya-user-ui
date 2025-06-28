@@ -148,4 +148,13 @@ export class EditComponent implements OnInit, OnChanges {
       console.error('Algo salió mal', err);
     }
   }
+
+  async validateDate(){
+    const currentDate = new Date();
+    const selectDate = new Date(await this.personForm.get('birthDate')?.value);
+    if(currentDate < selectDate){
+      this.personForm.get('birthDate')?.reset();
+      this.personForm.get('birthDate')?.markAsTouched();
+    }
+  }
 }

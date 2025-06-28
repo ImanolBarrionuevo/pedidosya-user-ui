@@ -39,12 +39,6 @@ export class CreateComponent {
   countries: Country[] = [];
   provinces: Province[] = [];
 
-  // Listas de opciones para los selects
-  // Tenemos que hacer que se importen de la BD
-  //countries = ['Argentina', 'Brazil', 'Chile', 'Uruguay'];
-  //provinces = ['Buenos Aires', 'Córdoba', 'Santa Fe'];
-  //cities = ['Villa Nueva', 'Córdoba', 'Rosario'];
-
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
@@ -93,6 +87,8 @@ export class CreateComponent {
 
   async getProvinces() {
     try {
+      //Vaciamos el listado de ciudades al cargar las provincias para evitar que al cambiar de pais quede guardada la ciudad anterior
+      this.cities = []
       const selectedCountry = this.personForm.get('country')?.value;
       this.provinces = await this.apiService.getProvincesByCountry(selectedCountry.id)
       this.personForm.get('province')!.reset(null);
@@ -113,9 +109,15 @@ export class CreateComponent {
     }
   }
 
-  //Vaciamos el listado de cities al seleccionar un pais en edit
-  async emptyCities(){ 
-    this.cities = [];
+  async validateDate(){
+    const currentDate = new Date();
+    const selectDate = new Date(await this.personForm.get('birthdate')?.value); //Es de tipo string
+    console.log(typeof selectDate);
+    if(currentDate < selectDate){
+      console.log("Entre al if");
+      this.personForm.get('birthdate')?.reset();
+      this.personForm.get('birthdate')?.markAsTouched();
+    }
   }
 }
 

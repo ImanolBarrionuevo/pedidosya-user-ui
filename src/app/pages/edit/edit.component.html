@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     <label for="birthdate">birthdate</label>
-                    <input id="birthdate" type="date" formControlName="birthDate" class="form-control">
+                    <input id="birthdate" type="date" formControlName="birthDate" class="form-control" (change)="validateDate()">
                     @if (personForm.get('birthDate')?.invalid && personForm.get('birthDate')?.touched) {
                         <small class="error-msg">
                             Birthdate invalid
