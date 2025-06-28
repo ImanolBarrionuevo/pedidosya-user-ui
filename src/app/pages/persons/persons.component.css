@@ -242,3 +242,23 @@ td:nth-child(8) {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #848794;
 }
+
+.sortable {
+  cursor: pointer;
+}
+
+.sort-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+}
+
+.sortable:hover .sort-icon {
+  opacity: 1;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
