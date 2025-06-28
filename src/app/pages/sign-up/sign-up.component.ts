@@ -20,6 +20,8 @@ export class SignUpComponent {
     private apiService: ApiService
   ) { }
 
+  errorMsg: string = ''
+
   goToLogin() {
     this.router.navigate(['/login']);
   }
@@ -35,7 +37,8 @@ export class SignUpComponent {
 
   async getDataSignUp(){
     if(this.signUpForm.invalid){
-      return; //Si es invalido que deberiamos retornar? Mostrar error en la ui??
+      this.signUpForm.markAllAsTouched();
+      this.errorMsg = 'Campos incompletos o incorrectos';
     }
     try{
       const {name, surname, email, password} = this.signUpForm.value;

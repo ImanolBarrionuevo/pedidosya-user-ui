@@ -20,6 +20,8 @@ export class LoginComponent {
     
   ) {}
 
+  errorMsg: string = ''
+
   goToSignUp() {
     this.router.navigate(['/sign-up']);
   }
@@ -33,17 +35,15 @@ export class LoginComponent {
 
   async getDataLogin(){
     if(this.loginForm.invalid){
-      alert()
-      return; //Si es invalido que deberiamos retornar? //Alert
+      this.loginForm.markAllAsTouched();
+      this.errorMsg = 'Campos incompletos o incorrectos';
     }
     try {
       const {email, password} = this.loginForm.value
-      //Preguntar que hacer con el token obtenido de login
       await this.apiService.login(email, password)
       await this.router.navigate(['/persons'])
     }  catch(e) {
-      const error=e as Error
-      alert(error.message)
+      console.error(e);
     }
   }
 }

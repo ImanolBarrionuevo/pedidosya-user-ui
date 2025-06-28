@@ -76,6 +76,16 @@
                 <button type="submit" class="btn-base btn-confirm" (click)="confirmEdit()">Confirm</button>
                 <button type="submit" class="btn-base btn-cancel" (click)="closeEdit()">Cancel</button>
             </div>
+            @if (successMsg) {
+                <div class="alert alert-success">
+                    {{ successMsg }}
+                </div>
+            }
+            @if (errorMsg) {
+                <div class="alert alert-danger">
+                    {{ errorMsg }}
+                </div>
+            }
         </form>
     </div>
 </div>

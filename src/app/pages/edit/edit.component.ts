@@ -22,6 +22,8 @@ export class EditComponent implements OnInit, OnChanges {
   provinces: Province[] = [];
   cities: City[]        = [];
   personForm: FormGroup;
+  successMsg: string = ''
+  errorMsg: string = ''
 
   constructor(
     private fb: FormBuilder,
@@ -130,7 +132,7 @@ export class EditComponent implements OnInit, OnChanges {
   async confirmEdit() {
     if (this.personForm.invalid) {
       this.personForm.markAllAsTouched();
-      return;
+      this.errorMsg = 'Campos incompletos o incorrectos';
     }
 
     const { name, birthDate, email, city } = this.personForm.value;
@@ -143,7 +145,9 @@ export class EditComponent implements OnInit, OnChanges {
         city: city.id
       });
       this.saved.emit(updated);
-      this.close.emit();
+      this.errorMsg = ''
+      this.successMsg = 'Persona editada correctamente';
+      setTimeout(() => this.close.emit(), 2000)
     } catch (err) {
       console.error('Algo salió mal', err);
     }

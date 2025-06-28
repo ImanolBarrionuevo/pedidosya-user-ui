@@ -38,6 +38,8 @@ export class CreateComponent {
   cities: City[] = [];
   countries: Country[] = [];
   provinces: Province[] = [];
+  successMsg: string = ''
+  errorMsg: string = ''
 
   constructor(
     private fb: FormBuilder,
@@ -57,21 +59,21 @@ export class CreateComponent {
     this.close.emit();
   }
 
-  confirmCreate() {
-    this.close.emit();
-  }
-
   ngOnInit() {
     this.getCountries()
   }
 
   async createPerson() {
     if (this.personForm.invalid) {
-      return; //Si es invalido que deberiamos retornar? Mostrar error en la ui??
+      this.personForm.markAllAsTouched(); //Si es invalido que deberiamos retornar? Mostrar error en la ui??
+      this.errorMsg = 'Campos incompletos o incorrectos'
     }
     try {
       const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city
       await this.apiService.createPersons(name, birthdate, email, city.id);
+      this.errorMsg = ''
+      this.successMsg = 'Persona creada correctamente';
+      setTimeout(() => this.close.emit(), 2000)
     } catch (error) {
       console.error(error); //Que error debemos poner?
     }
@@ -112,9 +114,7 @@ export class CreateComponent {
   async validateDate(){
     const currentDate = new Date();
     const selectDate = new Date(await this.personForm.get('birthdate')?.value); //Es de tipo string
-    console.log(typeof selectDate);
     if(currentDate < selectDate){
-      console.log("Entre al if");
       this.personForm.get('birthdate')?.reset();
       this.personForm.get('birthdate')?.markAsTouched();
     }
