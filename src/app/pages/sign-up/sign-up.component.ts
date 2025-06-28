@@ -26,10 +26,10 @@ export class SignUpComponent {
 
   async ngOnInit(){
     this.signUpForm = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
+      surname: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     })
   }
 

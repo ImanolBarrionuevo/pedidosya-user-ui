@@ -7,22 +7,37 @@
                 <div class="form-group">
                     <label for="name">name</label>
                     <input id="name" type="text" formControlName="name" class="form-control">
+                    @if (personForm.get('name')?.invalid && personForm.get('name')?.touched) {
+                        <small class="error-msg">
+                            Complete name
+                        </small>
+                    }
                 </div>
 
                 <div class="form-group">
                     <label for="birthdate">birthdate</label>
                     <input id="birthdate" type="date" formControlName="birthDate" class="form-control">
+                    @if (personForm.get('birthDate')?.invalid && personForm.get('birthDate')?.touched) {
+                        <small class="error-msg">
+                            Birthdate invalid
+                        </small>
+                    }
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="email">email</label>
                 <input id="email" type="email" formControlName="email" class="form-control">
+                @if (personForm.get('email')?.invalid && personForm.get('email')?.touched) {
+                    <small class="error-msg">
+                        Email invalid
+                    </small>
+                }
             </div>
 
             <div class="form-group">
                 <label for="country">country</label>
-                <select id="country" class="form-control" formControlName="country" (click)="loadCountries()" (change)="loadProvinces()" [compareWith]="compareCountry">
+                <select id="country" class="form-control" formControlName="country" (click)="loadCountries()" (change)="loadProvinces(); emptyCities()" [compareWith]="compareCountry">
                     @for (country of countries; track country.id) {
                     <option [ngValue]="country">{{ country.name }}</option>
                     }
@@ -36,6 +51,11 @@
                     <option [ngValue]="province">{{ province.name }}</option>
                     }
                 </select>
+                @if (personForm.get('province')?.invalid && personForm.get('province')?.touched) {
+                    <small class="error-msg">
+                        Email invalid
+                    </small>
+                }
             </div>
 
             <div class="form-group">

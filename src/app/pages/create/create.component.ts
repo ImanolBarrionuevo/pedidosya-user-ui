@@ -50,9 +50,9 @@ export class CreateComponent {
     private apiService: ApiService,
   ) {
     this.personForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
       birthdate: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
       city: ['', Validators.required],
       province: ['', Validators.required],
       country: ['', Validators.required]

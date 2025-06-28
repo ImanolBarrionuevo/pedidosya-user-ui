@@ -74,6 +74,11 @@ form {
   /* Ajusta la separación entre el texto y el boton*/
 }
 
+.error-msg {
+    color: #000000;
+    font-family: 'Alata', sans-serif;
+}
+
 .form-control {
   background-color: #f4ebd0;
   height: 2rem;

@@ -138,6 +138,11 @@ label {
     filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.4));
 }
 
+.error-msg {
+    color: #ff6e6e;
+    font-family: 'Alata', sans-serif;
+}
+
 .form-row {
     display: flex;
     gap: 1rem;

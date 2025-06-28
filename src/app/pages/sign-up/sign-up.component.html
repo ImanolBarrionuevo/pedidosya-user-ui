@@ -5,13 +5,33 @@
             <form [formGroup]="signUpForm" (ngSubmit)="getDataSignUp()">
                 <div class="form-row">
                     <input type="text" class="form-control flex-fill" id="name" placeholder="name" formControlName="name" required>
+                    @if (signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched) {
+                        <small class="error-msg">
+                            Complete name
+                        </small>
+                    }
                     <input type="text" class="form-control flex-fill" id="surname" placeholder="surname" formControlName="surname" required>
+                    @if (signUpForm.get('surname')?.invalid && signUpForm.get('surname')?.touched) {
+                        <small class="error-msg">
+                            Complete surname
+                        </small>
+                    }
                 </div>
                 <div class="">
                     <input type="email" class="form-control" id="email" placeholder="email" formControlName="email" required>
+                    @if (signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched) {
+                        <small class="error-msg">
+                            Email invalid
+                        </small>
+                    }
                 </div>
                 <div class="">
                     <input type="password" class="form-control" id="password" placeholder="password" formControlName="password" required>
+                    @if (signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched) {
+                        <small class="error-msg">
+                            The password must have more than 5 characters 
+                        </small>
+                    }
                 </div>
                 <button type="submit" class="btn btn-primary d-block mx-auto btn-extra">Sign Up</button>
             </form>

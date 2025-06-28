@@ -75,6 +75,11 @@ form {
     /* Ajusta la separación entre el texto y el boton*/
 }
 
+.error-msg {
+    color: #000000;
+    font-family: 'Alata', sans-serif;
+}
+
 .form-row {
     display: flex;
     gap: 0.8rem;

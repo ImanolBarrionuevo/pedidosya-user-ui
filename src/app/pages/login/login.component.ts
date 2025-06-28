@@ -26,8 +26,8 @@ export class LoginComponent {
 
   async ngOnInit(){
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
 

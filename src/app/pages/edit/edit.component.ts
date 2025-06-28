@@ -21,7 +21,6 @@ export class EditComponent implements OnInit, OnChanges {
   countries: Country[]  = [];
   provinces: Province[] = [];
   cities: City[]        = [];
-
   personForm: FormGroup;
 
   constructor(
@@ -29,9 +28,9 @@ export class EditComponent implements OnInit, OnChanges {
     private apiService: ApiService
   ) {
     this.personForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
       birthDate: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]], //Verificamos que sea un email valido
       country: [null, Validators.required],
       province: [null, Validators.required],
       city: [null, Validators.required]
@@ -91,12 +90,20 @@ export class EditComponent implements OnInit, OnChanges {
     }
   }
 
+  //Vaciamos el listado de cities al seleccionar un pais en edit
+  async emptyCities(){ 
+    this.cities = [];
+  }
+
   closeEdit() {
     this.close.emit();
   }
 
   compareCountry(option?: Country, selected?: Country): boolean {
-    return option?.id === selected?.id;
+    if(option && selected){
+      return option.id === selected.id;
+    }
+    return option === selected;
 }
 
   async confirmEdit() {
