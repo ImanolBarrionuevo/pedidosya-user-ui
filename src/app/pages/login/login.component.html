@@ -3,7 +3,7 @@
     <div class="card shadow p-4">
       <h2 class="text-center mb-4">Login</h2>
       <form [formGroup]="loginForm" (ngSubmit)="getDataLogin()">
-        <div class="">
+        <div class="form-group">
           <input type="email" class="form-control mt-3" id="email" placeholder="email" formControlName="email" required>
           @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
               <small class="error-msg">
@@ -11,7 +11,7 @@
               </small>
           }
         </div>
-        <div class="">
+        <div class="form-group">
           <input type="password" class="form-control mt-4" id="password" placeholder="password"
             formControlName="password" required>
             @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
@@ -34,3 +34,5 @@
     </div>
   </div>
 </div>
+
+

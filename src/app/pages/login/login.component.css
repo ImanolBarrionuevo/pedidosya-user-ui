@@ -75,10 +75,9 @@ form {
 }
 
 .error-msg {
-    color: #000000;
+    color: #192231;
     font-family: 'Alata', sans-serif;
 }
-
 .form-control {
   background-color: #f4ebd0;
   height: 2rem;
@@ -132,4 +131,26 @@ form {
 .text-decoration-underline:hover {
   color: #192231;
   filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.3)) !important;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem; /* espacio entre campos */
+}
+
+.form-group {
+  margin-bottom: 1.8rem; /* restaura el espaciado vertical original entre campos */
+}
+
+.form-control {
+  margin-bottom: 0.2rem; /* pequeño espacio con el mensaje */
+}
+
+.error-msg {
+  margin-top: 0.2rem;
+  margin-bottom: 0; /* el margen ya lo da el form-group */
+  font-size: 0.85rem;
+  display: block;
+  color: var(--color-negro);
 }

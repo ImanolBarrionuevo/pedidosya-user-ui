@@ -132,7 +132,7 @@ export class EditComponent implements OnInit, OnChanges {
   async confirmEdit() {
     if (this.personForm.invalid) {
       this.personForm.markAllAsTouched();
-      this.errorMsg = 'Campos incompletos o incorrectos';
+      this.errorMsg = 'Incomplete or incorrect information';
     }
 
     const { name, birthDate, email, city } = this.personForm.value;

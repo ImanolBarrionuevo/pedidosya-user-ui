@@ -38,7 +38,7 @@ export class SignUpComponent {
   async getDataSignUp(){
     if(this.signUpForm.invalid){
       this.signUpForm.markAllAsTouched();
-      this.errorMsg = 'Campos incompletos o incorrectos';
+      this.errorMsg = 'Incomplete or incorrect information';
     }
     try{
       const {name, surname, email, password} = this.signUpForm.value;

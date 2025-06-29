@@ -66,7 +66,7 @@ export class CreateComponent {
   async createPerson() {
     if (this.personForm.invalid) {
       this.personForm.markAllAsTouched(); //Si es invalido que deberiamos retornar? Mostrar error en la ui??
-      this.errorMsg = 'Campos incompletos o incorrectos'
+      this.errorMsg = 'Incomplete or incorrect information'
     }
     try {
       const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city

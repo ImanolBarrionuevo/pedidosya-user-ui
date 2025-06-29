@@ -36,7 +36,7 @@ export class LoginComponent {
   async getDataLogin(){
     if(this.loginForm.invalid){
       this.loginForm.markAllAsTouched();
-      this.errorMsg = 'Campos incompletos o incorrectos';
+      this.errorMsg = 'Incomplete or incorrect information';
     }
     try {
       const {email, password} = this.loginForm.value

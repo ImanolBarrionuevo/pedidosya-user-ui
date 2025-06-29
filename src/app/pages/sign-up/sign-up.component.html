@@ -4,20 +4,21 @@
             <h2 class="text-center mb-4">Sign Up</h2>
             <form [formGroup]="signUpForm" (ngSubmit)="getDataSignUp()">
                 <div class="form-row">
-                    <input type="text" class="form-control flex-fill" id="name" placeholder="name" formControlName="name" required>
-                    @if (signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched) {
-                        <small class="error-msg">
-                            Complete name
-                        </small>
-                    }
-                    <input type="text" class="form-control flex-fill" id="surname" placeholder="surname" formControlName="surname" required>
-                    @if (signUpForm.get('surname')?.invalid && signUpForm.get('surname')?.touched) {
-                        <small class="error-msg">
-                            Complete surname
-                        </small>
-                    }
+                    <div class="form-group flex-fill me-2">
+                        <input type="text" class="form-control" id="name" placeholder="name" formControlName="name" required>
+                        @if (signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched) {
+                        <small class="error-msg">Complete name</small>
+                        }
+                    </div>
+
+                    <div class="form-group flex-fill ms-2">
+                        <input type="text" class="form-control" id="surname" placeholder="surname" formControlName="surname" required>
+                        @if (signUpForm.get('surname')?.invalid && signUpForm.get('surname')?.touched) {
+                        <small class="error-msg">Complete surname</small>
+                        }
+                    </div>
                 </div>
-                <div class="">
+                <div class="form-group">
                     <input type="email" class="form-control" id="email" placeholder="email" formControlName="email" required>
                     @if (signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched) {
                         <small class="error-msg">
@@ -25,7 +26,7 @@
                         </small>
                     }
                 </div>
-                <div class="">
+                <div class="form-group">
                     <input type="password" class="form-control" id="password" placeholder="password" formControlName="password" required>
                     @if (signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched) {
                         <small class="error-msg">
