@@ -11,6 +11,12 @@
     --color-degrade-gris: #848794;
     --color-negro: #000000;
     --color-blanco: #ffffff;
+    --color-error: #d35c5c;
+}
+
+.error-msg {
+    color: #d35c5c;
+    font-family: 'Alata', sans-serif;
 }
 
 form {
@@ -97,7 +103,7 @@ label {
 
     to {
         opacity: 1;
-        transform: scale(0.8);
+        transform: scale(0.75);
     }
 }
 
@@ -108,7 +114,7 @@ label {
 @keyframes fadeOutModal {
     from {
         opacity: 1;
-        transform: scale(0.8);
+        transform: scale(0.75);
     }
 
     to {
@@ -135,11 +141,6 @@ label {
 
 .close-btn:hover {
     filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.4));
-}
-
-.error-msg {
-    color: #ff6e6e;
-    font-family: 'Alata', sans-serif;
 }
 
 .form-row {

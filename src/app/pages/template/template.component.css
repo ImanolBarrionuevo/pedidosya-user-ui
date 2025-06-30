@@ -21,6 +21,7 @@
     background: linear-gradient(to right, #e17e7e, #ff6e6e);
     font-family: 'Alata', sans-serif;
     height: 3.5rem;
+    z-index: 900;
 }
 
 .nav-link,
