@@ -1,11 +1,16 @@
+/*Definición de colores*/
 :root {
-  --color-primario: #494e6b;
-  --color-secundario: #98878f;
-  --color-accion: #e17e7e;
-  --color-fondo: #192231;
-  --color-texto: #f4ebd0;
-  --color-blanco: #ffffff;
+  --color-azul: #494e6b;
+  --color-apagado: #98878f;
+  --color-rosa: #e17e7e;
+  --color-degrade-rosa: #ff6e6e;
+  --color-oscuro: #192231;
+  --color-crema: #f4ebd0;
+  --color-degrade-crema: #fff8e5;
+  --color-gris: #a6a6a6;
+  --color-degrade-gris: #848794;
   --color-negro: #000000;
+  --color-blanco: #ffffff;
 }
 
 .container-fluid {
@@ -27,7 +32,6 @@
 
 .btn-create {
   margin-right: 0.5rem;
-  /*Separación con el boton de edit*/
   background-image: url("/assets/icons/icono_boton_add_person.svg");
   transition: filter 0.3s ease-in-out !important;
 }

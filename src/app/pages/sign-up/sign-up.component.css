@@ -1,11 +1,16 @@
+/*Definición de colores*/
 :root {
-    --color-primario: #494e6b;
-    --color-secundario: #98878f;
-    --color-accion: #e17e7e;
-    --color-fondo: #192231;
-    --color-texto: #f4ebd0;
-    --color-blanco: #ffffff;
+    --color-azul: #494e6b;
+    --color-apagado: #98878f;
+    --color-rosa: #e17e7e;
+    --color-degrade-rosa: #ff6e6e;
+    --color-oscuro: #192231;
+    --color-crema: #f4ebd0;
+    --color-degrade-crema: #fff8e5;
+    --color-gris: #a6a6a6;
+    --color-degrade-gris: #848794;
     --color-negro: #000000;
+    --color-blanco: #ffffff;
 }
 
 #email::placeholder,
@@ -15,7 +20,6 @@
 
 form {
     margin: 0.8rem;
-    /* Agrega separación interna */
 }
 
 /* Elimina bordes de botón, formulario y ventana rosa */
@@ -48,8 +52,7 @@ form {
 }
 
 .card.shadow.p-4 {
-    transform: scale(1.1);
-    /* transform:scale Escala todo el contenido de la tarjeta rosa */
+    transform: scale(1);
     border-radius: 2.2rem;
     background: linear-gradient(to right, #e17e7e, #fd6666);
     box-shadow: inset 0 0.3125rem 1rem rgba(0, 0, 0, 0.2) !important;
@@ -72,7 +75,6 @@ form {
 
 .text-center.mt-1 button {
     margin-left: -0.5rem;
-    /* Ajusta la separación entre el texto y el boton*/
 }
 
 .error-msg {
@@ -87,7 +89,6 @@ form {
 
 .d-flex .form-control {
     width: 100%;
-    /* Hace que ambos campos se ajusten dentro del contenedor */
 }
 
 .form-control {
@@ -146,17 +147,17 @@ form {
 }
 
 .form-group {
-  margin-bottom: 1.8rem; /* restaura el espaciado vertical original entre campos */
+    margin-bottom: 1.8rem;
 }
 
 .form-control {
-  margin-bottom: 0.2rem; /* pequeño espacio con el mensaje */
+    margin-bottom: 0.2rem;
 }
 
 .error-msg {
-  margin-top: 0.2rem;
-  margin-bottom: 0; /* el margen ya lo da el form-group */
-  font-size: 0.85rem;
-  display: block;
-  color: var(--color-negro);
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    display: block;
+    color: #192231;
 }

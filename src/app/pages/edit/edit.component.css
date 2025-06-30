@@ -1,13 +1,16 @@
+/*Definición de colores*/
 :root {
-    --color-primario: #494e6b;
-    --color-secundario: #98878f;
-    --color-accion: #e17e7e;
-    --color-fondo: #192231;
-    --color-texto: #f4ebd0;
-    --color-blanco: #ffffff;
+    --color-azul: #494e6b;
+    --color-apagado: #98878f;
+    --color-rosa: #e17e7e;
+    --color-degrade-rosa: #ff6e6e;
+    --color-oscuro: #192231;
+    --color-crema: #f4ebd0;
+    --color-degrade-crema: #fff8e5;
     --color-gris: #a6a6a6;
+    --color-degrade-gris: #848794;
     --color-negro: #000000;
-    --color-degrade: #848794;
+    --color-blanco: #ffffff;
 }
 
 form {
@@ -28,7 +31,6 @@ label {
 
 .modal-container {
     position: fixed;
-    /* El position mantiene el modal sobre la pantalla */
     top: 0;
     left: 0;
     width: 100vw;
@@ -37,7 +39,6 @@ label {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0);
     z-index: 1000;
-    /* El z-index asegura que esté por encima de otros elementos */
     display: flex;
 }
 
@@ -74,12 +75,10 @@ label {
     position: relative;
     width: 90%;
     max-width: 45rem;
-    /*Largo de la ventana Add Person*/
     background: linear-gradient(to right, #a6a6a6, #8e9099);
     padding: 1.5rem;
     border-radius: 2.2rem;
     transform: scale(0.6);
-    /*Escala de la ventana Add Person*/
     box-shadow: 0 0.3125rem 1rem rgba(0, 0, 0, 0.15) !important;
     opacity: 0;
     display: block;
@@ -146,7 +145,6 @@ label {
 .form-row {
     display: flex;
     gap: 1rem;
-    /* Espacio entre los formularios */
 }
 
 .form-group {
@@ -188,7 +186,6 @@ select.form-control {
     transition: box-shadow 0.3s ease-in-out;
     max-height: 200px;
     overflow-y: auto;
-    /* El overflow-y agrega scroll si hay muchas opciones */
     text-overflow: unset;
 }
 
@@ -203,7 +200,6 @@ select.form-control option {
 
 .d-flex.justify-content-center {
     gap: 1rem;
-    /* El gap ajusta la distancia entre los botones */
 }
 
 .btn-base {
