@@ -2,27 +2,60 @@
   <div class="container py-5">
     <!-- Título -->
     <div class="text-center mb-5 title">
-      <h1 class="fw-bold">Explore the best options</h1>
-      <p class="text-muted">Discover the most popular nearby</p>
+      <h1 class="fw-bold">Explore the best options!</h1>
+      <p class="text-muted">Ready to pick your next bite?</p>
     </div>
 
     <!-- Grid de Cards -->
+    <!-- Comidas -->
+    <h2 class="section-title">Time to eat!</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      @for(item of items;track $index){
+      @for (item of foodItems; track $index) {
       <div class="col">
         <div class="card h-100 shadow-sm">
-          <img [src]="item.image" class="card-img-top">
+          <img [src]="item.image" class="card-img-top" />
           <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text text-muted">{{ item.description }}</p>
           </div>
-          <div class="card-footer bg-white border-top-0">
-            <button class="btn btn-primary w-100">See more</button>
+        </div>
+      </div>
+      }
+    </div>
+    <!-- Postres -->
+    <h2 class="section-title">Just one more bite...</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      @for (item of dessertItems; track $index) {
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img [src]="item.image" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text text-muted">{{ item.description }}</p>
           </div>
         </div>
       </div>
       }
-
     </div>
+
+    <!-- Banner -->
+    <div class="promo-banner">
+      <div class="promo-inner container-xl">
+        <div class="row align-items-center">
+          <div class="col-md-7 text-start">
+            <h2 class="promo-title">Everything you need, straight to your door</h2>
+            <p class="promo-text">
+              From hearty meals to sweet cravings, we've got you covered. Whether it’s lunch for one, dinner with
+              friends, or a quick snack fix, everything you need is just a few taps away. Delivered fast, with care,
+              and always delicious.
+            </p>
+          </div>
+          <div class="promo-image-wrapper col-md-5 text-end">
+            <img src="/assets/images/food.png" alt="Delicious food" class="promo-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

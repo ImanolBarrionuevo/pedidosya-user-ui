@@ -9,7 +9,10 @@ import { GlobalStatusService } from '../../services/global-status.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  items: Array<{ image: string; name: string; description: string }> = [];
+  items: Array<{ image: string; name: string; description: string; category: string }> = [];
+  foodItems: typeof this.items = [];
+  dessertItems: typeof this.items = [];
+
   constructor(
     private readonly apiService: ApiService,
     private readonly globalStatusService: GlobalStatusService
@@ -21,7 +24,8 @@ export class HomeComponent implements OnInit {
   async initialization(): Promise<void> {
     this.globalStatusService.setLoading(true);
     const data = await this.apiService.getData();
-    this.items = data;
+    this.foodItems = data.filter(item => item.category === 'food');
+    this.dessertItems = data.filter(item => item.category === 'dessert');
     this.globalStatusService.setLoading(false);
   }
 }
