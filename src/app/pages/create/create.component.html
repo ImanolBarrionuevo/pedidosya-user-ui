@@ -85,16 +85,18 @@
                 <button type="submit" class="btn-base btn-confirm">Confirm</button>
                 <button type="button" class="btn-base btn-cancel" (click)="closeCreate()">Cancel</button>
             </div>
-            @if (successMsg) {
-            <div class="alert alert-success">
-                {{ successMsg }}
-            </div>
-            }
-            @if (errorMsg) {
-            <div class="alert alert-danger">
-                {{ errorMsg }}
-            </div>
-            }
         </form>
     </div>
+
+    @if (successMsg) {
+    <div class="alert alert-success text-center">
+        {{ successMsg }}
+    </div>
+    }
+    @if (errorMsg) {
+    <div class="alert alert-danger text-center">
+        {{ errorMsg }}
+    </div>
+    }
+
 </div>

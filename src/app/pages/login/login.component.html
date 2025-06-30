@@ -26,11 +26,13 @@
         don’t have an account?
         <button (click)="goToSignUp()" class="btn btn-link text-decoration-underline"> sign up</button>
       </div>
-      @if (errorMsg) {
-      <div class="alert alert-danger">
-        {{ errorMsg }}
-      </div>
-      }
     </div>
+
+    @if (errorMsg) {
+    <div class="alert alert-danger">
+      {{ errorMsg }}
+    </div>
+    }
+
   </div>
 </div>

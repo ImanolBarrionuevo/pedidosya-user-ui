@@ -13,6 +13,29 @@
   --color-blanco: #ffffff;
 }
 
+.error-msg {
+  color: #192231;
+  font-family: 'Alata', sans-serif;
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  display: block;
+}
+
+.alert {
+  margin-top: 3rem;
+  color: #f4ebd0;
+  font-family: 'Alata', sans-serif;
+  border-radius: 1.25rem;
+  border: none;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+}
+
+.alert-danger {
+  background: linear-gradient(to right, #e17e7e, #ff6e6e);
+}
+
 #email::placeholder,
 #password::placeholder {
   color: #494e6b;
@@ -46,6 +69,10 @@ form {
   padding-right: 2rem;
 }
 
+.container {
+  flex-direction: column;
+}
+
 .card {
   width: 90%;
   max-width: 34rem;
@@ -75,11 +102,6 @@ form {
 
 .text-center.mt-1 button {
   margin-left: -0.5rem;
-}
-
-.error-msg {
-  color: #192231;
-  font-family: 'Alata', sans-serif;
 }
 
 .form-control {
@@ -145,12 +167,4 @@ form {
 
 .form-control {
   margin-bottom: 0.2rem;
-}
-
-.error-msg {
-  margin-top: 0.2rem;
-  margin-bottom: 0;
-  font-size: 0.85rem;
-  display: block;
-  color: #192231;
 }

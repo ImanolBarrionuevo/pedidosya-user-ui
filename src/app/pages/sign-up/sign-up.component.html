@@ -44,11 +44,13 @@
                 already have an account?
                 <button (click)="goToLogin()" class="btn btn-link text-decoration-underline"> login</button>
             </div>
-            @if (errorMsg) {
-            <div class="alert alert-danger">
-                {{ errorMsg }}
-            </div>
-            }
         </div>
+
+        @if (errorMsg) {
+        <div class="alert alert-danger">
+            {{ errorMsg }}
+        </div>
+        }
+
     </div>
 </div>
