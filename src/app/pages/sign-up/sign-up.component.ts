@@ -26,7 +26,7 @@ export class SignUpComponent {
     this.router.navigate(['/login']);
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.signUpForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
       surname: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
@@ -35,15 +35,15 @@ export class SignUpComponent {
     })
   }
 
-  async getDataSignUp(){
-    if(this.signUpForm.invalid){
+  async getDataSignUp() {
+    if (this.signUpForm.invalid) {
       this.signUpForm.markAllAsTouched();
       this.errorMsg = 'Incomplete or incorrect information';
     }
-    try{
-      const {name, surname, email, password} = this.signUpForm.value;
-      await this.apiService.signUp(name,surname,email,password);
-      await this.router.navigate(['/persons']);
+    try {
+      const { name, surname, email, password } = this.signUpForm.value;
+      await this.apiService.signUp(name, surname, email, password);
+      await this.router.navigate(['/home']);
     } catch {
       console.error("Fallo che"); //Que error debemos poner?
     }

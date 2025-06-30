@@ -10,18 +10,18 @@ import { canActivateFn } from './services/auth.guard';
 
 export const routes: Routes = [
   {
-    path: '', component: TemplateComponent, children: [
-      {
-        path: 'home',
-        component: HomeComponent,
-      },
-      
-  { path: 'persons', component: PersonsComponent, },
-  { path: 'create', component: CreateComponent },
-  { path: 'edit', component: EditComponent },
-    ], canActivate: [canActivateFn]
+    path: '',
+    component: TemplateComponent,
+    canActivate: [canActivateFn],
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'persons', component: PersonsComponent },
+      { path: 'create', component: CreateComponent },
+      { path: 'edit', component: EditComponent },
+    ]
   },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }, // Redirige a home si la ruta no existe
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

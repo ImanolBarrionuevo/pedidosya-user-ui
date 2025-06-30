@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {ApiService} from '../../services/api.service'
+import { ApiService } from '../../services/api.service'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -17,8 +17,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private apiService: ApiService,
-    
-  ) {}
+
+  ) { }
 
   errorMsg: string = ''
 
@@ -26,23 +26,23 @@ export class LoginComponent {
     this.router.navigate(['/sign-up']);
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
   }
 
-  async getDataLogin(){
-    if(this.loginForm.invalid){
+  async getDataLogin() {
+    if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       this.errorMsg = 'Incomplete or incorrect information';
     }
     try {
-      const {email, password} = this.loginForm.value
+      const { email, password } = this.loginForm.value
       await this.apiService.login(email, password)
-      await this.router.navigate(['/persons'])
-    }  catch(e) {
+      await this.router.navigate(['/home'])
+    } catch (e) {
       console.error(e);
     }
   }
