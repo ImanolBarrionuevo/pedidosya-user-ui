@@ -44,8 +44,8 @@ export class SignUpComponent {
       const { name, surname, email, password } = this.signUpForm.value;
       await this.apiService.signUp(name, surname, email, password);
       await this.router.navigate(['/home']);
-    } catch {
-      console.error("Fallo che"); //Que error debemos poner?
+    } catch(error) {
+      console.error("Algo salió mal", error);
     }
   }
 }

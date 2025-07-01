@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { City, Country, Province } from '../../interfaces/person-interface';
+import { City, Country, Person, Province } from '../../interfaces/person-interface';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -33,6 +33,7 @@ export class CreateComponent {
   }
 
   @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
+  @Output() saved = new EventEmitter<Person>(); // Evento para guardar persona creada
 
   personForm: FormGroup;
   cities: City[] = [];
@@ -70,7 +71,8 @@ export class CreateComponent {
     }
     try {
       const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city
-      await this.apiService.createPersons(name, birthdate, email, city.id);
+      const newPerson = await this.apiService.createPersons(name, birthdate, email, city.id);
+      this.saved.emit(newPerson)
       this.errorMsg = ''
       this.successMsg = 'Persona creada correctamente';
       setTimeout(() => this.close.emit(), 2000)

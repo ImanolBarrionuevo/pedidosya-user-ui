@@ -7,14 +7,14 @@
         Create
       </button>
       @if (showCreate) {
-      <app-create-person [showCreate]="showCreate" (close)="closeCreate()">
+      <app-create-person [showCreate]="showCreate" (close)="closeCreate()" (saved)="onPersonCreated($event)">
       </app-create-person>
       }
 
       <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.active-edit]="editMode"> Edit
       </button>
       @if (showEdit && selectedPerson) {
-      <app-edit-person [showEdit]="showEdit" [person]="selectedPerson" (close)="closeEdit()">
+      <app-edit-person [showEdit]="showEdit" [person]="selectedPerson" (close)="closeEdit()" (saved)="onPersonSaved($event)">
       </app-edit-person>
       }
     </div>

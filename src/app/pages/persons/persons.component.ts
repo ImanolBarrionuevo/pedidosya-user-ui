@@ -122,9 +122,28 @@ export class PersonsComponent implements OnInit {
   }
 
   onPersonSaved(updated: Person) {
-    const idx = this.persons.findIndex(p => p.id === updated.id);
-    if (idx > -1) this.persons[idx] = updated;
+    // ACtualizamos la persona en la lista de todas las personas
+    const idxAll = this.allPersons.findIndex(p => p.id === updated.id);
+    if (idxAll > -1) {
+      this.allPersons[idxAll] = updated;
+    }
+
+    // Actualizamos el slice actual de persons
+    this.refreshView();
+
+    // Cerramos el modal de edit
     this.showEdit = false;
     this.selectedPerson = null;
+  }
+
+  onPersonCreated(newPerson: Person){
+    // Agregamos la persona al final de la lista de todas las personas
+    this.allPersons.push(newPerson);
+    // Calculamos el totalPages nuevo
+    this.totalPages = Math.ceil(this.allPersons.length / this.pageSize);
+    // Actualizamos el slice actual de persons
+    this.refreshView();
+    // Cerramos el modal
+    this.showCreate = false;
   }
 }
