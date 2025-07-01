@@ -17,14 +17,14 @@
   background: linear-gradient(to right, #192231, #494e6b);
   padding-left: 2rem;
   padding-right: 2rem;
-  min-height: calc(100vh - 3.5rem) !important;
+  min-height: 100vh;
 }
 
 .mb-0 {
-  color: #ffffff;
+  color: #f4ebd0;
   font-family: 'League Spartan', sans-serif;
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0;
   padding: 0;
   line-height: 3rem;
@@ -71,7 +71,7 @@
   width: auto;
   display: inline-block;
   border-radius: 2rem;
-  color: #ffffff;
+  color: #494e6b;
   background-color: #e17e7e;
   margin-top: 3.5rem;
   font-family: 'Alata', sans-serif;
