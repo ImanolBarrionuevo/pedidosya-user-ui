@@ -136,7 +136,7 @@ export class PersonsComponent implements OnInit {
     this.selectedPerson = null;
   }
 
-  onPersonCreated(newPerson: Person){
+  onPersonCreated(newPerson: Person) {
     // Agregamos la persona al final de la lista de todas las personas
     this.allPersons.push(newPerson);
     // Calculamos el totalPages nuevo
