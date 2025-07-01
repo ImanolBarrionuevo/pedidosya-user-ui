@@ -219,6 +219,7 @@ td:nth-child(8) {
   border: none !important;
   color: #f4ebd0;
   font-family: 'Alata', sans-serif;
+  transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .pagination .page-item.active .page-link {
@@ -230,6 +231,19 @@ td:nth-child(8) {
 .pagination .page-link:focus {
   outline: none;
   box-shadow: none;
+}
+
+.pagination .page-link:hover {
+  background: transparent !important;
+  border: none !important;
+  color: #e17e7e !important;
+}
+
+.pagination .page-item.disabled .page-link {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /*Scrollbar*/
