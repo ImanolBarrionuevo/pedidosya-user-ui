@@ -102,6 +102,8 @@ export class EditComponent implements OnInit, OnChanges {
 
   async loadProvinces() {
     try {
+      // Bloqueamos la selección de city mientras no haya una selección de province
+      this.personForm.get('city')?.disable();
       const selectedCountry = this.personForm.get('country')?.value;
       this.provinces = await this.apiService.getProvincesByCountry(selectedCountry.id)
     } catch (error) {
@@ -111,6 +113,7 @@ export class EditComponent implements OnInit, OnChanges {
   
   async loadCities() {
     try {
+      this.personForm.get('city')?.enable();
       const selectedProvince = this.personForm.get('province')?.value;
       this.cities = await this.apiService.getCitiesByProvince(selectedProvince.id)
     } catch (error) {

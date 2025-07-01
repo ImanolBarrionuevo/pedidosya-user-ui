@@ -61,6 +61,9 @@ export class CreateComponent {
   }
 
   ngOnInit() {
+    //Bloqueamos la selección de provincia y ciudad
+    this.personForm.get('province')?.disable();
+    this.personForm.get('city')?.disable();
     this.getCountries()
   }
 
@@ -68,6 +71,7 @@ export class CreateComponent {
     if (this.personForm.invalid) {
       this.personForm.markAllAsTouched(); //Si es invalido que deberiamos retornar? Mostrar error en la ui??
       this.errorMsg = 'Incomplete or incorrect information'
+      return;
     }
     try {
       const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city
@@ -93,18 +97,22 @@ export class CreateComponent {
     try {
       //Vaciamos el listado de ciudades al cargar las provincias para evitar que al cambiar de pais quede guardada la ciudad anterior
       this.cities = []
+      this.personForm.get('city')?.disable();
+      //Habilitamos la opción de selección de province
+      this.personForm.get('province')?.enable();
       const selectedCountry = this.personForm.get('country')?.value;
       this.provinces = await this.apiService.getProvincesByCountry(selectedCountry.id)
       this.personForm.get('province')!.reset(null);
       this.personForm.get('province')!.markAsTouched();
     } catch (error) {
-      console.log(error)
+      console.error('Algo salió mal',error)
     }
   }
 
   async getCities() {
     try {
       const selectedProvince = this.personForm.get('province')?.value;
+      this.personForm.get('city')?.enable();
       this.cities = await this.apiService.getCitiesByProvince(selectedProvince.id)
       this.personForm.get('city')!.reset(null);
       this.personForm.get('city')!.markAsTouched();
