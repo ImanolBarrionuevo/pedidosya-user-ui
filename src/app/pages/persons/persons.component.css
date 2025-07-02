@@ -14,10 +14,19 @@
 }
 
 .container-fluid {
+  flex-grow: 1;
+  min-height: calc(100vh - 16.13rem);
   background: linear-gradient(to right, #192231, #494e6b);
   padding-left: 2rem;
   padding-right: 2rem;
-  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+:host {
+  /*Funciona para evitar la linea blanca arriba del footer*/
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 /*Título*/
@@ -83,7 +92,6 @@
 /*Tabla de Personas*/
 .card.shadow.p-4 {
   width: 100vw;
-  height: 74vh;
   background-color: #f4ebd0;
   border-radius: 2.2rem;
   box-shadow: inset 0 0.3125rem 1rem rgba(0, 0, 0, 0.2) !important;
@@ -220,6 +228,7 @@ td:nth-child(8) {
   color: #f4ebd0;
   font-family: 'Alata', sans-serif;
   transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  margin-bottom: 2.5rem;
 }
 
 .pagination .page-item.active .page-link {
@@ -285,4 +294,10 @@ td:nth-child(8) {
 
 .rotate-180 {
   transform: rotate(180deg);
+}
+
+.th-sort-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }

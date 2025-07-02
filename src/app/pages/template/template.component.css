@@ -59,7 +59,7 @@
 .footer {
     background: linear-gradient(to right, #e17e7e, #ff6e6e);
     font-family: 'Alata', sans-serif;
-    margin-top: auto;
+    margin-top: 0;
 }
 
 .footer-link {

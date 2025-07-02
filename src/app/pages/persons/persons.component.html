@@ -29,9 +29,11 @@
           <thead class="custom-table-header">
             <tr>
               <th scope="col" (click)="sortById()" class="sortable">
-                Id
-                <img src="/assets/icons/icono_flecha_abajo.svg" alt="Sort" class="sort-icon ms-1"
-                  [class.rotate-180]="!isAscendingId" />
+                <span class="th-sort-wrapper">
+                  Id
+                  <img src="/assets/icons/icono_flecha_abajo.svg" alt="Sort" class="sort-icon"
+                    [class.rotate-180]="!isAscendingId" />
+                </span>
               </th>
               <th scope="col">Name</th>
               <th scope="col">Birthdate</th>
