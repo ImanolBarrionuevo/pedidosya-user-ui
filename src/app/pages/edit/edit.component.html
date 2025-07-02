@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label for="province">province</label>
                 <select id="province" class="form-control" formControlName="province" (change)="onProvinceChange()"
-                    [compareWith]="compareById">
+                    [compareWith]="compareById" [ngClass]="{ 'disabled-select': !personForm.get('province')?.enabled }">
                     @for (province of provinces; track province.id) {
                     <option [ngValue]="province">{{ province.name }}</option>
                     }
@@ -63,7 +63,8 @@
 
             <div class="form-group">
                 <label for="city">city</label>
-                <select id="city" class="form-control" formControlName="city" [compareWith]="compareById">
+                <select id="city" class="form-control" formControlName="city" [compareWith]="compareById"
+                    [ngClass]="{ 'disabled-select': !personForm.get('city')?.enabled }">
                     @for (city of cities; track city.id) {
                     <option [ngValue]="city">{{ city.name }}</option>
                     }
