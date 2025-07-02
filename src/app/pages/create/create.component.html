@@ -18,11 +18,11 @@
 
                 <div class="form-group">
                     <label for="birthdate">birthdate</label>
-                    <input id="birthdate" type="date" formControlName="birthdate" class="form-control"
+                    <input id="birthdate" type="date" formControlName="birthDate" class="form-control"
                         (change)="validateDate()">
-                    @if (personForm.get('birthdate')?.invalid && personForm.get('birthdate')?.touched) {
+                    @if (personForm.get('birthDate')?.invalid && personForm.get('birthDate')?.touched) {
                     <small class="error-msg">
-                        Invalid birthdate
+                        Invalid birthDate
                     </small>
                     }
                 </div>

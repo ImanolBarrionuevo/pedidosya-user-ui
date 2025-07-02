@@ -48,7 +48,7 @@ export class CreateComponent {
   ) {
     this.personForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
-      birthdate: ['', Validators.required],
+      birthDate: ['', Validators.required],
       email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
       city: ['', Validators.required],
       province: ['', Validators.required],
@@ -105,7 +105,7 @@ export class CreateComponent {
       this.personForm.get('province')!.reset(null);
       this.personForm.get('province')!.markAsTouched();
     } catch (error) {
-      console.error('Algo salió mal',error)
+      console.error('Algo salió mal', error)
     }
   }
 
@@ -121,13 +121,24 @@ export class CreateComponent {
     }
   }
 
-  async validateDate(){
-    const currentDate = new Date();
-    const selectDate = new Date(await this.personForm.get('birthdate')?.value); //Es de tipo string
-    if(currentDate < selectDate){
-      this.personForm.get('birthdate')?.reset();
-      this.personForm.get('birthdate')?.markAsTouched();
+  getAge(birthDate: Date): number {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const hasHadBirthdayThisYear = today.getMonth() > birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() > birthDate.getDate());
+    if (!hasHadBirthdayThisYear) {
+      age--; //Si la persona no cumplio años este año, se le resta uno a la edad
+    }
+    return age;
+  }
+
+  validateDate() {
+    const birthDate = new Date(this.personForm.get('birthDate')?.value);
+    const today = new Date();
+    const age = this.getAge(birthDate);
+
+    if (birthDate > today || age < 18) {
+      this.personForm.get('birthDate')?.reset();
+      this.personForm.get('birthDate')?.markAsTouched();
     }
   }
 }
-

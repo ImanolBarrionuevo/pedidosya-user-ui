@@ -18,9 +18,9 @@ export class EditComponent implements OnInit, OnChanges {
   @Output() close = new EventEmitter<void>();
   @Output() saved = new EventEmitter<Person>();
 
-  countries: Country[]  = [];
+  countries: Country[] = [];
   provinces: Province[] = [];
-  cities: City[]        = [];
+  cities: City[] = [];
   personForm: FormGroup;
   successMsg: string = ''
   errorMsg: string = ''
@@ -83,7 +83,7 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   //Función ejecutada al seleccionar una provincia distinta
-  onProvinceChange(){
+  onProvinceChange() {
     //Cargamos las ciudades
     this.loadCities()
 
@@ -110,7 +110,7 @@ export class EditComponent implements OnInit, OnChanges {
       console.log(error)
     }
   }
-  
+
   async loadCities() {
     try {
       this.personForm.get('city')?.enable();
@@ -126,11 +126,11 @@ export class EditComponent implements OnInit, OnChanges {
   }
 
   compareById(option?: Country, selected?: Country): boolean { //Country ya que usamos el name CHEQUEAR
-    if(option && selected){
+    if (option && selected) {
       return option.id === selected.id;
     }
     return option === selected;
-}
+  }
 
   async confirmEdit() {
     if (this.personForm.invalid) {
@@ -156,10 +156,22 @@ export class EditComponent implements OnInit, OnChanges {
     }
   }
 
-  async validateDate(){
-    const currentDate = new Date();
-    const selectDate = new Date(await this.personForm.get('birthDate')?.value);
-    if(currentDate < selectDate){
+  getAge(birthDate: Date): number {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const hasHadBirthdayThisYear = today.getMonth() > birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() > birthDate.getDate());
+    if (!hasHadBirthdayThisYear) {
+      age--; //Si la persona no cumplio años este año, se le resta uno a la edad
+    }
+    return age;
+  }
+
+  validateDate() {
+    const birthDate = new Date(this.personForm.get('birthDate')?.value);
+    const today = new Date();
+    const age = this.getAge(birthDate);
+
+    if (birthDate > today || age < 18) {
       this.personForm.get('birthDate')?.reset();
       this.personForm.get('birthDate')?.markAsTouched();
     }

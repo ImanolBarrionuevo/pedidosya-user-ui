@@ -1,4 +1,5 @@
 <div class="modal-container" [ngClass]="{ 'active': showEdit }">
+
     <div class="modal-content" [ngClass]="{ 'active': showEdit }">
         <button class="close-btn" (click)="closeEdit()"></button>
         <h2 class="text-center mb-2">Edit Person</h2>
@@ -20,7 +21,7 @@
                         (change)="validateDate()">
                     @if (personForm.get('birthDate')?.invalid && personForm.get('birthDate')?.touched) {
                     <small class="error-msg">
-                        Invalid birthdate
+                        Invalid birthDate
                     </small>
                     }
                 </div>
