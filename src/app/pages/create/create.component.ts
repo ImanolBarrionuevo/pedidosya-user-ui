@@ -74,8 +74,8 @@ export class CreateComponent {
       return;
     }
     try {
-      const { name, birthdate, email, city } = this.personForm.value; //verificar como sacar id de city
-      const newPerson = await this.apiService.createPersons(name, birthdate, email, city.id);
+      const { name, birthDate, email, city } = this.personForm.value; //verificar como sacar id de city
+      const newPerson = await this.apiService.createPersons(name, birthDate, email, city.id);
       this.saved.emit(newPerson)
       this.errorMsg = ''
       this.successMsg = 'Persona creada correctamente';
