@@ -43,6 +43,7 @@ export class LoginComponent {
       await this.apiService.login(email, password)
       await this.router.navigate(['/home'])
     } catch (e) {
+      this.errorMsg = 'Incomplete or incorrect information';
       console.error(e);
     }
   }
