@@ -19,6 +19,7 @@ export class CreateComponent {
     if (this._showCreate === value) return;
     this._showCreate = value;
     if (this._showCreate) {
+      document.body.classList.add('modal-open'); // Esta línea sirve para bloquear el scroll mientras el edit está abierto
       setTimeout(() => {
         const modalContainer = document.querySelector('.modal-container') as HTMLElement;
         if (modalContainer && !modalContainer.classList.contains('active')) {
@@ -58,6 +59,7 @@ export class CreateComponent {
 
   closeCreate() {
     this.close.emit();
+    document.body.classList.remove('modal-open');
   }
 
   ngOnInit() {

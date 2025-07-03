@@ -43,7 +43,7 @@ export class EditComponent implements OnInit, OnChanges {
     // Si ya trae persona, parchea form
     if (this.person) {
       this.patchForm();
-      this.countries = [this.person.city.province.country] //Cargamos countries unicamente con el country de la persona
+      this.countries = [this.person.city.province.country] // Cargamos countries unicamente con el country de la persona
       this.loadProvinces();
       this.loadCities();
     }
@@ -52,6 +52,11 @@ export class EditComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['person'] && this.person) {
       this.patchForm();
+    }
+    if (changes['showEdit']) { // Esta parte sirve para bloquear el scroll mientras el edit está abierto
+      if (this.showEdit) {
+        document.body.classList.add('modal-open');
+      }
     }
   }
 
@@ -123,6 +128,7 @@ export class EditComponent implements OnInit, OnChanges {
 
   closeEdit() {
     this.close.emit();
+    document.body.classList.remove('modal-open');
   }
 
   compareById(option?: Country, selected?: Country): boolean { //Country ya que usamos el name CHEQUEAR

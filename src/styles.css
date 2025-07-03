@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+body.modal-open {
+    /*Cuando está abierto un modal, se bloquea el scroll*/
+    overflow: hidden;
+}
