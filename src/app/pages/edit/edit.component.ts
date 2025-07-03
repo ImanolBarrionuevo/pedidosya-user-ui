@@ -144,6 +144,7 @@ export class EditComponent implements OnInit, OnChanges {
     if (this.personForm.invalid) {
       this.personForm.markAllAsTouched();
       this.errorMsg = 'Incomplete or incorrect information';
+      return;
     }
 
     const { name, birthDate, email, city } = this.personForm.value;
@@ -157,7 +158,7 @@ export class EditComponent implements OnInit, OnChanges {
       });
       this.saved.emit(updated);
       this.errorMsg = ''
-      this.successMsg = 'Persona editada correctamente';
+      this.successMsg = 'Person successfully updated';
       setTimeout(() => {
         document.body.classList.remove('modal-open');
         this.close.emit();

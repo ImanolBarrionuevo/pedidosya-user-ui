@@ -82,7 +82,7 @@ export class CreateComponent {
       const newPerson = await this.apiService.createPersons(name, birthDate, email, city.id);
       this.saved.emit(newPerson)
       this.errorMsg = ''
-      this.successMsg = 'Persona creada correctamente';
+      this.successMsg = 'Person successfully created';
       setTimeout(() => {
         document.body.classList.remove('modal-open');
         this.close.emit();
