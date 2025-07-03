@@ -26,6 +26,8 @@ export class CreateComponent {
           modalContainer.classList.add('active');
         }
       }, 50);
+    } else {
+      document.body.classList.remove('modal-open');
     }
   }
 
@@ -81,7 +83,11 @@ export class CreateComponent {
       this.saved.emit(newPerson)
       this.errorMsg = ''
       this.successMsg = 'Persona creada correctamente';
-      setTimeout(() => this.close.emit(), 2000)
+      setTimeout(() => {
+        document.body.classList.remove('modal-open');
+        this.close.emit();
+      }, 2000);
+
     } catch (error) {
       console.error(error); //Que error debemos poner?
     }

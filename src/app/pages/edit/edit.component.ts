@@ -56,6 +56,8 @@ export class EditComponent implements OnInit, OnChanges {
     if (changes['showEdit']) { // Esta parte sirve para bloquear el scroll mientras el edit está abierto
       if (this.showEdit) {
         document.body.classList.add('modal-open');
+      } else {
+        document.body.classList.remove('modal-open');
       }
     }
   }
@@ -156,7 +158,11 @@ export class EditComponent implements OnInit, OnChanges {
       this.saved.emit(updated);
       this.errorMsg = ''
       this.successMsg = 'Persona editada correctamente';
-      setTimeout(() => this.close.emit(), 2000)
+      setTimeout(() => {
+        document.body.classList.remove('modal-open');
+        this.close.emit();
+      }, 2000);
+
     } catch (err) {
       console.error('Algo salió mal', err);
     }
