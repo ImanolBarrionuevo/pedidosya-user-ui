@@ -1,6 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*---------------------- Colores ----------------------*/
+:root {
+    --color-azul: #494e6b;
+    --color-apagado: #98878f;
+    --color-rosa: #e17e7e;
+    --color-degrade-rosa: #ff6e6e;
+    --color-oscuro: #192231;
+    --color-crema: #f4ebd0;
+    --color-degrade-crema: #fff8e5;
+    --color-gris: #a6a6a6;
+    --color-degrade-gris: #848794;
+    --color-degrade-gris-modal: #8e9099;
+    --color-error: #d35c5c;
+}
+
+/*---------------------- Configuración general para los modal  ----------------------*/
+/*Cuando está abierto un modal, se bloquea el scroll*/
 body.modal-open {
-    /*Cuando está abierto un modal, se bloquea el scroll*/
     overflow: hidden;
 }

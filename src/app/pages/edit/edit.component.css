@@ -1,33 +1,17 @@
-/*---------------------- Colores ----------------------*/
-:root {
-    --color-azul: #494e6b;
-    --color-apagado: #98878f;
-    --color-rosa: #e17e7e;
-    --color-degrade-rosa: #ff6e6e;
-    --color-oscuro: #192231;
-    --color-crema: #f4ebd0;
-    --color-degrade-crema: #fff8e5;
-    --color-gris: #a6a6a6;
-    --color-degrade-gris: #848794;
-    --color-negro: #000000;
-    --color-blanco: #ffffff;
-    --color-error: #d35c5c;
-}
-
 /*---------------------- Mensajes de Error y Exito ----------------------*/
 .error-msg {
-    color: #d35c5c;
+    color: var(--color-error);
     font-family: 'Alata', sans-serif;
 }
 
 .succes-msg {
-    color: #d35c5c;
+    color: var(--color-error);
     font-family: 'Alata', sans-serif;
 }
 
 .alert {
     margin-top: -4rem;
-    color: #f4ebd0;
+    color: var(--color-crema);
     font-family: 'Alata', sans-serif;
     border-radius: 1.25rem;
     border: none;
@@ -37,12 +21,12 @@
 
 /* Mensaje de Éxito */
 .alert-success {
-    background: linear-gradient(to right, #494e6b, #192231);
+    background: linear-gradient(to right, var(--color-azul), var(--color-oscuro));
 }
 
 /* Mensaje de Error */
 .alert-danger {
-    background: linear-gradient(to right, #e17e7e, #ff6e6e);
+    background: linear-gradient(to right, var(--color-rosa), var(--color-degrade-rosa));
 }
 
 /*---------------------- Título ----------------------*/
@@ -51,7 +35,7 @@
     font-weight: bold;
     font-size: 5rem;
     padding-top: 0.5rem;
-    color: #192231;
+    color: var(--color-oscuro);
 }
 
 /*---------------------- Configuración general del modal ----------------------*/
@@ -115,7 +99,7 @@ label {
     position: relative;
     width: 90%;
     max-width: 45rem;
-    background: linear-gradient(to right, #a6a6a6, #8e9099);
+    background: linear-gradient(to right, var(--color-gris), var(--color-degrade-gris-modal));
     padding: 1.5rem;
     border-radius: 2.2rem;
     transform: scale(0.6);
@@ -190,15 +174,15 @@ label {
     display: flex;
     flex-direction: column;
     flex: 1;
-    color: #192231;
+    color: var(--color-oscuro);
     font-family: 'Alata', sans-serif;
     font-size: 1.25rem;
     transition: box-shadow 0.3s ease-in-out;
 }
 
 .form-control {
-    background-color: #f4ebd0;
-    color: #192231;
+    background-color: var(--color-crema);
+    color: var(--color-oscuro);
     border-radius: 0.6rem;
     height: 2.8rem;
     align-items: center;
@@ -234,7 +218,7 @@ select.form-control option {
 }
 
 .disabled-select {
-    background-color: #f4ebd0 !important;
+    background-color: var(--color-crema) !important;
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
@@ -269,22 +253,22 @@ select.form-control option {
 
 /* Botón Confirm */
 .btn-confirm {
-    background-color: #494e6b;
-    color: #f4ebd0;
+    background-color: var(--color-azul);
+    color: var(--color-crema);
 }
 
 .btn-confirm:hover {
-    background-color: #192231;
+    background-color: var(--color-oscuro);
     box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
 }
 
 /* Botón Cancel */
 .btn-cancel {
-    background-color: #e17e7e;
-    color: #f4ebd0;
+    background-color: var(--color-rosa);
+    color: var(--color-crema);
 }
 
 .btn-cancel:hover {
-    background-color: #ff6e6e;
+    background-color: var(--color-degrade-rosa);
     box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
 }

@@ -1,154 +1,139 @@
-/*---------------------- Colores ----------------------*/
-:root {
-  --color-azul: #494e6b;
-  --color-apagado: #98878f;
-  --color-rosa: #e17e7e;
-  --color-degrade-rosa: #ff6e6e;
-  --color-oscuro: #192231;
-  --color-crema: #f4ebd0;
-  --color-degrade-crema: #fff8e5;
-  --color-gris: #a6a6a6;
-  --color-degrade-gris: #848794;
-  --color-negro: #000000;
-  --color-blanco: #ffffff;
-}
-
 /*---------------------- Fondo de la pantalla ----------------------*/
 .home-container {
-  background: linear-gradient(to right, #192231, #494e6b);
-  min-height: 100vh;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  margin-bottom: 0;
+    background: linear-gradient(to right, var(--color-oscuro), var(--color-azul));
+    min-height: 100vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 0;
 }
 
 /*---------------------- Título ----------------------*/
 .home-container h1 {
-  color: #f4ebd0;
-  font-family: 'League Spartan', sans-serif;
-  font-weight: bold;
-  font-size: 4rem;
+    color: var(--color-crema);
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 4rem;
 }
 
 /*---------------------- Subtítulo ----------------------*/
 .title .text-muted {
-  color: #e17e7e !important;
-  font-family: 'Alata', sans-serif;
-  font-size: 1rem;
-  padding-bottom: 1.5rem;
+    color: var(--color-rosa) !important;
+    font-family: 'Alata', sans-serif;
+    font-size: 1rem;
+    padding-bottom: 1.5rem;
 }
 
 /*---------------------- Cards de Foods ----------------------*/
 .card {
-  font-family: 'Alata', sans-serif;
-  background-color: #f4ebd0;
-  color: #192231;
-  border-radius: 2.2rem;
-  cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s ease-in-out !important;
+    font-family: 'Alata', sans-serif;
+    background-color: var(--color-crema);
+    color: var(--color-oscuro);
+    border-radius: 2.2rem;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s ease-in-out !important;
 }
 
 .card:hover {
-  background-color: #fff8e5 !important;
-  box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.2) !important;
+    background-color: var(--color-degrade-crema) !important;
+    box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.2) !important;
 }
 
 .card-body {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 1.5rem;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
 }
 
 .card-title {
-  font-weight: bold;
-  color: #192231;
-  font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-oscuro);
+    font-size: 1rem;
 }
 
 .card-text {
-  color: #494e6b;
-  font-size: 0.9rem;
-  line-height: 1.3;
+    color: var(--color-azul);
+    font-size: 0.9rem;
+    line-height: 1.3;
 }
 
 .card-img-top {
-  height: 7.5rem;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 2.2rem 2.2rem 0 0;
+    height: 7.5rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2.2rem 2.2rem 0 0;
 }
 
 .section-title {
-  font-family: 'Alata', sans-serif;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #f4ebd0;
-  margin-top: 5rem;
-  margin-bottom: 1.5rem;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-crema);
+    margin-top: 5rem;
+    margin-bottom: 1.5rem;
 }
 
 /*---------------------- Banner ----------------------*/
 .promo-banner {
-  background: linear-gradient(to right, #494e6b, #192231);
-  min-height: 15rem;
-  border-radius: 2.2rem;
-  margin-top: 7rem;
-  padding: 2rem 10rem;
-  overflow: visible;
-  position: relative;
-  display: flex;
-  align-items: center;
+    background: linear-gradient(to right, var(--color-azul), var(--color-oscuro));
+    min-height: 15rem;
+    border-radius: 2.2rem;
+    margin-top: 7rem;
+    padding: 2rem 10rem;
+    overflow: visible;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .promo-inner {
-  padding-inline: 2rem;
+    padding-inline: 2rem;
 }
 
 .promo-title {
-  font-family: 'Alata', sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #e17e7e;
-  margin-bottom: 0.5rem;
+    font-family: 'Alata', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--color-rosa);
+    margin-bottom: 0.5rem;
 }
 
 .promo-text {
-  font-size: 1rem;
-  color: #f4ebd0;
-  max-width: 40rem;
-  margin: 0 auto;
+    font-size: 1rem;
+    color: var(--color-crema);
+    max-width: 40rem;
+    margin: 0 auto;
 }
 
 .promo-section {
-  background-color: #f0f0f0;
-  border-radius: 2.2rem;
-  padding: 2rem;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
+    background-color: var(--color-crema);
+    border-radius: 2.2rem;
+    padding: 2rem;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
 }
 
 .promo-text-container {
-  flex: 1;
-  max-width: 40rem;
+    flex: 1;
+    max-width: 40rem;
 }
 
 /* Imagen de la hamburguesa */
 .promo-image {
-  width: 100%;
-  transform: none;
-  object-fit: contain;
+    width: 100%;
+    transform: none;
+    object-fit: contain;
 }
 
 .promo-image-wrapper {
-  position: absolute;
-  right: 0;
-  height: auto;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding-right: 10rem;
+    position: absolute;
+    right: 0;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-right: 10rem;
 }
 
 /* 
@@ -156,12 +141,12 @@ Los @media permiten aplicar estilos solo cuando se cumplen ciertas condiciones
 En este caso, los estilos solo se aplican cuando la pantalla tiene un ancho máximo de 48rem 
 */
 @media (max-width: 48rem) {
-  .promo-image-wrapper {
-    position: static;
-    transform: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-  }
+    .promo-image-wrapper {
+        position: static;
+        transform: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
 }

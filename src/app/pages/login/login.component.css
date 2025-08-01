@@ -1,40 +1,25 @@
-/*---------------------- Colores ----------------------*/
-:root {
-  --color-azul: #494e6b;
-  --color-apagado: #98878f;
-  --color-rosa: #e17e7e;
-  --color-degrade-rosa: #ff6e6e;
-  --color-oscuro: #192231;
-  --color-crema: #f4ebd0;
-  --color-degrade-crema: #fff8e5;
-  --color-gris: #a6a6a6;
-  --color-degrade-gris: #848794;
-  --color-negro: #000000;
-  --color-blanco: #ffffff;
-}
-
 /*---------------------- Mensajes de Error ----------------------*/
 .error-msg {
-  color: #192231;
-  font-family: 'Alata', sans-serif;
-  margin-top: 0.2rem;
-  margin-bottom: 0;
-  font-size: 0.85rem;
-  display: block;
+    color: var(--color-oscuro);
+    font-family: 'Alata', sans-serif;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    display: block;
 }
 
 .alert {
-  margin-top: 3rem;
-  color: #f4ebd0;
-  font-family: 'Alata', sans-serif;
-  border-radius: 1.25rem;
-  border: none;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+    color: var(--color-crema);
+    font-family: 'Alata', sans-serif;
+    border-radius: 1.25rem;
+    border: none;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
 }
 
 .alert-danger {
-  background: linear-gradient(to right, #e17e7e, #ff6e6e);
+    background: linear-gradient(to right, var(--color-rosa), var(--color-degrade-rosa));
 }
 
 /*---------------------- Botones y Bordes ----------------------*/
@@ -51,131 +36,130 @@
 .card.shadow.p-4:focus,
 .card.shadow.p-4:active,
 .card.shadow.p-4:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
 }
 
 /*---------------------- Contenedor Principal ----------------------*/
 .container-fluid {
-  background: linear-gradient(to right, #192231, #494e6b);
-  padding-left: 2rem;
-  padding-right: 2rem;
+    background: linear-gradient(to right, var(--color-oscuro), var(--color-azul));
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .container {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 /*---------------------- Card Principal ----------------------*/
 .card {
-  width: 90%;
-  max-width: 34rem;
+    width: 90%;
+    max-width: 34rem;
 }
 
 .card.shadow.p-4 {
-  transform: scale(1);
-  border-radius: 2.2rem;
-  background: linear-gradient(to right, #e17e7e, #ff6e6e);
-  box-shadow: inset 0 0.3125rem 1rem rgba(0, 0, 0, 0.2) !important;
+    transform: scale(1);
+    border-radius: 2.2rem;
+    background: linear-gradient(to right, var(--color-rosa), var(--color-degrade-rosa));
+    box-shadow: inset 0 0.3125rem 1rem rgba(0, 0, 0, 0.2) !important;
 }
 
 /*---------------------- Título ----------------------*/
 .text-center.mb-4 {
-  font-family: 'League Spartan', sans-serif;
-  font-weight: bold;
-  font-size: 5rem;
-  padding-top: 0.5rem;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 5rem;
+    padding-top: 0.5rem;
 }
 
-
 form {
-  margin: 0.8rem;
+    margin: 0.8rem;
 }
 
 .form-control {
-  background-color: #f4ebd0;
-  height: 2rem;
-  font-family: 'Alata', sans-serif;
-  border-radius: 0.6rem;
-  font-size: 1.08rem;
-  flex: 1;
-  margin-bottom: 1.8rem;
-  transition: box-shadow 0.3s ease-in-out;
+    background-color: var(--color-crema);
+    height: 2rem;
+    font-family: 'Alata', sans-serif;
+    border-radius: 0.6rem;
+    font-size: 1.08rem;
+    flex: 1;
+    margin-bottom: 1.8rem;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .form-control:hover {
-  box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.3) !important;
 }
 
 .form-control:focus {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
-  outline: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+    outline: none;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.2rem;
 }
 
 .form-control {
-  margin-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
 }
 
 /* ::placeholder cambia el color del texto de ayuda en los campos de email y password */
 #email::placeholder,
 #password::placeholder {
-  color: #494e6b;
+    color: var(--color-azul);
 }
 
 /*---------------------- Botones Login y redirección a Sign Up ----------------------*/
 /* Botón Login */
 .btn.btn-primary.btn-extra {
-  width: auto;
-  display: inline-block;
-  border-radius: 2rem;
-  color: #f4ebd0;
-  background-color: #192231;
-  margin-top: 3.5rem;
-  margin-bottom: -0.8rem;
-  font-family: 'Alata', sans-serif;
-  font-size: 1.25rem;
-  height: 2.8rem;
-  transition: background 0.3s, box-shadow 0.3s ease-in-out;
+    width: auto;
+    display: inline-block;
+    border-radius: 2rem;
+    color: var(--color-crema);
+    background-color: var(--color-oscuro);
+    margin-top: 3.5rem;
+    margin-bottom: -0.8rem;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.25rem;
+    height: 2.8rem;
+    transition: background 0.3s, box-shadow 0.3s ease-in-out;
 }
 
 .btn-extra {
-  padding-left: 2.4rem;
-  padding-right: 2.4rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
 }
 
 .btn.btn-primary.btn-extra:hover {
-  background-color: #494e6b;
-  box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
+    background-color: var(--color-azul);
+    box-shadow: 0rem 0.3125rem 1.25rem rgba(0, 0, 0, 0.4) !important;
 }
 
 /* Relacionado al botón Sign Up */
 .text-decoration-underline {
-  color: #494e6b;
-  font-family: 'Alata', sans-serif;
-  transition: color 0.3s, background 0.3s, filter 0.3s ease-in-out;
+    color: var(--color-azul);
+    font-family: 'Alata', sans-serif;
+    transition: color 0.3s, background 0.3s, filter 0.3s ease-in-out;
 }
 
 .text-decoration-underline:hover {
-  color: #192231;
-  filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.3)) !important;
+    color: var(--color-oscuro);
+    filter: drop-shadow(0rem 0.3rem 0.4rem rgba(0, 0, 0, 0.3)) !important;
 }
 
 .text-center.mt-1 {
-  color: #494e6b;
-  font-family: 'Alata', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    color: var(--color-azul);
+    font-family: 'Alata', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Margin negativo del botón Sign Up para que vaya a a la izquierda y se pegue al texto*/
 .text-center.mt-1 button {
-  margin-left: -0.5rem;
+    margin-left: -0.5rem;
 }
