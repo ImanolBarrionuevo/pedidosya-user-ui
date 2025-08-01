@@ -1,9 +1,15 @@
 <div class="container-fluid" id="login-container">
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow p-4">
+
+            <!-- Título -->
             <h2 class="text-center mb-4">Sign Up</h2>
+
+            <!-- Forms -->
             <form [formGroup]="signUpForm" (ngSubmit)="getDataSignUp()">
+
                 <div class="form-row">
+                    <!-- Form de nombre -->
                     <div class="form-group flex-fill me-2">
                         <input type="text" class="form-control" id="name" placeholder="name" formControlName="name"
                             required>
@@ -12,6 +18,7 @@
                         }
                     </div>
 
+                    <!-- Form de apellido -->
                     <div class="form-group flex-fill ms-2">
                         <input type="text" class="form-control" id="surname" placeholder="surname"
                             formControlName="surname" required>
@@ -20,32 +27,43 @@
                         }
                     </div>
                 </div>
+
+                <!-- Form de email -->
                 <div class="form-group">
                     <input type="email" class="form-control" id="email" placeholder="email" formControlName="email"
                         required>
+                    <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                     @if (signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched) {
                     <small class="error-msg">
                         Invalid email address
                     </small>
                     }
                 </div>
+
+                <!-- Form de contraseña -->
                 <div class="form-group">
                     <input type="password" class="form-control" id="password" placeholder="password"
                         formControlName="password" required>
+                    <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                     @if (signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched) {
                     <small class="error-msg">
                         The password must have more than 5 characters
                     </small>
                     }
                 </div>
+
+                <!-- Botón de Sign Up -->
                 <button type="submit" class="btn btn-primary d-block mx-auto btn-extra">Sign Up</button>
             </form>
+
+            <!-- Botón para dirigirnos a pantalla de inicio de sesión -->
             <div class="text-center mt-1 mb-3">
                 already have an account?
                 <button (click)="goToLogin()" class="btn btn-link text-decoration-underline"> login</button>
             </div>
         </div>
 
+        <!-- Mensaje de error -->
         @if (errorMsg) {
         <div class="alert alert-danger">
             {{ errorMsg }}

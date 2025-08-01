@@ -1,18 +1,26 @@
 <div class="container-fluid" id="persons-container">
 
   <div class="d-flex justify-content-between align-items-end px-4 py-3">
+
+    <!-- Título -->
     <h1 class="mb-0">Persons</h1>
+
+    <!-- Botones para abrir ventanas de Edit y Create Person -->
     <div>
+      <!-- Botón de Create -->
       <button (click)="goToCreate()" class="btn btn-primary btn-extra btn-create" [disabled]="editMode">
         Create
       </button>
+      <!-- Se verifica, para abrir la ventana, que se haya tocado el botón Create -->
       @if (showCreate) {
       <app-create-person [showCreate]="showCreate" (close)="closeCreate()" (saved)="onPersonCreated($event)">
       </app-create-person>
       }
 
+      <!-- Botón de Edit -->
       <button (click)="toggleEditMode()" class="btn btn-primary btn-extra btn-edit" [class.active-edit]="editMode"> Edit
       </button>
+      <!-- Se verifica, para abrir la ventana, que se haya tocado el botón Edit y luego seleccionado una persona -->
       @if (showEdit && selectedPerson) {
       <app-edit-person [showEdit]="showEdit" [person]="selectedPerson" (close)="closeEdit()"
         (saved)="onPersonSaved($event)">
@@ -23,11 +31,14 @@
 
   <div class="d-flex justify-content-center">
     <div class="card shadow p-4 w-100 persons-card">
-      <!-- Tabla responsive -->
       <div class="persons-table-wrapper">
+        <!-- Tabla responsive de Persons -->
         <table class="table table-hover align-middle mb-0">
+          <!-- Columnas de la tabla de Persons -->
           <thead class="custom-table-header">
             <tr>
+              <!-- Columna de ID -->
+              <!-- Puede ordenarse la tabla por ID, tanto de forma ascendente como descendente -->
               <th scope="col" (click)="sortById()" class="sortable">
                 <span class="th-sort-wrapper">
                   Id
@@ -35,16 +46,20 @@
                     [class.rotate-180]="!isAscendingId" />
                 </span>
               </th>
+              <!-- Columnas de Name, Birthdate, Email, City, Province y Country -->
               <th scope="col">Name</th>
               <th scope="col">Birthdate</th>
               <th scope="col">Email</th>
               <th scope="col">City</th>
               <th scope="col">Province</th>
               <th scope="col">Country</th>
-              <th></th> <!--Vacio para hacer espacio para botón de edit-->
+              <th></th> <!-- Columna vacía para el icono del botón de Edit-->
             </tr>
           </thead>
+
+          <!-- Datos de las personas para la tabla -->
           <tbody>
+            <!-- Renderiza una fila por cada persona en la lista, mostrando los datos -->
             @for (person of persons; track person.id) {
             <tr [class.table-active]="person === selectedPerson" [class.cursor-pointer]="editMode"
               (click)="editMode && selectAndEdit(person)">
@@ -56,28 +71,34 @@
               <td>{{ person.city.province.name }}</td>
               <td>{{ person.city.province.country.name }}</td>
               <td class="text-center">
+                <!-- El botón de edición solo se activa si editMode está habilitado -->
                 <button class="edit-icon btn-icon" [disabled]="!editMode" (click)="onRowEdit(person)"
-                  title="Editar esta persona"></button>
+                  title="Edit this person"></button>
               </td>
             </tr>
             }
           </tbody>
+
         </table>
       </div>
     </div>
   </div>
 
+  <!-- Paginación -->
   <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center mt-3">
-      <!-- Botón “Anterior” -->
+
+      <!-- Botón de Previous Page -->
       <li class="page-item" [class.disabled]="currentPage === 1">
-        <!-- Deshabilita cuando estamos en la primera página -->
-        <a class="page-link" href="javascript:void(0)" aria-label="Página anterior"
-          [attr.aria-disabled]="currentPage === 1" (click)="goToPrevPage()"> <!-- href evita recargar la página -->
+        <!-- Se encuentra deshabilitado cuando el usuario está en la primera página -->
+        <a class="page-link" href="javascript:void(0)" aria-label="Previous Page"
+          [attr.aria-disabled]="currentPage === 1" (click)="goToPrevPage()">
+          <!-- href="javascript:void(0)" evita recargar la página -->
           <span aria-hidden="true"> &laquo; </span> <!-- Icono visual oculto a lectores de pantalla -->
         </a>
       </li>
-      <!--[].constructor(totalPages) crea Array con la misma cantidad de elementos que el valor numerico de totalPages-->
+
+      <!--[].constructor(totalPages) crea un Array con la misma cantidad de elementos que el valor numerico de totalPages-->
       @for (page of [].constructor(totalPages); track $index) {
       <li class="page-item" [class.active]="currentPage === $index +1">
         <a class="page-link" href="javascript:void(0)" (click)="currentPage = $index+1; goToSelectPage()"> {{ $index + 1
@@ -85,8 +106,12 @@
         </a>
       </li>
       }
-      <li class="page-item" [class.disabled]="currentPage === totalPages"><a class="page-link" href="javascript:void(0)"
-          aria-label="Página siguiente" [attr.aria-disabled]="currentPage === totalPages" (click)="goToNextPage()">
+
+      <!-- Botón de Next Page -->
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <!-- Se encuentra deshabilitado cuando el usuario está en la última página -->
+        <a class="page-link" href="javascript:void(0)" aria-label="Next Page"
+          [attr.aria-disabled]="currentPage === totalPages" (click)="goToNextPage()">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

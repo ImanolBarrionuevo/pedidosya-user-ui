@@ -1,13 +1,20 @@
 <div class="modal-container" [ngClass]="{ 'active': showEdit }">
-
     <div class="modal-content" [ngClass]="{ 'active': showEdit }">
+
+        <!-- X para cerrar la ventana -->
         <button class="close-btn" (click)="closeEdit()"></button>
+
+        <!-- Título -->
         <h2 class="text-center mb-2">Edit Person</h2>
+
+        <!-- Forms -->
         <form [formGroup]="personForm">
             <div class="form-row">
+                <!-- Form de nombre -->
                 <div class="form-group">
                     <label for="name">name</label>
                     <input id="name" type="text" formControlName="name" class="form-control">
+                    <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                     @if (personForm.get('name')?.invalid && personForm.get('name')?.touched) {
                     <small class="error-msg">
                         Complete name
@@ -15,10 +22,12 @@
                     }
                 </div>
 
+                <!-- Form de fecha de nacimiento -->
                 <div class="form-group">
                     <label for="birthdate">birthdate</label>
                     <input id="birthdate" type="date" formControlName="birthDate" class="form-control"
                         (change)="validateDate()">
+                    <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                     @if (personForm.get('birthDate')?.invalid && personForm.get('birthDate')?.touched) {
                     <small class="error-msg">
                         Invalid birthDate
@@ -27,9 +36,11 @@
                 </div>
             </div>
 
+            <!-- Form de email -->
             <div class="form-group">
                 <label for="email">email</label>
                 <input id="email" type="email" formControlName="email" class="form-control">
+                <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                 @if (personForm.get('email')?.invalid && personForm.get('email')?.touched) {
                 <small class="error-msg">
                     Invalid email address
@@ -37,24 +48,29 @@
                 }
             </div>
 
+            <!-- Form de país -->
             <div class="form-group">
                 <label for="country">country</label>
                 <select id="country" class="form-control" formControlName="country" (click)="loadCountries()"
                     (change)="onCountryChange()" [compareWith]="compareById">
                     @for (country of countries; track country.id) {
                     <option [ngValue]="country">{{ country.name }}</option>
+                    <!--Usamos ngValue para tomar el objeto seleccionado-->
                     }
                 </select>
             </div>
 
+            <!-- Form de provincia -->
             <div class="form-group">
                 <label for="province">province</label>
                 <select id="province" class="form-control" formControlName="province" (change)="onProvinceChange()"
                     [compareWith]="compareById" [ngClass]="{ 'disabled-select': !personForm.get('province')?.enabled }">
                     @for (province of provinces; track province.id) {
                     <option [ngValue]="province">{{ province.name }}</option>
+                    <!--Usamos ngValue para tomar el objeto seleccionado-->
                     }
                 </select>
+                <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                 @if (personForm.get('province')?.invalid && personForm.get('province')?.touched) {
                 <small class="error-msg">
                     Select province
@@ -62,14 +78,17 @@
                 }
             </div>
 
+            <!-- Form de ciudad -->
             <div class="form-group">
                 <label for="city">city</label>
                 <select id="city" class="form-control" formControlName="city" [compareWith]="compareById"
                     [ngClass]="{ 'disabled-select': !personForm.get('city')?.enabled }">
                     @for (city of cities; track city.id) {
                     <option [ngValue]="city">{{ city.name }}</option>
+                    <!--Usamos ngValue para tomar el objeto seleccionado-->
                     }
                 </select>
+                <!-- Verifica condiciones y muestra un mensaje de error en caso de ser necesario -->
                 @if (personForm.get('city')?.invalid && personForm.get('city')?.touched) {
                 <small class="error-msg">
                     Select city
@@ -77,6 +96,7 @@
                 }
             </div>
 
+            <!-- Botones Confirm y Cancel -->
             <div class="d-flex justify-content-center mt-3">
                 <button type="submit" class="btn-base btn-confirm" (click)="confirmEdit()">Confirm</button>
                 <button type="submit" class="btn-base btn-cancel" (click)="closeEdit()">Cancel</button>
@@ -84,11 +104,13 @@
         </form>
     </div>
 
+    <!-- Mensaje de éxito -->
     @if (successMsg) {
     <div class="alert alert-success">
         {{ successMsg }}
     </div>
     }
+    <!-- Mensaje de error -->
     @if (errorMsg) {
     <div class="alert alert-danger">
         {{ errorMsg }}
