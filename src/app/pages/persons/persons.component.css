@@ -1,4 +1,4 @@
-/*Definición de colores*/
+/*---------------------- Colores ----------------------*/
 :root {
   --color-azul: #494e6b;
   --color-apagado: #98878f;
@@ -13,6 +13,15 @@
   --color-blanco: #ffffff;
 }
 
+/*---------------------- Host del Componente ----------------------*/
+/* :host sirve para evitar la línea blanca arriba del footer */
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/*---------------------- Fondo de la pantalla ----------------------*/
 .container-fluid {
   flex-grow: 1;
   min-height: calc(100vh - 16.13rem);
@@ -22,14 +31,7 @@
   box-sizing: border-box;
 }
 
-:host {
-  /*Funciona para evitar la linea blanca arriba del footer*/
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-/*Título*/
+/*---------------------- Título ----------------------*/
 .mb-0 {
   color: #f4ebd0;
   font-family: 'League Spartan', sans-serif;
@@ -40,7 +42,8 @@
   line-height: 3rem;
 }
 
-/*Botones de create y edit*/
+/*---------------------- Botones Create y Edit ----------------------*/
+/* Configuración general para ambos botones */
 .btn.btn-primary.btn-extra {
   background-repeat: no-repeat;
   background-position: 1.6rem center;
@@ -70,6 +73,7 @@
   padding-right: 1.75rem;
 }
 
+/* Botón Create */
 .btn-create {
   margin-right: 0.5rem;
   background-image: url("/assets/icons/icono_boton_add_person.svg");
@@ -80,6 +84,7 @@
   filter: grayscale(100%);
 }
 
+/* Botón Edit */
 .btn-edit {
   background-image: url("/assets/icons/icono_boton_edit_person.svg");
 }
@@ -89,7 +94,7 @@
   box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.25);
 }
 
-/*Tabla de Personas*/
+/*---------------------- Tabla de Persons ----------------------*/
 .card.shadow.p-4 {
   width: 100vw;
   background-color: #f4ebd0;
@@ -107,12 +112,15 @@
   width: 100%;
 }
 
+/* th = table header - Se usa para definir las celdas de encabezado */
+/* td = table data - Se usa para definir las celdas que contienen datos de la tabla */
 td {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
+/* En esta sección definimos el tamaño de la tabla que ocupa cada columna (es adaptable) */
 th:nth-child(1),
 td:nth-child(1) {
   /* Id */
@@ -184,13 +192,14 @@ td:nth-child(8) {
   font-weight: normal !important;
 }
 
+/* Aplica el estilo a los iconos de selección para Edit para cuando están deshabilitados */
 .persons-card input[type="checkbox"]:disabled {
   opacity: 0.4;
   cursor: not-allowed;
   filter: grayscale(100%);
 }
 
-/*Icono de editar persona*/
+/* Icono de Edit Person para seleccionar una persona */
 .btn-icon {
   width: 1.6rem;
   height: 1.6rem;
@@ -221,7 +230,34 @@ td:nth-child(8) {
   cursor: not-allowed;
 }
 
-/*Paginación*/
+/* Icono de ID */
+.sortable {
+  cursor: pointer;
+}
+
+.sort-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  vertical-align: middle;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+}
+
+.sortable:hover .sort-icon {
+  opacity: 1;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.th-sort-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/*---------------------- Paginación ----------------------*/
 .pagination .page-link {
   background: transparent !important;
   border: none !important;
@@ -255,9 +291,10 @@ td:nth-child(8) {
   transition: opacity 0.3s ease-in-out;
 }
 
-/*Scrollbar*/
+/*---------------------- Scrollbar ----------------------*/
 ::-webkit-scrollbar {
   width: 0.75rem;
+  height: 0.5rem;
   transition: filter 0.3s ease-in-out !important;
 }
 
@@ -273,31 +310,4 @@ td:nth-child(8) {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #848794;
-}
-
-/*Icono de ordenar por Id*/
-.sortable {
-  cursor: pointer;
-}
-
-.sort-icon {
-  width: 1.1rem;
-  height: 1.1rem;
-  vertical-align: middle;
-  opacity: 0.7;
-  transition: transform 0.3s ease;
-}
-
-.sortable:hover .sort-icon {
-  opacity: 1;
-}
-
-.rotate-180 {
-  transform: rotate(180deg);
-}
-
-.th-sort-wrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
 }

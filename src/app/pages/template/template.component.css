@@ -1,4 +1,4 @@
-/*----------------------colores----------------------*/
+/*---------------------- Colores ----------------------*/
 :root {
     --color-primario: #494e6b;
     --color-secundario: #98878f;
@@ -11,7 +11,7 @@
     --color-degrade: #848794;
 }
 
-/*----------------------navbar----------------------*/
+/*---------------------- Navbar ----------------------*/
 .container-fluid {
     padding-left: 0.55rem;
     padding-right: 1.75rem;
@@ -45,6 +45,7 @@
     font-weight: bold;
 }
 
+/* Icono para dirigirnos a la pantalla Login */
 .login img {
     width: 2.8rem;
     height: 2.8rem;
@@ -55,19 +56,11 @@
     filter: brightness(0.5);
 }
 
-/*----------------------footer----------------------*/
+/*---------------------- Footer ----------------------*/
 .footer {
     background: linear-gradient(to right, #e17e7e, #ff6e6e);
     font-family: 'Alata', sans-serif;
     margin-top: 0;
-}
-
-.footer-link {
-    color: #494e6b;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.3s ease-in-out;
-    display: inline-block;
 }
 
 .footer-flex {
@@ -77,15 +70,26 @@
     gap: 10rem;
 }
 
+/* About, Contact, Privacy, Terms & Conditions, etc. */
+.footer-link {
+    color: #494e6b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease-in-out;
+    display: inline-block;
+}
+
 .footer-link:hover {
     text-decoration: underline;
     color: #192231 !important;
 }
 
+/* "Pedidos Ya © 2010 - 2025" en negrita */
 .copy {
     font-weight: bold;
 }
 
+/* Línea divisoria */
 .footer-divider {
     border: none;
     height: 0.1rem;
@@ -94,6 +98,7 @@
     margin-bottom: 1.5rem;
 }
 
+/* Texto de información legal */
 .footer-legal {
     color: #494e6b;
     font-size: 0.82rem;

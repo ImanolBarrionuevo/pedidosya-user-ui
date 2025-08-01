@@ -1,4 +1,4 @@
-/*Definición de colores*/
+/*---------------------- Colores ----------------------*/
 :root {
   --color-azul: #494e6b;
   --color-apagado: #98878f;
@@ -13,7 +13,7 @@
   --color-blanco: #ffffff;
 }
 
-/*Fondo de la pantalla*/
+/*---------------------- Fondo de la pantalla ----------------------*/
 .home-container {
   background: linear-gradient(to right, #192231, #494e6b);
   min-height: 100vh;
@@ -22,7 +22,7 @@
   margin-bottom: 0;
 }
 
-/*Título*/
+/*---------------------- Título ----------------------*/
 .home-container h1 {
   color: #f4ebd0;
   font-family: 'League Spartan', sans-serif;
@@ -30,7 +30,7 @@
   font-size: 4rem;
 }
 
-/*Subtítulo*/
+/*---------------------- Subtítulo ----------------------*/
 .title .text-muted {
   color: #e17e7e !important;
   font-family: 'Alata', sans-serif;
@@ -38,7 +38,7 @@
   padding-bottom: 1.5rem;
 }
 
-/*Cards de foods*/
+/*---------------------- Cards de Foods ----------------------*/
 .card {
   font-family: 'Alata', sans-serif;
   background-color: #f4ebd0;
@@ -88,7 +88,7 @@
   margin-bottom: 1.5rem;
 }
 
-/*Banner*/
+/*---------------------- Banner ----------------------*/
 .promo-banner {
   background: linear-gradient(to right, #494e6b, #192231);
   min-height: 15rem;
@@ -134,6 +134,7 @@
   max-width: 40rem;
 }
 
+/* Imagen de la hamburguesa */
 .promo-image {
   width: 100%;
   transform: none;
@@ -150,6 +151,10 @@
   padding-right: 10rem;
 }
 
+/* 
+Los @media permiten aplicar estilos solo cuando se cumplen ciertas condiciones
+En este caso, los estilos solo se aplican cuando la pantalla tiene un ancho máximo de 48rem 
+*/
 @media (max-width: 48rem) {
   .promo-image-wrapper {
     position: static;
