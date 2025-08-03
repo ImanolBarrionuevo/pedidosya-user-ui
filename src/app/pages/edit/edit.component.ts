@@ -73,30 +73,24 @@ export class EditComponent implements OnInit, OnChanges {
     });
   }
 
-  //Función ejecutada al seleccionar un pais distinto
+  // Resetea el campo indicado y lo marca como tocado para activar el validador
+  private resetAndTouchField(field: string) {
+    this.personForm.get(field)!.reset(null);
+    this.personForm.get(field)!.markAsTouched();
+  }
+
+  //Función ejecutada al seleccionar un país distinto
   onCountryChange() {
-    //Cargamos las provincias
-    this.loadProvinces();
-
-    //Marcamos province como null y como tocada para que salte el validador
-    this.personForm.get('province')!.reset(null);
-    this.personForm.get('province')!.markAsTouched();
-
-    //Vaciamos el listado de ciudades
-    this.cities = [];
-    //Marcamos city como null y como tocada para que salte el validador
-    this.personForm.get('city')!.reset(null);
-    this.personForm.get('city')!.markAsTouched();
+    this.loadProvinces(); // Carga las provincias del país seleccionado
+    this.resetAndTouchField('province');
+    this.cities = []; // Limpia las ciudades ya que el país cambió
+    this.resetAndTouchField('city');
   }
 
   //Función ejecutada al seleccionar una provincia distinta
   onProvinceChange() {
-    //Cargamos las ciudades
-    this.loadCities()
-
-    //Marcamos city como null y como tocada para que salte el validador
-    this.personForm.get('city')!.reset(null);
-    this.personForm.get('city')!.markAsTouched();
+    this.loadCities(); // Carga las ciudades de la provincia seleccionada
+    this.resetAndTouchField('city');
   }
 
   async loadCountries() {
