@@ -15,66 +15,34 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class PersonsComponent implements OnInit {
-  private allPersons: Person[] = [];
+  private allPersons: Person[] = []; // Lista completa de personas obtenidas de la API
   persons: Person[] = [];
-  selectedPerson: Person | null = null;
+  selectedPerson: Person | null = null; // Persona seleccionada para editar
   showCreate = false;
   showEdit = false;
   editMode = false;
 
-  isAscendingId = true; //Variable que se utiliza para el sortById
+  isAscendingId = true; // Indica el orden actual, ascendente o descendente, de la columna ID
 
   currentPage = 1; // Página inicial
-  pageSize = 10; // Esto nos limita la cantidad de filas por página
-  totalPages = 0; // Esto setea la cantidad de página que queremos
+  pageSize = 10; // Cantidad de filas por página
+  totalPages = 0; // Setea la cantidad de páginas
 
   constructor(private apiService: ApiService) { }
 
+  // Método de inicialización que se ejecuta al cargar el componente
   async ngOnInit() {
-    this.allPersons = await this.apiService.getPersons();
-    this.totalPages = Math.ceil(this.allPersons.length / this.pageSize);
+    this.allPersons = await this.apiService.getPersons(); // Obtiene todas las personas de la API
+    this.totalPages = Math.ceil(this.allPersons.length / this.pageSize); // Calcula el total de páginas
     this.refreshView();
   }
 
-  async sortById() {
-    try {
-      this.allPersons.sort((a, b) =>
-        this.isAscendingId ? a.id - b.id : b.id - a.id
-      );
-      this.isAscendingId = !this.isAscendingId; // alterna el orden
-      this.refreshView();
-    } catch (error) {
-      throw error;
-    }
+  // Método para ir a la página de creación de una nueva persona  
+  goToCreate() {
+    this.showCreate = true;
   }
 
-  private refreshView() {
-    const start = (this.currentPage - 1) * this.pageSize;
-    this.persons = this.allPersons.slice(start, start + this.pageSize);
-  }
-
-  goToNextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.refreshView();
-    }
-  }
-
-  goToSelectPage() {
-    if (this.currentPage) {
-      this.refreshView();
-    }
-  }
-
-  goToPrevPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.refreshView();
-    }
-  }
-
-  goToCreate() { this.showCreate = true; }
-
+  // Cierra el modal de creación y desbloquea el scroll
   closeCreate() {
     const modalContent = document.querySelector('.modal-content') as HTMLElement;
     const modalContainer = document.querySelector('.modal-container') as HTMLElement;
@@ -85,65 +53,102 @@ export class PersonsComponent implements OnInit {
     }
   }
 
-  toggleEditMode() {
-    // Esto nos cambia el valor de editMode
-    this.editMode = !this.editMode;
+  // Maneja el evento de creación de una nueva persona
+  onPersonCreated(newPerson: Person) {
+    this.allPersons.push(newPerson); // Agrega la persona al final de la lista de todas las personas
+    this.totalPages = Math.ceil(this.allPersons.length / this.pageSize); // Calcula el totalPages nuevo
+    this.refreshView(); // Actualiza el slice actual de persons
+    this.showCreate = false; // Cierra el modal
   }
 
+  // Abre el modal de edición para la persona seleccionada.
   onRowEdit(person: Person) {
     this.selectedPerson = person;
     this.showEdit = true;
   }
 
+  // Selecciona una persona y abre el modal de edición, desactivando el modo edición.
   selectAndEdit(person: Person) {
     this.selectedPerson = person;
     this.showEdit = true;
     this.editMode = false;
   }
 
+  // Cierra el modal de edición con animación.
   closeEdit() {
     const modalContent = document.querySelector('.modal-content') as HTMLElement;
     const modalContainer = document.querySelector('.modal-container') as HTMLElement;
     if (modalContent && modalContainer) {
-      modalContent.classList.add('closing');
+      modalContent.classList.add('closing'); // Agrega la clase de cierre para animación
       modalContainer.classList.add('closing');
 
       setTimeout(() => {
-        this.showEdit = false;
-        this.selectedPerson = null;
+        this.showEdit = false; // Desactiva el modal de edición
+        this.selectedPerson = null; // Limpia la persona seleccionada
       }, 300);
     }
   }
 
+  // Confirma la edición de la persona seleccionada y cierra el modal
   confirmEdit() {
-    // Acá debería ir la implementación de la confirmación, no?
     this.showEdit = false;
     this.selectedPerson = null;
   }
 
+  // Maneja el evento de guardado de una persona editada
   onPersonSaved(updated: Person) {
-    // ACtualizamos la persona en la lista de todas las personas
-    const idxAll = this.allPersons.findIndex(p => p.id === updated.id);
-    if (idxAll > -1) {
-      this.allPersons[idxAll] = updated;
+    const personIndex = this.allPersons.findIndex(p => p.id === updated.id);
+    if (personIndex > -1) {
+      this.allPersons[personIndex] = updated;
     }
-
-    // Actualizamos el slice actual de persons
-    this.refreshView();
-
-    // Cerramos el modal de edit
-    this.showEdit = false;
-    this.selectedPerson = null;
+    this.refreshView(); // Actualiza la vista con la persona editada
+    this.confirmEdit(); // Cierra el modal y limpia la persona seleccionada
   }
 
-  onPersonCreated(newPerson: Person) {
-    // Agregamos la persona al final de la lista de todas las personas
-    this.allPersons.push(newPerson);
-    // Calculamos el totalPages nuevo
-    this.totalPages = Math.ceil(this.allPersons.length / this.pageSize);
-    // Actualizamos el slice actual de persons
-    this.refreshView();
-    // Cerramos el modal
-    this.showCreate = false;
+  // Método para navegar a la página siguiente
+  goToNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.refreshView();
+    }
+  }
+
+  // Método para navegar a la página seleccionada
+  goToSelectPage() {
+    if (this.currentPage) {
+      this.refreshView();
+    }
+  }
+
+  // Método para navegar a la página anterior
+  goToPrevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.refreshView();
+    }
+  }
+
+  // Método para ordenar por ID. Alterna entre orden ascendente y descendente.
+  async sortById() {
+    try {
+      this.allPersons.sort((a, b) =>
+        this.isAscendingId ? a.id - b.id : b.id - a.id
+      );
+      this.isAscendingId = !this.isAscendingId; // Altera el orden
+      this.refreshView(); // Actualiza la vista con el nuevo orden
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  // Actualiza la vista de personas según la página actual y el tamaño de página
+  private refreshView() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    this.persons = this.allPersons.slice(start, start + this.pageSize);
+  }
+
+  // Alterna el modo de edición
+  toggleEditMode() {
+    this.editMode = !this.editMode;
   }
 }

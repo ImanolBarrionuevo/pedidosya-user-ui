@@ -1,3 +1,5 @@
+// Interfaces para modelar entidades relacionadas con personas, ciudades, provincias y países.
+
 export interface Country {
   id: number;
   name: string;
