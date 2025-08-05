@@ -10,9 +10,10 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
 })
+
 export class SignUpComponent {
 
-  public signUpForm!: FormGroup
+  public signUpForm!: FormGroup // Formulario para el registro de usuario
 
   constructor(
     private router: Router,
@@ -20,12 +21,9 @@ export class SignUpComponent {
     private apiService: ApiService
   ) { }
 
-  errorMsg: string = ''
+  errorMsg: string = '' // Mensaje de error para mostrar al usuario
 
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
-
+  // Método para inicializar el formulario y establecer las validaciones
   async ngOnInit() {
     this.signUpForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern(/^[^0-9]+$/)]],
@@ -35,16 +33,22 @@ export class SignUpComponent {
     })
   }
 
+  // Método para navegar a la página login
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  // Método para manejar el registro de usuario
   async getDataSignUp() {
     if (this.signUpForm.invalid) {
-      this.signUpForm.markAllAsTouched();
+      this.signUpForm.markAllAsTouched(); // Marca todos los campos como tocados para mostrar errores de validación
       this.errorMsg = 'Incomplete or incorrect information';
     }
     try {
-      const { name, surname, email, password } = this.signUpForm.value;
-      await this.apiService.signUp(name, surname, email, password);
-      await this.router.navigate(['/home']);
-    } catch(error) {
+      const { name, surname, email, password } = this.signUpForm.value; // Obtiene los valores del formulario
+      await this.apiService.signUp(name, surname, email, password); // Llama al servicio para registrar al usuario
+      await this.router.navigate(['/home']); // Navega a home después del registro exitoso
+    } catch (error) {
       console.error("Algo salió mal", error);
     }
   }

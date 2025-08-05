@@ -6,12 +6,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule], //Preguntar si no deberia importarse en un app.module
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
-  public loginForm!: FormGroup
+
+  public loginForm!: FormGroup // Formulario para el inicio de sesión
 
   constructor(
     private fb: FormBuilder,
@@ -20,12 +22,9 @@ export class LoginComponent {
 
   ) { }
 
-  errorMsg: string = ''
+  errorMsg: string = '' // Mensaje de error para mostrar al usuario
 
-  goToSignUp() {
-    this.router.navigate(['/sign-up']);
-  }
-
+  // Método para inicializar el formulario y establecer las validaciones
   async ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]],
@@ -33,15 +32,21 @@ export class LoginComponent {
     })
   }
 
+  // Método para navegar a la página sign-up
+  goToSignUp() {
+    this.router.navigate(['/sign-up']);
+  }
+
+  // Método para manejar el inicio de sesión
   async getDataLogin() {
     if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
+      this.loginForm.markAllAsTouched(); // Marca todos los campos como tocados para mostrar errores de validación
       this.errorMsg = 'Incomplete or incorrect information';
     }
     try {
-      const { email, password } = this.loginForm.value
-      await this.apiService.login(email, password)
-      await this.router.navigate(['/home'])
+      const { email, password } = this.loginForm.value; // Obtiene los valores del formulario
+      await this.apiService.login(email, password); // Llama al servicio para iniciar sesión
+      await this.router.navigate(['/home']); // Navega a home después del inicio de sesión exitoso
     } catch (e) {
       this.errorMsg = 'Incomplete or incorrect information';
       console.error(e);
