@@ -47,7 +47,7 @@ export class SignUpComponent {
     try {
       const { name, surname, email, password } = this.signUpForm.value; // Obtiene los valores del formulario
       await this.apiService.signUp(name, surname, email, password); // Llama al servicio para registrar al usuario
-      await this.router.navigate(['/home']); // Navega a home después del registro exitoso
+      await this.router.navigate(['/login']); // Navega a home después del registro exitoso
     } catch (error) {
       console.error("Algo salió mal", error);
     }
