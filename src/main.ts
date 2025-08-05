@@ -1,3 +1,8 @@
+/**
+ * Punto de entrada principal de la aplicación Angular.
+ * Inicializa la app con la configuración global y las rutas definidas.
+ */
+
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
