@@ -17,40 +17,40 @@ Here are some screenshots showcasing the application's interface:
 #### Login
 User authentication screen with email and password input.
 <p align="center">
-  <img src="/src/assets/screenshots/login.png" width="400" alt="Login">
+  <img src="/src/assets/screenshots/login.png" width="800" alt="Login">
 </p>
 
 #### Sign Up
 User registration form with name, surname, email, and password fields.
 <p align="center">
-  <img src="/src/assets/screenshots/sign-up.png" width="400" alt="Sign Up">
+  <img src="/src/assets/screenshots/sign-up.png" width="800" alt="Sign Up">
 </p>
 
 #### Home
 Landing page after login. Displays a list of food items retrieved from a mock API `(mock-food.ts)`.
 <p align="center">
-  <img src="/src/assets/screenshots/home-1.png" width="400" alt="Home part 1">
+  <img src="/src/assets/screenshots/home-1.png" width="800" alt="Home part 1">
 </p>
 <p align="center">
-  <img src="/src/assets/screenshots/home-2.png" width="400" alt="Home part 2">
+  <img src="/src/assets/screenshots/home-2.png" width="800" alt="Home part 2">
 </p>
 
 #### People List
 Displays all registered persons with their personal details.
 <p align="center">
-  <img src="/src/assets/screenshots/persons.png" width="400" alt="People List">
+  <img src="/src/assets/screenshots/persons.png" width="800" alt="People List">
 </p>
 
 #### Create Person
 Form to add a new person, including name, email, birth date, and city selection.
 <p align="center">
-  <img src="/src/assets/screenshots/create-person.png" width="400" alt="Create Person">
+  <img src="/src/assets/screenshots/create-person.png" width="800" alt="Create Person">
 </p>
 
 #### Edit Person
 Form to update an existing person's information.
 <p align="center">
-  <img src="/src/assets/screenshots/edit-person.png" width="400" alt="Edit Person">
+  <img src="/src/assets/screenshots/edit-person.png" width="800" alt="Edit Person">
 </p>
 
 ## 🔗 Backend Integration
