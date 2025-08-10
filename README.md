@@ -1,59 +1,117 @@
-# TpDesarrolloAngular
+# PedidosYa User UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
+## 📝 Description
+Frontend application for user interaction within the PedidosYa system. Built with Angular and TypeScript, it connects to backend services for authentication and personal data management, providing a responsive and user-friendly interface.
 
-## Development server
+## 🧩 Features
+- User login and authentication via JWT.
+- Client data listing, creation, and editing.
+- Location selection (city, province, country).
+- Role-based access control (RBAC).
+- Form validation and error feedback.
 
-To start a local development server, run:
+## 🖼️ Screenshots
 
-```bash
-ng serve
-```
+Here are some screenshots showcasing the application's interface:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+#### Login
+User authentication screen with email and password input.
+<p align="center">
+  <img src="/src/assets/screenshots/login.png" width="400" alt="Login">
+</p>
 
-## Code scaffolding
+#### Sign Up
+User registration form with name, surname, email, and password fields.
+<p align="center">
+  <img src="/src/assets/screenshots/sign-up.png" width="400" alt="Sign Up">
+</p>
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+#### Home
+Landing page after login. Displays a list of food items retrieved from a mock API `(mock-food.ts)`.
+<p align="center">
+  <img src="/src/assets/screenshots/home-1.png" width="400" alt="Home part 1">
+</p>
+<p align="center">
+  <img src="/src/assets/screenshots/home-2.png" width="400" alt="Home part 2">
+</p>
 
-```bash
-ng generate component component-name
-```
+#### People List
+Displays all registered persons with their personal details.
+<p align="center">
+  <img src="/src/assets/screenshots/persons.png" width="400" alt="People List">
+</p>
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+#### Create Person
+Form to add a new person, including name, email, birth date, and city selection.
+<p align="center">
+  <img src="/src/assets/screenshots/create-person.png" width="400" alt="Create Person">
+</p>
 
-```bash
-ng generate --help
-```
+#### Edit Person
+Form to update an existing person's information.
+<p align="center">
+  <img src="/src/assets/screenshots/edit-person.png" width="400" alt="Edit Person">
+</p>
 
-## Building
+## 🔗 Backend Integration
+This application interfaces with the following backend services:
+- 🧍‍♂️ [Person Service](https://github.com/ImanolBarrionuevo/pedidosya-person-service): Manages user personal data and location hierarchy.
+- 🔐 [Auth Service](https://github.com/ImanolBarrionuevo/pedidosya-auth-service): Handles login, JWT token issuance, and role-based access control.
 
-To build the project run:
+Access to client data operations (viewing, creating, editing) is restricted based on user roles, enforced via JWT validation in the backend.  
+The UI remains consistent across roles, but unauthorized actions are blocked securely.
 
-```bash
-ng build
-```
+## ⚙️ Tech Stack
+- **Frontend Framework:** Angular
+- **Language:** TypeScript
+- **Styling:** CSS
+- **State Management:** RxJS
+- **HTTP Client:** Axios (custom clients for Auth and Person services)
+- **Authentication:** JWT (via Auth Service)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🚀 Getting Started
 
-## Running unit tests
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+2. Start the development server
+    ```bash
+    ng serve
+    ```
+    Once the server is running, open your browser and navigate to `http://localhost:4200/`. 
+    The application will automatically reload whenever you modify any of the source files.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📡 API Configuration
 
-```bash
-ng test
-```
+This project uses pre-configured Axios clients to communicate with backend services:
 
-## Running end-to-end tests
+| Axios Client          | Base URL                     | Purpose                       |
+|-----------------------|------------------------------|-------------------------------|
+| `axiosServiceAuth`    | `http://localhost:3001/auth` | Authentication requests       |
+| `axiosServicePersons` | `http://localhost:3000`      | Personal data and location    |
 
-For end-to-end (e2e) testing, run:
+These clients are defined in `src/app/services/` and include headers and interceptors for JWT authentication. The `axiosServicePersons` client automatically attaches the access token from `localStorage` to each request.
 
-```bash
-ng e2e
-```
+## 🧪 Testing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+To execute unit tests:
+   ```bash
+   npm run test
+   ```
+To run end-to-end tests:
+   ```bash
+   npm run e2e
+   ```
+These commands use Angular's testing tools to validate component behavior and application flows.
 
-## Additional Resources
+## 👨‍💻 Credits
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project was collaboratively developed by Group G as part of the Software Development course at UTN FRVM. All members contributed equally to planning, implementation, and documentation.
+
+**Team Members:**
+- [@ImanolBarrionuevo](https://github.com/ImanolBarrionuevo)
+- [@tomigambino](https://github.com/tomigambino)
+- [@gabrieldiaz8](https://github.com/gabrieldiaz8)
+- [@MateoBroilo](https://github.com/MateoBroilo)
+- [@LolitoGlezz](https://github.com/LolitoGlezz)
