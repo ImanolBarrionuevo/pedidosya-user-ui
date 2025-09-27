@@ -12,15 +12,15 @@
     <h2 class="section-title">Time to eat!</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
       @for (item of foodItems; track $index) {
-      <div class="col">
-        <div class="card h-100 shadow-sm">
-          <img [src]="item.image" class="card-img-top" />
-          <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text text-muted">{{ item.description }}</p>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <img [src]="item.image" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <p class="card-text text-muted">{{ item.description }}</p>
+            </div>
           </div>
         </div>
-      </div>
       }
     </div>
     <!-- Postres -->
